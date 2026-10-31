@@ -189,7 +189,7 @@ export default function SpiritualHooks() {
                   </div>
                   <div className="flex items-start gap-2.5">
                     <Video className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <span><strong>Kiểm tra vân mộc:</strong> Cận cảnh thớ gỗ lõi không rác tại xưởng trước khi hoàn thiện</span>
+                    <span><strong>Hình ảnh thực tế:</strong> Cận cảnh thớ vân gỗ tự nhiên tuyển chọn trước khi hoàn thiện</span>
                   </div>
                   <div className="flex items-start gap-2.5">
                     <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
@@ -229,7 +229,7 @@ export default function SpiritualHooks() {
                 </form>
 
                 <p className="text-[11px] text-stone-500 text-center mt-3">
-                  Cam kết bảo mật tuyệt đối. Xưởng không gọi làm phiền ngoài giờ gia chủ nghỉ ngơi.
+                  Thông tin được bảo mật tuyệt đối. Tư vấn tận tâm và không gọi ngoài giờ nghỉ ngơi.
                 </p>
               </>
             ) : (

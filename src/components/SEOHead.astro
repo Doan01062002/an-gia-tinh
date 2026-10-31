@@ -10,7 +10,7 @@ export interface Props {
 
 const {
   title = 'An Gia Tịnh — Bàn Thờ Hiện Đại & Không Gian Thờ Chuẩn Phong Thủy Thước Lỗ Ban 38.8cm',
-  description = 'Xưởng mộc An Gia Tịnh chuyên sản xuất bàn thờ treo chung cư, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi tự nhiên không rác (Sồi Mỹ, Gõ Đỏ, Gụ Lào), chuẩn Thước Lỗ Ban 38.8cm, kiểm tra clip mộc 15s trước khi giao.',
+  description = 'An Gia Tịnh chuyên sản xuất bàn thờ treo chung cư, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ tự nhiên tuyển chọn (Sồi Mỹ, Gõ Đỏ, Gụ Lào), chuẩn Thước Lỗ Ban 38.8cm, giao hàng toàn quốc.',
   image = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
   canonicalURL = Astro.url.href,
   type = 'website',
@@ -28,9 +28,9 @@ const defaultSchema = {
   image: image,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Làng nghề mộc Canh Nậu, Thạch Thất',
+    streetAddress: 'Toàn quốc',
     addressLocality: 'Hà Nội',
-    addressRegion: 'Hà Nội',
+    addressRegion: 'Việt Nam',
     postalCode: '100000',
     addressCountry: 'VN',
   },
@@ -65,8 +65,8 @@ const finalSchema = schema || defaultSchema;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="keywords" content="bàn thờ chung cư, bàn thờ treo tường, bàn thờ đứng gia tiên, thước lỗ ban 38.8, tranh trúc chỉ hoa sen, vách ngăn phòng thờ cnc, an gia tịnh, đồ thờ thạch thất, đồ thờ sơn đồng" />
-<meta name="author" content="Xưởng Mộc An Gia Tịnh" />
+<meta name="keywords" content="bàn thờ chung cư, bàn thờ treo tường, bàn thờ đứng gia tiên, thước lỗ ban 38.8, tranh trúc chỉ hoa sen, vách ngăn phòng thờ cnc, an gia tịnh, bàn thờ hiện đại" />
+<meta name="author" content="An Gia Tịnh" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
 <!-- Open Graph / Facebook -->

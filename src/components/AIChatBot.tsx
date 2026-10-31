@@ -16,12 +16,12 @@ export default function AIChatBot() {
     {
       id: '1',
       sender: 'ai',
-      text: 'Kính chào quý gia chủ! 🙏 Tôi là Trợ Lý Phong Thủy AI của xưởng An Gia Tịnh. Gia chủ muốn tra cứu kích thước Lỗ Ban 38.8cm, hướng đặt bàn thờ theo tuổi hay kiểm tra clip mộc 15s?',
+      text: 'Kính chào quý gia chủ! 🙏 Tôi là Trợ Lý Phong Thủy AI của An Gia Tịnh. Gia chủ muốn tra cứu kích thước Lỗ Ban 38.8cm, hướng đặt bàn thờ theo tuổi hay nhận tư vấn chọn mẫu bàn thờ phù hợp?',
       time: 'Vừa xong',
       suggestions: [
         'Sinh năm 1989 đặt hướng nào?',
         'Kích thước bàn thờ 48x81cm có ý nghĩa gì?',
-        'Cam kết gỗ lõi không rác như thế nào?',
+        'Tiêu chuẩn chất lượng gỗ tự nhiên thế nào?',
         'Tặng trọn bộ văn khấn an vị bàn thờ',
       ],
     },
@@ -57,7 +57,7 @@ export default function AIChatBot() {
     // Check for phone number
     const phoneMatch = text.match(/(0[3|5|7|8|9][0-9]{8})/);
     if (phoneMatch) {
-      return `Dạ xưởng An Gia Tịnh đã lưu số Zalo **${phoneMatch[0]}** của gia chủ! Thợ cả sẽ gửi ngay clip mộc 15s và trọn bộ file PDF văn khấn an vị bàn thờ qua Zalo cho gia chủ trong ít phút ạ!`;
+      return `Dạ An Gia Tịnh đã lưu số Zalo **${phoneMatch[0]}** của gia chủ! Đội ngũ tư vấn sẽ gửi ngay trọn bộ file PDF văn khấn an vị bàn thờ và hỗ trợ tư vấn chi tiết qua Zalo cho gia chủ trong ít phút ạ!`;
     }
 
     // Check for birth years
@@ -87,7 +87,7 @@ export default function AIChatBot() {
 
     // Wood quality & Craftsmanship
     if (text.includes('gỗ lõi') || text.includes('rác') || text.includes('gỗ sồi') || text.includes('gụ')) {
-      return `An Gia Tịnh cam kết **100% Gỗ Lõi Tự Nhiên Không Pha Rác (Đền bù 200% nếu phát hiện gỗ rác)**. Gỗ được sấy lò ẩm độ 10–12% chống nứt nẻ, đục mộng thủ công không đinh kim loại trên mặt bàn thờ và luôn gửi video mộc 15s soi thớ vân trước khi phun sơn.`;
+      return `An Gia Tịnh sử dụng **100% Gỗ Tự Nhiên Tuyển Chọn (Sồi Mỹ, Gõ Đỏ, Gụ Lào, Mít Ta)**. Gỗ được sấy lò tiêu chuẩn đạt độ ẩm 10–12% chống nứt nẻ, cong vênh, đục mộng truyền thống chắc chắn và bảo hành kết cấu 10 đến 20 năm.`;
     }
 
     // Văn khấn
@@ -96,7 +96,7 @@ export default function AIChatBot() {
     }
 
     // Default polite response
-    return `Cảm ơn câu hỏi của gia chủ! Để được thợ cả làng nghề tư vấn chính xác nhất theo mặt bằng căn hộ và nhận video mộc thô 15s trực tiếp, gia chủ có thể nhắn tin Zalo số **0339.533.380** hoặc để lại số điện thoại tại đây nhé!`;
+    return `Cảm ơn câu hỏi của gia chủ! Để được tư vấn mẫu bàn thờ chuẩn phong thủy chính xác nhất theo không gian nhà mình, gia chủ có thể nhắn tin Zalo số **0339.533.380** hoặc để lại số điện thoại tại đây nhé!`;
   };
 
   const handleSend = (textToSend?: string) => {

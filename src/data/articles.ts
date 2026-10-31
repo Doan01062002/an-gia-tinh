@@ -17,7 +17,7 @@ export const ARTICLES: Article[] = [
     title: 'Kích Thước Bàn Thờ Chung Cư Chuẩn Thước Lỗ Ban 38.8cm Thu Hút Tài Lộc',
     description: 'Hướng dẫn chi tiết cách chọn kích thước bàn thờ treo chung cư chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ (48x81, 48x89, 61x107). Tránh phạm cung hung, đón trọn vượng khí bình an.',
     publishDate: '2026-10-31',
-    author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Làng Nghề Thạch Thất)',
+    author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
     category: 'Phong Thủy Bàn Thờ',
     readingTime: '6 phút đọc',
     coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80',
@@ -84,9 +84,9 @@ export const ARTICLES: Article[] = [
   {
     slug: 'bi-quyet-nhan-biet-100-go-loi-khong-pha-rac-ban-tho',
     title: 'Bí Quyết Nhận Biết 100% Gỗ Lõi Không Pha Rác Khi Mua Bàn Thờ',
-    description: 'Hướng dẫn gia chủ nhận biết thớ gỗ lõi và gỗ rác (dác gỗ) khi chọn bàn thờ gia tiên. Vì sao An Gia Tịnh cam kết bồi thường 200% nếu phát hiện dính rác?',
+    description: 'Hướng dẫn gia chủ nhận biết thớ gỗ lõi và gỗ rác (dác gỗ) khi chọn bàn thờ gia tiên. Tìm hiểu quy chuẩn chọn gỗ tự nhiên bền đẹp 10-20 năm tại An Gia Tịnh.',
     publishDate: '2026-10-31',
-    author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Làng Nghề Thạch Thất)',
+    author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
     category: 'Kiến Thức Nghề Mộc',
     readingTime: '5 phút đọc',
     coverImage: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=1000&q=80',
@@ -97,7 +97,7 @@ export const ARTICLES: Article[] = [
       { depth: 2, slug: '2-cach-nhan-biet-khi-kiem-tra-moc-tho', text: '2. Cách phân biệt gỗ lõi và gỗ rác khi xem mộc thô 15s' },
       { depth: 3, slug: '2-1-phan-biet-qua-mau-sac-tu-nhien', text: '2.1. Phân biệt qua màu sắc tự nhiên của thớ gỗ' },
       { depth: 3, slug: '2-2-phan-biet-qua-trong-luong-va-do-cung', text: '2.2. Phân biệt qua trọng lượng và độ đanh chắc' },
-      { depth: 2, slug: '3-chinh-sach-cam-ket-den-200-tai-an-gia-tinh', text: '3. Chính sách cam kết đền bù 200% tại An Gia Tịnh' },
+      { depth: 2, slug: '3-chinh-sach-bao-hanh-tai-an-gia-tinh', text: '3. Chính sách bảo hành chất lượng tại An Gia Tịnh' },
       { depth: 3, slug: '3-1-quy-trinh-quay-video-moc-15s-truoc-khi-son', text: '3.1. Quy trình quay video mộc 15s cận cảnh thớ vân' },
       { depth: 3, slug: '3-2-chinh-sach-bao-hanh-10-20-nam', text: '3.2. Chính sách bảo hành nứt nẻ, mối mọt 10-20 năm' },
     ],
@@ -120,13 +120,13 @@ export const ARTICLES: Article[] = [
       <h3 id="2-2-phan-biet-qua-trong-luong-va-do-cung">2.2. Phân biệt qua trọng lượng và độ đanh chắc</h3>
       <p>Dùng móng tay bấm vào thớ gỗ lõi không để lại vết lún vì thớ gỗ đanh cứng như sừng. Gỗ rác mềm xốp, dễ bị ấn lún và nhẹ hơn đáng kể.</p>
 
-      <h2 id="3-chinh-sach-cam-ket-den-200-tai-an-gia-tinh">3. Chính sách cam kết đền bù 200% tại An Gia Tịnh</h2>
+      <h2 id="3-chinh-sach-bao-hanh-tai-an-gia-tinh">3. Chính sách bảo hành chất lượng tại An Gia Tịnh</h2>
 
       <h3 id="3-1-quy-trinh-quay-video-moc-15s-truoc-khi-son">3.1. Quy trình quay video mộc 15s cận cảnh thớ vân</h3>
       <p>Mỗi sản phẩm trước khi đưa vào phòng sơn lụa Inchem đều được thợ cả cầm điện thoại quay cận cảnh 4 mặt, các góc mộng và mặt sau của bàn thờ. Video được gửi trực tiếp qua Zalo cho gia chủ duyệt.</p>
 
       <h3 id="3-2-chinh-sach-bao-hanh-10-20-nam">3.2. Chính sách bảo hành nứt nẻ, mối mọt 10-20 năm</h3>
-      <p>Nếu trong quá trình sử dụng phát hiện sản phẩm có dính bất kỳ milimet gỗ rác nào, xưởng cam kết thu hồi và hoàn trả gấp đôi (200%) số tiền cho gia chủ.</p>
+      <p>An Gia Tịnh áp dụng chính sách bảo hành chất lượng 10 năm cho gỗ Sồi Mỹ và 20 năm cho các dòng gỗ quý (Gõ Đỏ, Gụ Lào, Mít Ta), bảo trì trọn đời và hỗ trợ đổi mới nếu phát sinh lỗi kỹ thuật từ nhà sản xuất.</p>
     `,
   },
 ];

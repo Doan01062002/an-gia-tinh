@@ -91,21 +91,17 @@ function formatCurrency(amount: number) {
         </span>
       </div>
 
-      <div class="grid grid-cols-2 gap-2">
+      <div class="mt-3 pt-3 border-t border-stone-100">
         <a
-          href={`/san-pham/${product.slug}`}
-          class="px-3 py-2 text-center text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 rounded-xl transition-colors border border-stone-200"
-        >
-          Xem Chi Tiết
-        </a>
-
-        <a
-          href="https://zalo.me/0339533380"
+          href={`https://zalo.me/0339533380?text=Ch%C3%A0o%20x%C6%B0%E1%BB%9Fng%20An%20Gia%20T%E1%BB%8Bnh,%20t%C3%B4i%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20m%E1%BA%ABu%20${encodeURIComponent(product.name)}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="px-3 py-2 text-center text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 rounded-xl shadow-xs transition-colors"
+          class="w-full py-2.5 bg-gradient-to-r from-red-700 via-red-800 to-amber-900 hover:from-red-800 hover:to-amber-950 text-white text-xs sm:text-sm font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md active:scale-98"
         >
-          Nhận Clip Mộc
+          <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span>Liên Hệ</span>
         </a>
       </div>
     </div>

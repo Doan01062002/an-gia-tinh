@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../types';
-import { Video, Eye, X, ZoomIn, ShieldCheck, ArrowRight, Layers, Sparkles } from 'lucide-react';
+import { Video, Eye, X, ZoomIn, ShieldCheck, ArrowRight, Layers, Sparkles, Phone } from 'lucide-react';
 
 interface Props {
   products: Product[];
@@ -127,24 +127,16 @@ export default function ProductGallery({ products }: Props) {
             </div>
           </div>
 
-          {/* Dual Action Buttons: Chi Tiết & Clip Mộc 15s */}
-          <div className="grid grid-cols-2 gap-1.5 mt-2.5 pt-2 border-t border-dashed border-stone-200">
+          {/* Action Button: Liên Hệ (Single prominent full-width CTA) */}
+          <div className="mt-2.5 pt-2 border-t border-dashed border-stone-200">
             <a
-              href={`/san-pham/${product.slug}`}
-              className="px-2 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-800 text-[10px] sm:text-xs font-bold rounded text-center transition-colors flex items-center justify-center gap-1"
-            >
-              <Eye className="w-3 h-3 text-stone-600" />
-              <span>Chi Tiết</span>
-            </a>
-
-            <a
-              href={`https://zalo.me/0339533380?text=Kinh%20chao%20xuong,%20toi%20muon%20xem%20clip%20moc%2015s%20mau%20${encodeURIComponent(product.name)}`}
+              href={`https://zalo.me/0339533380?text=Ch%C3%A0o%20x%C6%B0%E1%BB%9Fng%20An%20Gia%20T%E1%BB%8Bnh,%20t%C3%B4i%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20m%E1%BA%ABu%20${encodeURIComponent(product.name)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2 py-1.5 bg-red-700 hover:bg-red-800 text-white text-[10px] sm:text-xs font-bold rounded text-center transition-colors flex items-center justify-center gap-1 shadow-2xs"
+              className="w-full py-2 bg-gradient-to-r from-red-700 via-red-800 to-amber-900 hover:from-red-800 hover:to-amber-950 text-white text-xs sm:text-sm font-bold rounded-lg text-center transition-all flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md active:scale-98"
             >
-              <Video className="w-3 h-3 text-white" />
-              <span>Clip Mộc</span>
+              <Phone className="w-3.5 h-3.5 text-amber-300" />
+              <span>Liên Hệ</span>
             </a>
           </div>
         </div>

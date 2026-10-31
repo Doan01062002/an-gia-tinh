@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, MessageCircle, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video, Sparkles, Layers, ChevronUp } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video, Sparkles, Layers } from 'lucide-react';
 
 export default function SpiritualHooks() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const checkScroll = () => {
-      setShowBackToTop(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', checkScroll);
-    return () => window.removeEventListener('scroll', checkScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,17 +24,6 @@ export default function SpiritualHooks() {
 
   return (
     <>
-      {/* Back to Top Square Button (Exact Tâm Phát Reference) */}
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          aria-label="Cuộn lên đầu trang"
-          className="fixed bottom-44 sm:bottom-36 right-3.5 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
-        >
-          <ChevronUp className="w-5 h-5 stroke-[2.5]" />
-        </button>
-      )}
-
       {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Zalo & Hotline) */}
       <div className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
         {/* Desktop Gift Pill CTA (Visible only on Desktop >= 768px) */}
@@ -191,7 +167,7 @@ export default function SpiritualHooks() {
                   <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block mb-1">
                     Cẩm Nang Tâm Linh Độc Quyền
                   </span>
-                  <h3 className="text-xl sm:text-2xl  font-bold text-stone-900">
+                  <h3 className="text-xl sm:text-2xl font-bold text-stone-900">
                     Trọn Bộ Văn Khấn & Clip Mộc 15s
                   </h3>
                   <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
@@ -254,7 +230,7 @@ export default function SpiritualHooks() {
                 <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl  font-bold text-stone-900 mb-2">
+                <h3 className="text-xl font-bold text-stone-900 mb-2">
                   Đã Tiếp Nhận Yêu Cầu Của Gia Chủ!
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 mb-6 leading-relaxed">

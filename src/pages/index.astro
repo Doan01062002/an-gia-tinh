@@ -1,51 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProductCard from '../components/ProductCard.astro';
+import ProductGallery from '../components/ProductGallery';
 import LoBanTool from '../components/LoBanTool';
 import { PRODUCTS } from '../data/products';
 
-const featuredProducts = PRODUCTS.slice(0, 4);
-
-const faqList = [
-  {
-    q: 'Vì sao bàn thờ của An Gia Tịnh cam kết 100% gỗ lõi không rác và đền bù 200%?',
-    a: 'Trong tâm linh thờ cúng gia tiên, gỗ rác (phần dác gỗ xốp bên ngoài thân cây) là đại kỵ vì rất nhanh bị mối mọt đục khoét, cong vênh và nứt toác. An Gia Tịnh chỉ sử dụng phần gỗ lõi đanh chắc nhất (Gỗ Sồi Mỹ, Gõ Đỏ Pachy, Gụ Lào), xẻ sấy đạt ẩm độ 10-12% và sẵn sàng quay clip mộc 15s soi thớ vân trước khi hoàn thiện. Nếu phát hiện pha gỗ rác, xưởng cam kết đền bù 200% giá trị đơn hàng.',
-  },
-  {
-    q: 'Thước Lỗ Ban 38.8cm có vai trò gì khi chọn bàn thờ cho căn hộ chung cư?',
-    a: 'Thước Lỗ Ban 38.8cm (còn gọi là Thước Âm Phần) là thước chuẩn phong thủy dùng riêng cho việc đóng bàn thờ, mồ mả và đồ thờ cúng. Mọi kích thước ngang, sâu, cao tại An Gia Tịnh đều được tính toán chuẩn xác rơi vào các Cung Đỏ đại cát như: Hỷ Sự, Đăng Khoa, Tiến Bảo, Thêm Đinh, Lục Hợp, giúp gia đạo bình an và tài lộc dồi dào.',
-  },
-  {
-    q: 'Tôi ở xa thì kiểm tra sản phẩm và thanh toán như thế nào?',
-    a: 'Trước khi đóng gói, xưởng sẽ quay 1 video cận cảnh thớ mộc thô 15s gửi qua Zalo để gia chủ duyệt thớ gỗ và mộng đục. Sau khi gia chủ ưng ý, xưởng đóng gói xốp nổ 3 lớp bọc bìa carton gửi COD tận nhà. Gia chủ nhận hàng, bóc ra kiểm tra đúng chất gỗ và kích thước mới thanh toán.',
-  },
-  {
-    q: 'Bàn thờ treo tường chung cư có bắt chắc chắn vào tường không, chịu tải được bao nhiêu kg?',
-    a: 'Chân thang bàn thờ treo của An Gia Tịnh được gia cố mộng thắt đục sâu vào thân gỗ và sử dụng vít nở bê tông chịu lực chuyên dụng, đảm bảo chịu tải an toàn từ 40kg đến 50kg, bày biện mâm cúng hoa quả thoải mái không lo rung lắc.',
-  },
-];
-
 const completedProjects = [
   {
-    apartment: 'Căn hộ 2PN - Vinhomes Smart City Tây Mỗ',
-    altar: 'Bàn thờ treo Gỗ Sồi 48x89cm kèm Vách CNC chữ Thọ',
+    apartment: 'Vinhomes Smart City Tây Mỗ',
+    altar: 'Ban thờ treo Gỗ Sồi 48x81cm & Vách CNC chữ Thọ',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-    owner: 'Gia đình anh Tuấn Dũng (Tòa S2.05)',
-    comment: 'Bàn thờ rất chắc chắn, vân gỗ sáng màu ăn nhập hoàn hảo với sàn gỗ và nội thất hiện đại của căn hộ. Rất ưng clip mộc 15s xưởng gửi!',
+    tag: 'Căn hộ 2PN',
   },
   {
-    apartment: 'Căn hộ 3PN - Vinhomes Ocean Park Gia Lâm',
-    altar: 'Combo Bàn thờ Gõ Đỏ 61x107cm & Tranh Trúc Chỉ Sen D50',
+    apartment: 'Vinhomes Ocean Park Gia Lâm',
+    altar: 'Combo Bàn thờ Gõ Đỏ 48x89cm & Tranh Trúc Chỉ Sen D50',
     image: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=800&q=80',
-    owner: 'Gia đình chị Mai Hương (Tòa S1.08)',
-    comment: 'Ánh sáng đèn Trúc Chỉ vàng dịu ấm cúng vô cùng. Người nhà đến mừng tân gia ai cũng khen không gian thờ trang nghiêm và chuẩn Lỗ Ban.',
+    tag: 'Căn hộ 3PN',
   },
   {
-    apartment: 'Nhà phố 4 tầng - KĐT Vạn Phúc, TP. Thủ Đức',
-    altar: 'Bàn thờ đứng Gỗ Gụ Lào 61x127cm kèm Tủ Cơm di động',
+    apartment: 'KĐT Vạn Phúc, TP. Thủ Đức',
+    altar: 'Bàn thờ đứng Gỗ Gụ Lào 61x107cm kèm Tủ Cơm',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-    owner: 'Bác Quang Thắng (Khu Đông)',
-    comment: 'Chất gỗ Gụ Lào đanh cứng, sơn Inchem bóng mờ sờ mịn tay mà không bị mùi nồng. Đúng chuẩn tay nghề thợ mộc làng nghề truyền thống.',
+    tag: 'Nhà phố hiện đại',
   },
 ];
 
@@ -53,104 +29,81 @@ const homeSchema = {
   '@context': 'https://schema.org',
   '@type': 'HomeGoodsStore',
   name: 'An Gia Tịnh - Bàn Thờ Hiện Đại & Không Gian Thờ Chuẩn Phong Thủy',
-  description: 'Xưởng mộc chuyên phân phối bàn thờ treo chung cư, bàn thờ đứng gia tiên chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ. Cam kết 100% gỗ lõi không rác, đền bù 200%.',
+  description: 'Trưng bày bộ sưu tập bàn thờ treo chung cư, bàn thờ đứng gia tiên chuẩn Thước Lỗ Ban 38.8cm. 100% gỗ lõi không rác, gửi video mộc 15s duyệt trước.',
   url: 'https://an-gia-tinh.vercel.app',
   telephone: '+84339533380',
   priceRange: '1.200.000đ - 15.000.000đ',
   image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Làng nghề mộc Canh Nậu, Thạch Thất',
-    addressLocality: 'Hà Nội',
-    addressRegion: 'Hà Nội',
-    postalCode: '100000',
-    addressCountry: 'VN',
-  },
-  mainEntity: faqList.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.a,
-    },
-  })),
 };
 ---
 
 <Layout
-  title="An Gia Tịnh — Bàn Thờ Hiện Đại & Không Gian Thờ Chuẩn Phong Thủy Thước Lỗ Ban 38.8cm"
-  description="Xưởng mộc An Gia Tịnh sản xuất bàn thờ treo chung cư, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi không rác (Sồi Mỹ, Gõ Đỏ, Gụ Lào), chuẩn Thước Lỗ Ban 38.8cm, gửi video mộc 15s duyệt trước khi giao."
+  title="An Gia Tịnh — Bộ Sưu Tập Bàn Thờ Hiện Đại & Chuẩn Phong Thủy Lỗ Ban 38.8cm"
+  description="Trưng bày các mẫu bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi không rác, gửi video mộc 15s duyệt trước khi giao."
   schema={homeSchema}
 >
-  {/* 1. Hero Section: Bright, Sunlit Modern Architectural Sanctuary */}
-  <section class="relative bg-gradient-to-b from-stone-100 via-amber-50/20 to-white text-stone-900 py-16 sm:py-24 border-b border-stone-200 overflow-hidden">
+  {/* 1. Visual-First Compact Hero Section (Mobile Optimized) */}
+  <section class="relative bg-gradient-to-b from-stone-100/90 via-stone-50 to-white text-stone-900 pt-8 pb-12 sm:pt-14 sm:pb-16 border-b border-stone-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column */}
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-stone-300 text-stone-800 text-xs font-semibold shadow-xs">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Left Headline & Micro-Trust Badges */}
+        <div class="lg:col-span-7 space-y-4 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-stone-300 text-stone-800 text-xs font-semibold shadow-xs">
             <span class="w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
-            <span>Tinh Hoa Đồ Thờ Làng Nghề Canh Nậu & Sơn Đồng</span>
+            <span>Xưởng Mộc Làng Nghề Canh Nậu & Sơn Đồng</span>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tight leading-tight sm:leading-tight text-stone-900">
-            Trọn Vẹn Tâm Linh <br />
-            <span class="text-amber-800">Bình An Gia Đạo</span>
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight text-stone-900 leading-tight">
+            Bộ Sưu Tập Bàn Thờ Chung Cư <br />
+            <span class="text-amber-800">Chuẩn Thước Lỗ Ban 38.8cm</span>
           </h1>
 
-          <p class="text-stone-600 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Chuyên gia chế tác bàn thờ treo tường chung cư và bàn thờ đứng gia tiên phong cách hiện đại. Cam kết tuyệt đối <strong>100% Gỗ Lõi Tự Nhiên Không Rác</strong> (Đền bù 200%), kích thước chuẩn phong thủy <strong>Thước Lỗ Ban 38.8cm Cung Đỏ</strong>, quay video mộc thô 15s trước khi đóng gói gửi COD toàn quốc.
+          <p class="text-stone-600 text-xs sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+            Thiết kế tối giản cho căn hộ hiện đại. Cam kết <strong>100% gỗ lõi không pha rác</strong> (đền bù 200%), quay clip mộc 15s soi thớ vân trước khi giao tận nhà.
           </p>
 
-          {/* Value Badges */}
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-left">
-            <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-800 font-bold block text-sm">100% Gỗ Lõi Thật</span>
-              <span class="text-stone-500 text-xs">Đền bù 200% nếu phát hiện rác</span>
-            </div>
-            <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-800 font-bold block text-sm">Chuẩn Lỗ Ban 38.8cm</span>
-              <span class="text-stone-500 text-xs">Cặp cung đỏ cát tường đại cát</span>
-            </div>
-            <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-800 font-bold block text-sm">Video Mộc Thô 15s</span>
-              <span class="text-stone-500 text-xs">Duyệt thớ vân trước khi sơn</span>
-            </div>
+          {/* 3 Quick Micro-Pills */}
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-xs font-medium text-stone-700">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
+              <span class="text-amber-600 font-bold">✓</span> 100% Gỗ lõi không rác
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
+              <span class="text-amber-600 font-bold">✓</span> Duyệt clip mộc 15s qua Zalo
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
+              <span class="text-amber-600 font-bold">✓</span> Cung Đỏ Thước Lỗ Ban 38.8cm
+            </span>
           </div>
 
-          {/* Action CTAs */}
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          {/* Quick CTA Anchor */}
+          <div class="pt-2 flex items-center justify-center lg:justify-start gap-3">
             <a
-              href="/san-pham"
-              class="w-full sm:w-auto px-8 py-4 bg-stone-900 hover:bg-stone-800 text-white font-bold text-sm sm:text-base rounded-2xl shadow-md transition-all text-center"
+              href="#bo-suu-tap"
+              class="px-6 py-3.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
             >
-              Xem Bộ Sưu Tập Bàn Thờ
+              <span>Xem Sản Phẩm Ngay</span>
+              <span>↓</span>
             </a>
             <a
               href="/thuoc-lo-ban"
-              class="w-full sm:w-auto px-6 py-4 bg-white hover:bg-stone-50 text-stone-900 font-bold text-sm sm:text-base rounded-2xl border border-stone-300 transition-all text-center shadow-xs"
+              class="px-5 py-3.5 bg-white hover:bg-stone-50 text-stone-900 font-semibold text-xs sm:text-sm rounded-xl border border-stone-300 transition-all shadow-xs"
             >
-              Tra Cứu Thước Lỗ Ban
+              Tra Cứu Lỗ Ban
             </a>
           </div>
         </div>
 
-        {/* Right Column: Hero Visual Showcase */}
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
+        {/* Right Hero Visual Banner */}
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden shadow-lg border border-stone-200 bg-stone-100 aspect-16/10 sm:aspect-4/3">
             <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
-              alt="Không gian phòng thờ chung cư hiện đại An Gia Tịnh"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+              alt="Bàn thờ treo chung cư hiện đại An Gia Tịnh"
               class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-            <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200 text-xs text-stone-800 shadow-lg">
-              <div class="flex items-center gap-1.5 text-amber-800 font-bold text-sm mb-1">
-                <span>⭐</span>
-                <span>Không Gian Thờ Chung Cư Tối Giản</span>
-              </div>
-              <p class="text-stone-600">Bàn thờ treo tường gỗ Gõ Đỏ kết hợp Tranh Trúc Chỉ hoa sen đèn LED vàng ấm.</p>
+            <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/90 text-xs shadow-md">
+              <span class="font-bold text-stone-900 block truncate">Không gian thực tế căn hộ Vinhomes</span>
+              <span class="text-[11px] text-amber-800 font-medium">Ban thờ treo Gỗ Gõ Đỏ 48x89cm & Tranh Trúc Chỉ</span>
             </div>
           </div>
         </div>
@@ -158,237 +111,133 @@ const homeSchema = {
     </div>
   </section>
 
-  {/* 2. Quick Navigation Grid */}
-  <section class="py-12 bg-white border-b border-stone-200">
+  {/* 2. MAIN PRODUCT SHOWCASE (Lookbook with Instant Mobile Filtering) */}
+  <section id="bo-suu-tap" class="py-10 sm:py-16 bg-[#FAFAF9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="/san-pham" class="p-6 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-400 hover:bg-white hover:shadow-lg transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
-            Bàn Thờ Treo Tường
-          </h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
-            Kích thước 48x81, 48x89cm tối ưu cho căn hộ 1-3 phòng ngủ. Chân thang chịu tải 50kg.
-          </p>
-        </a>
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+        <div>
+          <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-0.5">
+            Trưng Bày Mẫu Thực Tế
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
+            Sản Phẩm & Phụ Kiện Phòng Thờ
+          </h2>
+        </div>
+        <span class="text-xs text-stone-500">
+          Chạm vào ảnh để phóng to • Bấm Clip Mộc để nhận video thô
+        </span>
+      </div>
 
-        <a href="/san-pham" class="p-6 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-400 hover:bg-white hover:shadow-lg transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
-            Bàn Thờ Đứng & Tủ Cơm
-          </h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
-            Thiết kế uy nghiêm, bàn cơm phụ kéo rút thông minh bày mâm cỗ mặn giỗ chạp tiện lợi.
-          </p>
-        </a>
+      {/* Interactive Mobile-Friendly Gallery */}
+      <ProductGallery products={PRODUCTS} client:load />
+    </div>
+  </section>
 
-        <a href="/san-pham" class="p-6 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-400 hover:bg-white hover:shadow-lg transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
-            Tranh Trúc Chỉ Sen LED
-          </h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
-            Ánh sáng vàng ấm 3000K dịu mắt, xua tan lạnh lẽo, tụ sinh khí ấm cúng cho cả căn nhà.
-          </p>
-        </a>
+  {/* 3. Real Apartment Installations (Ảnh Thực Tế Bàn Giao Căn Hộ) */}
+  <section class="py-12 sm:py-16 bg-white border-t border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
+          Lookbook Bàn Giao
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
+          Hình Ảnh Thực Tế Tại Căn Hộ Gia Chủ
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-1.5 font-light">
+          Bàn thờ treo và bàn thờ đứng ăn nhập hoàn hảo với nội thất chung cư hiện đại.
+        </p>
+      </div>
 
-        <a href="/thuoc-lo-ban" class="p-6 rounded-2xl bg-stone-50 border border-stone-200 hover:border-amber-400 hover:bg-white hover:shadow-lg transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-            </svg>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {completedProjects.map((p) => (
+          <div class="group bg-stone-50 rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-md transition-all">
+            <div class="aspect-4/3 overflow-hidden bg-stone-100 relative">
+              <img
+                src={p.image}
+                alt={p.apartment}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-stone-900/85 backdrop-blur-xs text-amber-300 text-[10px] font-bold">
+                {p.tag}
+              </span>
+            </div>
+            <div class="p-4 space-y-1.5">
+              <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
+                {p.apartment}
+              </span>
+              <h3 class="font-serif font-bold text-sm text-stone-900">
+                {p.altar}
+              </h3>
+            </div>
           </div>
-          <h3 class="font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
-            Tra Thước Lỗ Ban 38.8
-          </h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
-            Ứng dụng thuật toán trực tuyến đo chính xác Cung Đỏ - Cung Đen và tư vấn kích thước hợp tuổi.
-          </p>
-        </a>
+        ))}
       </div>
     </div>
   </section>
 
-  {/* 3. Interactive Modern Lỗ Ban 38.8cm Tool */}
-  <section class="py-16 sm:py-20 bg-stone-50 border-b border-stone-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="inline-block px-3.5 py-1.5 bg-amber-100 text-amber-800 font-bold text-xs rounded-full uppercase tracking-wider mb-2 border border-amber-200">
-          Tiện Ích Phong Thủy Trực Tuyến
+  {/* 4. 3-Step Hassle-Free Ordering Guide (Quy Trình Mua Hàng Minh Bạch) */}
+  <section class="py-12 sm:py-16 bg-[#FAFAF9] border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
+          An Tâm Tuyệt Đối
         </span>
-        <h2 class="text-2xl sm:text-4xl font-serif font-bold text-stone-900">
-          Tra Cứu Kích Thước Bàn Thờ Hợp Tuổi Gia Chủ
+        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
+          3 Bước Đặt Bàn Thờ Không Lo Rủi Ro
         </h2>
-        <p class="text-xs sm:text-sm text-stone-600 mt-2 max-w-xl mx-auto">
-          Ứng dụng thước đo kỹ thuật số trực quan giúp gia chủ xác định chuẩn xác các cung cát lành nhất trước khi thỉnh bàn thờ về nhà mới.
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+            01
+          </div>
+          <h3 class="font-bold text-sm text-stone-900">Chọn Mẫu & Kích Thước Lỗ Ban</h3>
+          <p class="text-xs text-stone-600 leading-relaxed font-light">
+            Nhắn Zalo xưởng để được thợ cả tư vấn chuẩn Thước Lỗ Ban 38.8cm hợp tuổi và không gian căn hộ.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+            02
+          </div>
+          <h3 class="font-bold text-sm text-stone-900">Duyệt Video Mộc Thô 15s</h3>
+          <p class="text-xs text-stone-600 leading-relaxed font-light">
+            Xưởng quay cận cảnh thớ vân mộc thô trước khi phun sơn. Gia chủ duyệt thớ gỗ ưng ý xưởng mới đóng gói.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+            03
+          </div>
+          <h3 class="font-bold text-sm text-stone-900">Giao Tận Nhà — Bóc Hàng Kiểm Tra</h3>
+          <p class="text-xs text-stone-600 leading-relaxed font-light">
+            Giao COD toàn quốc. Quý gia chủ bóc hộp kiểm tra đúng chất gỗ, đúng kích thước rồi mới thanh toán.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 5. Compact Tra Cứu Thước Lỗ Ban 38.8cm */}
+  <section class="py-12 sm:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <span class="inline-block px-3.5 py-1.5 bg-amber-500/10 text-amber-900 font-bold text-xs rounded-full uppercase tracking-wider mb-2 border border-amber-500/25">
+          Tiện Ích Trực Tuyến
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
+          Tra Cứu Thước Lỗ Ban 38.8cm Online
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-1 max-w-lg mx-auto font-light">
+          Nhập số đo (cm) để kiểm tra ngay Cung Đỏ (Đại Cát) cho bàn thờ gia tiên.
         </p>
       </div>
 
       <LoBanTool client:load />
-    </div>
-  </section>
-
-  {/* 4. Featured Product Catalog */}
-  <section class="py-16 sm:py-24 bg-white border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-        <div>
-          <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
-            Mẫu Bàn Thờ Được Ưa Chuộng Nhất
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-serif font-bold text-stone-900">
-            Tuyển Tập Bàn Thờ Chung Cư & Gia Tiên
-          </h2>
-        </div>
-        <a
-          href="/san-pham"
-          class="inline-flex items-center gap-2 text-sm font-bold text-amber-800 hover:text-stone-900 transition-colors"
-        >
-          <span>Xem tất cả mẫu bàn thờ & phụ kiện</span>
-          <span>→</span>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredProducts.map((product) => (
-          <ProductCard product={product} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {/* 5. Real Apartment Projects Gallery */}
-  <section class="py-16 sm:py-24 bg-stone-50 border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
-          Hình Ảnh Thực Tế Tại Căn Hộ Khách Hàng
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-serif font-bold text-stone-900">
-          Công Trình Phòng Thờ Đã Bàn Giao
-        </h2>
-        <p class="text-xs sm:text-sm text-stone-600 mt-2">
-          Hàng nghìn gia đình tại các khu đô thị lớn đã tin tưởng lựa chọn bàn thờ chuẩn Lỗ Ban của An Gia Tịnh.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {completedProjects.map((p) => (
-          <div class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-xl transition-all duration-300">
-            <div class="aspect-4/3 overflow-hidden bg-stone-100">
-              <img
-                src={p.image}
-                alt={p.apartment}
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div class="p-6 space-y-3">
-              <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
-                {p.apartment}
-              </span>
-              <h3 class="font-serif font-bold text-base text-stone-900">
-                {p.altar}
-              </h3>
-              <p class="text-xs text-stone-600 italic leading-relaxed bg-stone-50 p-3 rounded-xl border border-stone-200">
-                "{p.comment}"
-              </p>
-              <div class="pt-2 text-xs font-semibold text-amber-800 flex items-center justify-between">
-                <span>{p.owner}</span>
-                <span class="text-stone-400 font-normal">Đã bàn giao lắp đặt</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {/* 6. Craftsmanship Standards: Traditional Mortise vs Cheap Nails */}
-  <section class="py-16 sm:py-24 bg-stone-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-2">
-          Quy Chuẩn Chế Tác Nghề Mộc
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-serif font-bold text-white">
-          Sự Khác Biệt Giữa Mộc Làng Nghề & Hàng Chợ Bắn Đinh
-        </h2>
-        <p class="text-stone-300 text-xs sm:text-sm mt-3">
-          Tại sao bàn thờ của An Gia Tịnh có thể bền đẹp 20-30 năm không xộc xệch hay nứt nẻ?
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-8 rounded-2xl bg-stone-800/80 border border-stone-700 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-serif font-black text-xl">
-            01
-          </div>
-          <h3 class="font-serif font-bold text-lg text-white">Kết Cấu Mộng Đục Thắt Thủ Công</h3>
-          <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
-            Tuyệt đối không bắn đinh kim loại trên mặt ban thờ gia tiên (đại kỵ phong thủy hàn khí). Mọi mối nối được khớp bằng mộng én, mộng mang cá truyền thống khít khao, càng dùng lâu gỗ càng đanh chắc.
-          </p>
-        </div>
-
-        <div class="p-8 rounded-2xl bg-stone-800/80 border border-stone-700 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-serif font-black text-xl">
-            02
-          </div>
-          <h3 class="font-serif font-bold text-lg text-white">Công Nghệ Sấy Lò Hạ Ẩm 10-12%</h3>
-          <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
-            Gỗ thô được đưa vào lò sấy nhiệt điện tử trong 25 đến 35 ngày. Độ ẩm được kiểm soát ở mức 10-12%, triệt tiêu hoàn toàn hiện tượng co ngót, nứt nẻ khi gặp mùa nồm ẩm miền Bắc hay máy lạnh căn hộ.
-          </p>
-        </div>
-
-        <div class="p-8 rounded-2xl bg-stone-800/80 border border-stone-700 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-serif font-black text-xl">
-            03
-          </div>
-          <h3 class="font-serif font-bold text-lg text-white">Sơn Lụa Inchem 5 Lớp Bóng Mờ</h3>
-          <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
-            Sử dụng sơn Inchem nhập khẩu cao cấp, phủ 5 lớp bảo vệ chống trầy xước và tàn nhang rơi rớt nhưng vẫn giữ được độ ấm áp, tự nhiên khi sờ tay vào từng đường vân gỗ thịt.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* 7. FAQ Section */}
-  <section class="py-16 sm:py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
-          Giải Đáp Thắc Mắc Gia Chủ
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-serif font-bold text-stone-900">
-          Câu Hỏi Thường Gặp Về Bàn Thờ & Phong Thủy
-        </h2>
-      </div>
-
-      <div class="space-y-4">
-        {faqList.map((item, idx) => (
-          <div class="p-6 rounded-2xl bg-stone-50 border border-stone-200">
-            <h3 class="font-serif font-bold text-base sm:text-lg text-stone-900 mb-2 flex items-start gap-3">
-              <span class="text-amber-700 font-mono font-bold">Q{idx + 1}.</span>
-              <span>{item.q}</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed pl-7">
-              {item.a}
-            </p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 </Layout>

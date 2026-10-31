@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { calculateLoBan388, POPULAR_ALTAR_SIZES } from '../data/loban';
+import { calculateLoBan388 } from '../data/loban';
 import { Ruler, Award, AlertCircle, MessageCircle } from 'lucide-react';
 
 export default function LoBanTool() {
@@ -360,107 +360,6 @@ export default function LoBanTool() {
             </div>
           </div>
         )}
-
-        {/* Quick select buttons */}
-        <div>
-          <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider mb-2.5">
-            Kích thước Lỗ Ban Cát Tường thường dùng:
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[
-              { size: 48, label: '48 cm (Hỷ Sự)' },
-              { size: 61, label: '61 cm (Lục Hợp)' },
-              { size: 67, label: '67 cm (Quý Tử)' },
-              { size: 81, label: '81 cm (Đăng Khoa)' },
-              { size: 89, label: '89 cm (Thêm Phúc)' },
-              { size: 107, label: '107 cm (Thêm Đinh)' },
-              { size: 127, label: '127 cm (Tiến Bảo)' },
-              { size: 153, label: '153 cm (Lục Hợp)' },
-            ].map((item) => (
-              <button
-                key={item.size}
-                type="button"
-                onClick={() => setDimension(item.size)}
-                className={`px-3 py-2 text-xs font-bold rounded-xl border text-center transition-all ${
-                  dimension === item.size
-                    ? 'bg-red-700 text-white border-red-700 shadow-xs'
-                    : 'bg-white hover:bg-stone-100 text-stone-800 border-stone-200'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Standard Dimensions Section: Mobile Cards vs Desktop Table */}
-        <div>
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider">
-              Bảng Kích Thước Bàn Thờ Chuẩn Cung Đỏ Thước Lỗ Ban 38.8cm
-            </h3>
-          </div>
-
-          {/* Mobile-Friendly Cards (sm:hidden) */}
-          <div className="block sm:hidden space-y-2.5">
-            {POPULAR_ALTAR_SIZES.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-stone-50 border border-stone-200 rounded-xl p-3 space-y-2 shadow-2xs"
-              >
-                <div className="flex items-start justify-between gap-2 border-b border-stone-200 pb-1.5">
-                  <h4 className="font-bold text-stone-900 text-xs sm:text-sm">
-                    {item.name}
-                  </h4>
-                  <span className="shrink-0 px-2 py-0.5 bg-red-100 text-red-800 text-[10px] font-bold rounded-md">
-                    Cung Đỏ
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="bg-white p-2 rounded-lg border border-stone-200">
-                    <span className="text-stone-500 text-[10px] block">Chiều Sâu:</span>
-                    <span className="font-black text-red-700 text-sm">{item.depth} cm</span>
-                    <span className="text-[10px] text-stone-600 block mt-0.5">({item.depthCung})</span>
-                  </div>
-                  <div className="bg-white p-2 rounded-lg border border-stone-200">
-                    <span className="text-stone-500 text-[10px] block">Chiều Ngang:</span>
-                    <span className="font-black text-red-700 text-sm">{item.width} cm</span>
-                    <span className="text-[10px] text-stone-600 block mt-0.5">({item.widthCung})</span>
-                  </div>
-                </div>
-
-                <div className="text-[11px] text-stone-700 bg-white/70 p-2 rounded-lg border border-stone-100 leading-snug">
-                  <strong className="text-stone-900">Phù hợp:</strong> {item.suitableFor}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop Table View (hidden sm:block) */}
-          <div className="hidden sm:block overflow-x-auto rounded-2xl border border-stone-200">
-            <table className="w-full text-left text-xs sm:text-sm border-collapse">
-              <thead>
-                <tr className="bg-stone-100 text-stone-800 font-bold border-b border-stone-200">
-                  <th className="p-3.5">Mẫu Bàn Thờ</th>
-                  <th className="p-3.5">Sâu (cm)</th>
-                  <th className="p-3.5">Ngang (cm)</th>
-                  <th className="p-3.5">Không gian phù hợp</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {POPULAR_ALTAR_SIZES.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-stone-50 transition-colors">
-                    <td className="p-3.5 font-bold text-stone-900">{item.name}</td>
-                    <td className="p-3.5 text-red-700 font-bold">{item.depth}cm ({item.depthCung})</td>
-                    <td className="p-3.5 text-red-700 font-bold">{item.width}cm ({item.widthCung})</td>
-                    <td className="p-3.5 text-stone-600">{item.suitableFor}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
 
         {/* Zalo Callout Banner */}
         <div className="p-4 sm:p-6 rounded-2xl bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-3.5">

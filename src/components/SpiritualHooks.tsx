@@ -42,71 +42,13 @@ export default function SpiritualHooks() {
         <button
           onClick={scrollToTop}
           aria-label="Cuộn lên đầu trang"
-          className="fixed bottom-28 right-3.5 sm:bottom-20 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
+          className="fixed bottom-16 sm:bottom-20 right-3.5 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
         >
           <ChevronUp className="w-5 h-5 stroke-[2.5]" />
         </button>
       )}
 
-      {/* 2. Mobile Fixed Bottom Navigation Bar (Visible only on < 768px) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/98 backdrop-blur-md border-t border-stone-200 px-2 py-1.5 shadow-lg">
-        <div className="grid grid-cols-4 gap-1 text-center">
-          {/* Button 1: AI Phong Thủy (Direct trigger to open/toggle AI Chatbot) */}
-          <button
-            type="button"
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('toggle-ai-chat'));
-            }}
-            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-800 hover:text-stone-950 transition-colors relative group"
-            aria-label="Mở Trợ Lý AI Phong Thủy"
-          >
-            <div className="relative w-7 h-7 rounded-full bg-gradient-to-tr from-stone-900 to-stone-800 text-amber-400 flex items-center justify-center mb-0.5 shadow-xs border border-stone-700">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            </div>
-            <span className="text-[10px] font-bold leading-none text-stone-900">AI Phong Thủy</span>
-          </button>
-
-          {/* Button 2: Mẫu Bàn Thờ */}
-          <a
-            href="/san-pham"
-            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
-          >
-            <div className="w-7 h-7 rounded-full bg-stone-100 text-stone-700 flex items-center justify-center mb-0.5 border border-stone-200">
-              <Layers className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-[10px] font-bold leading-none">Mẫu Bàn Thờ</span>
-          </a>
-
-          {/* Button 3: Thước Lỗ Ban */}
-          <a
-            href="/thuoc-lo-ban"
-            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
-          >
-            <div className="w-7 h-7 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-0.5 border border-amber-200">
-              <Ruler className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-[10px] font-bold leading-none">Thước Lỗ Ban</span>
-          </a>
-
-          {/* Button 4: Nhận Ebook & Video Mộc */}
-          <button
-            type="button"
-            onClick={() => {
-              setIsOpen(true);
-              setSubmitted(false);
-            }}
-            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow-2xs transition-colors"
-          >
-            <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center mb-0.5">
-              <Gift className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-[10px] font-bold leading-none">Tặng Văn Khấn</span>
-          </button>
-        </div>
-      </div>
-
-      {/* 3. Modal Form: Nhận Tài Liệu & Video Mộc */}
+      {/* Modal Form: Nhận Tài Liệu & Video Mộc */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative animate-in fade-in zoom-in duration-200">

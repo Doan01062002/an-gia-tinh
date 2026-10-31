@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
 import SpiritualHooks from '../components/SpiritualHooks';
+import AIChatBot from '../components/AIChatBot';
 import '../styles/global.css';
 
 export interface Props {
@@ -42,5 +43,8 @@ const { title, description, image, type, schema } = Astro.props;
 
     {/* Floating spiritual hooks & mobile bottom sticky navigation bar */}
     <SpiritualHooks client:idle />
+
+    {/* Anonymous AI Feng Shui Assistant Chatbot */}
+    <AIChatBot client:idle />
   </body>
 </html>

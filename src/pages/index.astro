@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProductGallery from '../components/ProductGallery';
 import LoBanTool from '../components/LoBanTool';
+import FengShuiDirectionTool from '../components/FengShuiDirectionTool';
 import { PRODUCTS } from '../data/products';
 
 const completedProjects = [
@@ -173,8 +174,8 @@ const homeSchema = {
     </div>
   </section>
 
-  {/* 5. Tra Cứu Thước Lỗ Ban 38.8cm */}
-  <section class="py-8 sm:py-12 bg-white">
+  {/* 5. Bộ Tiện Ích Phong Thủy: Thước Lỗ Ban 38.8cm & Tra Hướng Đặt Ban Thờ Theo Tuổi */}
+  <section class="py-8 sm:py-12 bg-white space-y-10">
     <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
       <div class="text-center mb-6">
         <h2 class="text-lg sm:text-2xl font-serif font-black text-stone-900">
@@ -186,6 +187,10 @@ const homeSchema = {
       </div>
 
       <LoBanTool client:load />
+    </div>
+
+    <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <FengShuiDirectionTool client:load />
     </div>
   </section>
 </Layout>

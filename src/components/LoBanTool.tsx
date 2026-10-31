@@ -104,28 +104,28 @@ export default function LoBanTool() {
       </div>
 
       <div className="p-4 sm:p-8 space-y-6">
-        {/* UNIFIED INTERACTIVE LO BAN RULER (Box 1 + Box 2 merged into ONE) */}
-        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-stone-900 text-white shadow-xl border border-stone-800 space-y-4 sm:space-y-5">
+        {/* UNIFIED INTERACTIVE LO BAN RULER (Box 1 + Box 2 merged into ONE - Nền Đỏ Son Gụ Sang Trọng, KHÔNG NỀN ĐEN) */}
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#802219] via-[#6d1b13] to-[#59140e] text-white shadow-xl border border-[#a83226] space-y-4 sm:space-y-5">
           {/* Top Bar: Live Measurement & Quick Steppers */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#8f281e]">
             <div>
               <div className="flex items-center gap-2">
-                <Ruler className="w-4 h-4 text-amber-400" />
-                <h3 className="text-xs sm:text-sm font-bold text-amber-400 tracking-wide uppercase">
+                <Ruler className="w-4 h-4 text-amber-300" />
+                <h3 className="text-xs sm:text-sm font-bold text-amber-300 tracking-wide uppercase">
                   Dải Thước Đo 10 Cung Lỗ Ban
                 </h3>
               </div>
-              <p className="text-[11px] text-stone-400 mt-0.5">
+              <p className="text-[11px] text-amber-100/80 mt-0.5">
                 Chạm hoặc kéo ngón tay trực tiếp trên thước để chỉnh số đo
               </p>
             </div>
 
             {/* Stepper Controls & Number Input */}
-            <div className="flex items-center gap-1.5 self-start sm:self-auto bg-stone-950 p-1.5 rounded-2xl border border-stone-800">
+            <div className="flex items-center gap-1.5 self-start sm:self-auto bg-[#3d0f0a] p-1.5 rounded-2xl border border-[#7a2016]">
               <button
                 type="button"
                 onClick={() => setDimension((d) => Math.max(10, Math.round((d - 10) * 2) / 2))}
-                className="px-2 py-1.5 bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-300 text-[11px] font-bold rounded-lg transition-all"
+                className="px-2 py-1.5 bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-200 text-[11px] font-bold rounded-lg transition-all"
                 title="Giảm 10 cm"
               >
                 -10
@@ -133,7 +133,7 @@ export default function LoBanTool() {
               <button
                 type="button"
                 onClick={() => setDimension((d) => Math.max(10, Math.round((d - 1) * 2) / 2))}
-                className="w-8 h-8 flex items-center justify-center bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-200 text-sm font-bold rounded-lg transition-all"
+                className="w-8 h-8 flex items-center justify-center bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-100 text-sm font-bold rounded-lg transition-all"
                 title="Giảm 1 cm"
               >
                 -1
@@ -149,15 +149,15 @@ export default function LoBanTool() {
                   value={dimension}
                   onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
                   aria-label="Số đo Lỗ Ban (cm)"
-                  className="w-20 sm:w-24 text-center font-black text-lg sm:text-xl text-amber-300 bg-stone-900 border border-stone-700 rounded-lg py-1 px-1 focus:outline-none focus:border-amber-400"
+                  className="w-20 sm:w-24 text-center font-black text-lg sm:text-xl text-amber-300 bg-[#2b0a07] border border-[#8f281e] rounded-lg py-1 px-1 focus:outline-none focus:border-amber-400"
                 />
-                <span className="text-xs font-bold text-stone-400 ml-1.5 mr-1">cm</span>
+                <span className="text-xs font-bold text-amber-200/80 ml-1.5 mr-1">cm</span>
               </div>
 
               <button
                 type="button"
                 onClick={() => setDimension((d) => Math.min(300, Math.round((d + 1) * 2) / 2))}
-                className="w-8 h-8 flex items-center justify-center bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-200 text-sm font-bold rounded-lg transition-all"
+                className="w-8 h-8 flex items-center justify-center bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-100 text-sm font-bold rounded-lg transition-all"
                 title="Tăng 1 cm"
               >
                 +1
@@ -165,7 +165,7 @@ export default function LoBanTool() {
               <button
                 type="button"
                 onClick={() => setDimension((d) => Math.min(300, Math.round((d + 10) * 2) / 2))}
-                className="px-2 py-1.5 bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-300 text-[11px] font-bold rounded-lg transition-all"
+                className="px-2 py-1.5 bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-200 text-[11px] font-bold rounded-lg transition-all"
                 title="Tăng 10 cm"
               >
                 +10
@@ -175,9 +175,9 @@ export default function LoBanTool() {
 
           {/* Measuring Tape & Interactive Track */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-[11px] text-stone-400 font-mono">
+            <div className="flex items-center justify-between text-[11px] text-amber-100/90 font-mono">
               <span className="flex items-center gap-1.5">
-                <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-ping" />
                 <span>Kéo vạch hoặc chạm trực tiếp cung:</span>
               </span>
               <span>
@@ -192,16 +192,16 @@ export default function LoBanTool() {
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
-              className="relative h-20 sm:h-22 bg-stone-950 rounded-2xl p-1.5 border-2 border-stone-700 select-none cursor-pointer touch-none shadow-inner"
+              className="relative h-20 sm:h-22 bg-[#2f0c08] rounded-2xl p-1.5 border-2 border-[#8f281e] select-none cursor-pointer touch-none shadow-inner"
             >
               {/* Millimeter / Centimeter Scale Bar at Top */}
               <div className="absolute top-1.5 left-1.5 right-1.5 h-3 flex justify-between items-end px-1 pointer-events-none">
                 {[0, 5, 10, 15, 20, 25, 30, 35, 38.8].map((tick, i) => (
                   <div key={i} className="flex flex-col items-center">
-                    <span className="text-[8px] font-mono text-stone-500 leading-none">
+                    <span className="text-[8px] font-mono text-amber-300/60 leading-none">
                       {tick === 38.8 ? '38.8' : tick}
                     </span>
-                    <span className="w-px h-1.5 bg-stone-700 mt-0.5" />
+                    <span className="w-px h-1.5 bg-[#7a2016] mt-0.5" />
                   </div>
                 ))}
               </div>
@@ -221,11 +221,11 @@ export default function LoBanTool() {
                       className={`min-w-0 flex flex-col items-center justify-center rounded-lg transition-all relative overflow-hidden py-1 ${
                         c.good
                           ? 'bg-gradient-to-b from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700'
-                          : 'bg-gradient-to-b from-stone-800 to-stone-900 text-stone-300 hover:from-stone-700 hover:to-stone-800'
+                          : 'bg-gradient-to-b from-[#4a1812] to-[#36100b] text-amber-200/80 hover:from-[#5e1e17] hover:to-[#4a1812]'
                       } ${
                         isCurrent
-                          ? 'ring-2 ring-amber-400 scale-[1.03] z-10 font-black shadow-lg shadow-black/50'
-                          : 'opacity-80 hover:opacity-100'
+                          ? 'ring-2 ring-amber-300 scale-[1.03] z-10 font-black shadow-lg shadow-black/40'
+                          : 'opacity-85 hover:opacity-100'
                       }`}
                     >
                       {/* Desktop Full Name */}
@@ -241,7 +241,7 @@ export default function LoBanTool() {
                       </span>
                       <span
                         className={`sm:hidden text-[8px] font-bold mt-0.5 ${
-                          c.good ? 'text-amber-300' : 'text-stone-400'
+                          c.good ? 'text-amber-300' : 'text-stone-300'
                         }`}
                       >
                         {c.good ? '●' : '○'}
@@ -253,36 +253,36 @@ export default function LoBanTool() {
 
               {/* Sliding Precision Golden Needle */}
               <div
-                className="absolute top-0 bottom-0 w-1 bg-amber-400 shadow-[0_0_12px_#FBBF24] z-20 pointer-events-none -translate-x-1/2 flex flex-col items-center justify-between"
+                className="absolute top-0 bottom-0 w-1 bg-amber-300 shadow-[0_0_12px_#FBBF24] z-20 pointer-events-none -translate-x-1/2 flex flex-col items-center justify-between"
                 style={{ left: `${cursorPercent}%` }}
               >
                 {/* Top Marker */}
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-amber-400 -mt-1 shadow-xs" />
+                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-amber-300 -mt-1 shadow-xs" />
                 {/* Center Badge */}
-                <div className="px-1 py-0.5 bg-amber-400 text-stone-950 text-[9px] font-black rounded-xs shadow whitespace-nowrap -mt-0.5">
+                <div className="px-1 py-0.5 bg-amber-300 text-stone-950 text-[9px] font-black rounded-xs shadow whitespace-nowrap -mt-0.5">
                   {dimension}cm
                 </div>
                 {/* Bottom Marker */}
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[7px] border-b-amber-400 -mb-1 shadow-xs" />
+                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[7px] border-b-amber-300 -mb-1 shadow-xs" />
               </div>
             </div>
           </div>
 
           {/* Active Cung Indicator Ribbon below the tape */}
           {result && result.cung && (
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs pt-2 border-t border-stone-800 gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs pt-2 border-t border-[#8f281e] gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-stone-400">Số đo đang chọn:</span>
+                <span className="text-amber-100/80">Số đo đang chọn:</span>
                 <span className="text-base font-black text-amber-300">{dimension} cm</span>
               </div>
               <div
                 className={`font-bold flex items-center gap-1.5 px-3 py-1 rounded-full text-xs self-start sm:self-auto ${
                   result.isGood
-                    ? 'bg-red-950/80 text-amber-300 border border-red-700/60'
-                    : 'bg-stone-800 text-stone-300 border border-stone-700'
+                    ? 'bg-[#54160e] text-amber-300 border border-[#a83226]'
+                    : 'bg-[#3d0f0a] text-amber-200 border border-[#7a2016]'
                 }`}
               >
-                {result.isGood ? <Award className="w-4 h-4 text-amber-400" /> : <AlertCircle className="w-4 h-4 text-stone-400" />}
+                {result.isGood ? <Award className="w-4 h-4 text-amber-300" /> : <AlertCircle className="w-4 h-4 text-amber-200" />}
                 <span>
                   Cung {result.cung.name} — {result.subCung?.name || ''} ({result.isGood ? 'Cung Đỏ Đại Cát' : 'Cung Đen Nên Tránh'})
                 </span>
@@ -291,12 +291,12 @@ export default function LoBanTool() {
           )}
 
           {/* Mobile Legend */}
-          <div className="sm:hidden flex items-center justify-center gap-4 text-[10px] text-stone-400 pt-1">
+          <div className="sm:hidden flex items-center justify-center gap-4 text-[10px] text-amber-100/80 pt-1">
             <span className="flex items-center gap-1">
-              <span className="text-red-500 font-bold">●</span> Cung Đỏ (Đại Cát)
+              <span className="text-amber-300 font-bold">●</span> Cung Đỏ (Đại Cát)
             </span>
             <span className="flex items-center gap-1">
-              <span className="text-stone-500 font-bold">○</span> Cung Đen (Hung Hiểm)
+              <span className="text-stone-300 font-bold">○</span> Cung Đen (Hung Hiểm)
             </span>
           </div>
         </div>
@@ -306,15 +306,15 @@ export default function LoBanTool() {
           <div
             className={`p-4 sm:p-6 rounded-2xl border-2 transition-all duration-300 ${
               result.isGood
-                ? 'bg-red-50/70 border-red-500 shadow-xs'
-                : 'bg-stone-100 border-stone-400'
+                ? 'bg-red-50/80 border-red-500 shadow-xs'
+                : 'bg-amber-50/80 border-amber-500/60 shadow-xs'
             }`}
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-200">
               <div>
                 <span
                   className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-1.5 ${
-                    result.isGood ? 'bg-red-700 text-white' : 'bg-stone-800 text-white'
+                    result.isGood ? 'bg-red-700 text-white' : 'bg-[#6d1b13] text-amber-200'
                   }`}
                 >
                   {result.isGood ? (
@@ -324,7 +324,7 @@ export default function LoBanTool() {
                     </>
                   ) : (
                     <>
-                      <AlertCircle className="w-3 h-3" />
+                      <AlertCircle className="w-3 h-3 text-amber-300" />
                       <span>CUNG ĐEN — NÊN TRÁNH</span>
                     </>
                   )}
@@ -335,7 +335,7 @@ export default function LoBanTool() {
                     {dimension} cm
                   </span>
                   <span className="text-base sm:text-xl font-bold text-stone-800">
-                    Cung <span className={result.isGood ? 'text-red-700' : 'text-stone-900'}>{result.cung.name}</span> — {result.subCung.name}
+                    Cung <span className={result.isGood ? 'text-red-700' : 'text-[#6d1b13]'}>{result.cung.name}</span> — {result.subCung.name}
                   </span>
                 </div>
               </div>
@@ -362,12 +362,12 @@ export default function LoBanTool() {
         )}
 
         {/* Zalo Callout Banner */}
-        <div className="p-4 sm:p-6 rounded-2xl bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-3.5">
+        <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-[#802219] via-[#6d1b13] to-[#59140e] text-white border border-[#a83226] flex flex-col sm:flex-row items-center justify-between gap-3.5 shadow-md">
           <div>
-            <h4 className="font-bold text-sm sm:text-base text-amber-400">
+            <h4 className="font-bold text-sm sm:text-base text-amber-300">
               Gia chủ chưa rõ hướng và kích thước ban thờ hợp tuổi?
             </h4>
-            <p className="text-stone-300 text-xs mt-1">
+            <p className="text-amber-100/80 text-xs mt-1">
               Liên hệ xưởng An Gia Tịnh để thợ cả hỗ trợ đo đạc chuẩn Lỗ Ban & tư vấn phong thủy tận tâm.
             </p>
           </div>
@@ -375,7 +375,7 @@ export default function LoBanTool() {
             href="https://zalo.me/0339533380"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-all shrink-0 active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-all shrink-0 active:scale-95"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Tư vấn Zalo: 0339.533.380</span>

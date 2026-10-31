@@ -129,20 +129,20 @@ export default function AIChatBot() {
 
   return (
     <>
-      {/* 1. Floating Toggle Trigger: Visible on Desktop (Left corner), Mobile uses Sticky Bottom Bar */}
+      {/* 1. Floating Toggle Trigger: Visible on Desktop (Left corner), Mobile uses Sticky Bottom Bar - NỀN ĐỎ SON GỤ SANG TRỌNG */}
       <div className="hidden md:block fixed bottom-6 left-6 z-40">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-2 px-4 py-2.5 bg-stone-900/95 hover:bg-stone-850 text-white rounded-full shadow-2xl border border-amber-500/50 hover:border-amber-400 transition-all duration-300 hover:scale-105 active:scale-95"
+            className="group relative flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#802219] via-[#6d1b13] to-[#59140e] hover:from-[#94271d] hover:to-[#802219] text-white rounded-full shadow-2xl border border-amber-400/60 hover:border-amber-300 transition-all duration-300 hover:scale-105 active:scale-95"
             aria-label="Mở Trợ Lý Phong Thủy AI"
           >
             {/* Pulsing indicator */}
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
-            <span className="text-xs sm:text-sm font-bold tracking-tight pr-1">
+            <span className="text-xs sm:text-sm font-bold tracking-tight pr-1 text-amber-100">
               AI Phong Thủy
             </span>
           </button>
@@ -151,18 +151,18 @@ export default function AIChatBot() {
 
       {/* 2. Chatbot Popup Window */}
       {isOpen && (
-        <div className="fixed bottom-14 inset-x-2 sm:inset-x-auto sm:bottom-6 sm:left-6 z-50 w-auto sm:w-[380px] max-w-[96vw] h-[520px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-          {/* Header */}
-          <div className="p-3.5 sm:p-4 bg-gradient-to-r from-stone-900 via-stone-950 to-stone-900 text-white flex items-center justify-between border-b border-stone-800 shrink-0">
+        <div className="fixed bottom-14 inset-x-2 sm:inset-x-auto sm:bottom-6 sm:left-6 z-50 w-auto sm:w-[380px] max-w-[96vw] h-[520px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-amber-900/20 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          {/* Header - Nền Đỏ Son Phong Thủy */}
+          <div className="p-3.5 sm:p-4 bg-gradient-to-r from-[#802219] via-[#6d1b13] to-[#59140e] text-white flex items-center justify-between border-b border-[#a83226] shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
                 <span className="block font-black text-xs sm:text-sm text-white">
                   Trợ Lý Phong Thủy AI
                 </span>
-                <span className="block text-[10px] text-emerald-400 font-medium flex items-center gap-1">
+                <span className="block text-[10px] text-amber-300 font-medium flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                   Trực tuyến 24/7 • An Gia Tịnh
                 </span>
@@ -171,7 +171,7 @@ export default function AIChatBot() {
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+              className="p-1.5 rounded-full text-amber-200/80 hover:text-white hover:bg-[#802219] transition-colors"
               aria-label="Đóng trợ lý AI"
             >
               <X className="w-4 h-4" />

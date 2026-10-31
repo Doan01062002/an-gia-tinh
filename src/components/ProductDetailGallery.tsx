@@ -59,7 +59,7 @@ export default function ProductDetailGallery({ images, name }: Props) {
         />
 
         {/* Image Counter */}
-        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold">
+        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[11px] font-bold shadow-xs">
           Ảnh {currentIndex + 1} / {galleryList.length}
         </div>
 
@@ -70,7 +70,7 @@ export default function ProductDetailGallery({ images, name }: Props) {
               type="button"
               onClick={prevImage}
               aria-label="Ảnh trước"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -78,7 +78,7 @@ export default function ProductDetailGallery({ images, name }: Props) {
               type="button"
               onClick={nextImage}
               aria-label="Ảnh kế tiếp"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

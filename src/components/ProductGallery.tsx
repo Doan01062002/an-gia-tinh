@@ -139,7 +139,7 @@ export default function ProductGallery({ products }: Props) {
 
           {/* Top-Left Category Tag */}
           {product.badge && (
-            <div className="absolute top-1.5 left-1.5 bg-stone-900/80 backdrop-blur-xs text-amber-300 text-[9px] font-bold px-1.5 py-0.5 rounded pointer-events-none">
+            <div className="absolute top-1.5 left-1.5 bg-[#451a03]/85 backdrop-blur-xs text-amber-300 text-[9px] font-bold px-1.5 py-0.5 rounded pointer-events-none">
               {product.badge}
             </div>
           )}
@@ -148,7 +148,7 @@ export default function ProductGallery({ products }: Props) {
           <button
             onClick={() => openProductModal(product)}
             aria-label="Phóng to ảnh"
-            className="absolute bottom-1.5 right-1.5 p-1 rounded-md bg-black/50 text-white backdrop-blur-xs opacity-80 group-hover:opacity-100 transition-opacity"
+            className="absolute bottom-1.5 right-1.5 p-1 rounded-md bg-[#451a03]/80 text-white backdrop-blur-xs opacity-80 group-hover:opacity-100 transition-opacity"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
@@ -269,10 +269,10 @@ export default function ProductGallery({ products }: Props) {
         </div>
       )}
 
-      {/* 3. Tap to Zoom Image Modal with Swipe & Multi-Image Carousel */}
+      {/* 3. Tap to Zoom Image Modal with Swipe & Multi-Image Carousel - NỀN NÂU ẤM KHÔNG NỀN ĐEN */}
       {modalProduct && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#2b1810]/75 backdrop-blur-md p-4 animate-in fade-in duration-200"
           onClick={() => setModalProduct(null)}
         >
           <div
@@ -282,7 +282,7 @@ export default function ProductGallery({ products }: Props) {
             {/* Close Button */}
             <button
               onClick={() => setModalProduct(null)}
-              className="absolute top-3 right-3 p-1.5 rounded-full bg-black/60 text-white hover:bg-black transition-colors z-20"
+              className="absolute top-3 right-3 p-1.5 rounded-full bg-[#451a03]/80 text-white hover:bg-[#5c2406] transition-colors z-20 shadow-md"
               aria-label="Đóng phóng to"
             >
               <X className="w-5 h-5" />
@@ -302,7 +302,7 @@ export default function ProductGallery({ products }: Props) {
               />
 
               {/* Image Counter Badge */}
-              <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-white text-[11px] font-bold">
+              <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[11px] font-bold shadow-xs">
                 Ảnh {modalProduct.currentIndex + 1} / {modalProduct.images.length}
               </div>
 
@@ -315,7 +315,7 @@ export default function ProductGallery({ products }: Props) {
                       e.stopPropagation();
                       prevImage();
                     }}
-                    className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90"
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
                     aria-label="Ảnh trước"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -327,7 +327,7 @@ export default function ProductGallery({ products }: Props) {
                       e.stopPropagation();
                       nextImage();
                     }}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
                     aria-label="Ảnh kế tiếp"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -380,7 +380,7 @@ export default function ProductGallery({ products }: Props) {
               <div className="grid grid-cols-2 gap-2">
                 <a
                   href={`/san-pham/${modalProduct.slug}`}
-                  className="px-4 py-2.5 bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 shadow-xs"
+                  className="px-4 py-2.5 bg-[#451a03] hover:bg-[#5c2406] text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                 >
                   <Eye className="w-3.5 h-3.5" />
                   <span>Xem Chi Tiết</span>

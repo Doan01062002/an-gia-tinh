@@ -182,7 +182,7 @@ export default function FengShuiDirectionTool() {
               onClick={() => setIsMale(true)}
               className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
                 isMale
-                  ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
+                  ? 'bg-red-700 text-white border-red-700 shadow-2xs'
                   : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-100'
               }`}
             >
@@ -193,7 +193,7 @@ export default function FengShuiDirectionTool() {
               onClick={() => setIsMale(false)}
               className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
                 !isMale
-                  ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
+                  ? 'bg-red-700 text-white border-red-700 shadow-2xs'
                   : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-100'
               }`}
             >

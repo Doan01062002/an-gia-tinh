@@ -20,6 +20,7 @@ export interface Product {
   features: string[];
   description: string;
   imageUrl: string;
+  images?: string[];
   badge?: string;
   rating: number;
   reviewCount: number;

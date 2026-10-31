@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import ProductDetailGallery from '../../components/ProductDetailGallery';
 import { PRODUCTS } from '../../data/products';
 import type { Product } from '../../types';
 
@@ -52,7 +53,7 @@ const productSchema = {
 
 <Layout
   title={`${product.name} — Chuẩn Lỗ Ban 38.8cm | An Gia Tịnh`}
-  description={`${product.name}. Kích thước ${product.dimensions}. 100% gỗ lõi tự nhiên không rác (Đền bù 200%). Gửi clip mộc 15s qua Zalo trước khi giao COD toàn quốc.`}
+  description={`${product.name}. Kích thước ${product.dimensions}. 100% gỗ lõi tự nhiên không rác (Đền bù 200%). Liên hệ tư vấn chuẩn phong thủy qua Zalo trước khi giao COD toàn quốc.`}
   image={product.imageUrl}
   type="product"
   schema={productSchema}
@@ -68,17 +69,15 @@ const productSchema = {
     </div>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-      {/* Left Column: Product Showcase */}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      {/* Left Column: Product Showcase with Touch Swipe & Thumbnails */}
       <div class="lg:col-span-6 space-y-4">
-        <div class="aspect-4/3 rounded-2xl overflow-hidden shadow-sm border border-stone-200 bg-stone-100">
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            class="w-full h-full object-cover"
-          />
-        </div>
+        <ProductDetailGallery
+          images={product.images && product.images.length > 0 ? product.images : [product.imageUrl]}
+          name={product.name}
+          client:load
+        />
 
         {/* Guarantee Banner */}
         <div class="p-4 rounded-xl bg-white border border-stone-200 text-xs text-stone-700 flex items-center justify-between shadow-xs">
@@ -98,7 +97,7 @@ const productSchema = {
           <span class="text-xs font-bold text-amber-700 uppercase tracking-widest block mb-2">
             {product.categoryName}
           </span>
-          <h1 class="text-2xl sm:text-4xl  font-black text-stone-900 leading-snug">
+          <h1 class="text-2xl sm:text-3xl font-black text-stone-900 leading-snug">
             {product.name}
           </h1>
 
@@ -117,11 +116,11 @@ const productSchema = {
         </div>
 
         {/* Price Card */}
-        <div class="p-5 rounded-2xl bg-stone-50 border border-stone-200 flex items-baseline justify-between">
+        <div class="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200 flex items-baseline justify-between">
           <div>
             <span class="text-xs text-stone-500 block font-medium">Giá xưởng ưu đãi:</span>
             <div class="flex items-baseline gap-3 mt-1">
-              <span class="text-3xl  font-black text-rose-700">
+              <span class="text-2xl sm:text-3xl font-black text-[#c51c1c]">
                 {formatCurrency(product.price)}
               </span>
               <span class="text-sm text-stone-400 line-through">
@@ -129,28 +128,28 @@ const productSchema = {
               </span>
             </div>
           </div>
-          <span class="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-3 py-1 rounded-full">
+          <span class="text-xs font-bold text-[#c51c1c] bg-red-50 border border-red-200 px-3 py-1 rounded-full">
             Tiết kiệm {formatCurrency(product.originalPrice - product.price)}
           </span>
         </div>
 
         {/* Lỗ Ban Box */}
-        <div class="p-5 sm:p-6 rounded-2xl bg-rose-50/70 border border-rose-200 text-xs sm:text-sm text-rose-950 space-y-3">
+        <div class="p-4 sm:p-5 rounded-2xl bg-red-50/70 border border-red-200 text-xs sm:text-sm text-stone-900 space-y-3">
           <div class="flex items-center justify-between text-sm font-bold">
-            <span>Ý Nghĩa Kích Thước Thước Lỗ Ban 38.8cm:</span>
-            <span class="bg-rose-700 text-white text-[10px] font-sans px-2.5 py-0.5 rounded-full uppercase font-semibold">
+            <span class="text-red-900">Ý Nghĩa Kích Thước Thước Lỗ Ban 38.8cm:</span>
+            <span class="bg-red-700 text-white text-[10px] px-2.5 py-0.5 rounded-full uppercase font-bold">
               Cung Đỏ Cát Tường
             </span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div class="p-3.5 bg-white rounded-xl border border-rose-200 shadow-xs">
-              <span class="font-bold text-rose-800 block">Chiều sâu:</span>
-              <span class="text-stone-900 font-semibold">{product.lobanInfo.depthCung}</span>
+            <div class="p-3 bg-white rounded-xl border border-red-200 shadow-2xs">
+              <span class="font-bold text-red-800 block">Chiều sâu:</span>
+              <span class="text-stone-900 font-bold">{product.lobanInfo.depthCung}</span>
               <p class="text-stone-600 text-[11px] mt-0.5">{product.lobanInfo.depthMeaning}</p>
             </div>
-            <div class="p-3.5 bg-white rounded-xl border border-rose-200 shadow-xs">
-              <span class="font-bold text-rose-800 block">Chiều rộng:</span>
-              <span class="text-stone-900 font-semibold">{product.lobanInfo.widthCung}</span>
+            <div class="p-3 bg-white rounded-xl border border-red-200 shadow-2xs">
+              <span class="font-bold text-red-800 block">Chiều rộng:</span>
+              <span class="text-stone-900 font-bold">{product.lobanInfo.widthCung}</span>
               <p class="text-stone-600 text-[11px] mt-0.5">{product.lobanInfo.widthMeaning}</p>
             </div>
           </div>
@@ -158,7 +157,7 @@ const productSchema = {
 
         {/* Features */}
         <div>
-          <h3 class="text-xs font-bold text-stone-900 uppercase tracking-wider mb-3">
+          <h3 class="text-xs font-bold text-stone-900 uppercase tracking-wider mb-2.5">
             Đặc điểm mộc truyền thống:
           </h3>
           <ul class="space-y-2 text-xs sm:text-sm text-stone-700">
@@ -171,18 +170,18 @@ const productSchema = {
           </ul>
         </div>
 
-        {/* CTAs */}
-        <div class="pt-4 space-y-3">
+        {/* CTAs: Single Prominent Lien He Button + Call Artisan */}
+        <div class="pt-3 space-y-3">
           <a
-            href="https://zalo.me/0339533380"
+            href={`https://zalo.me/0339533380?text=Ch%C3%A0o%20x%C6%B0%E1%BB%9Fng%20An%20Gia%20T%E1%BB%8Bnh,%20t%C3%B4i%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20v%C3%A0%20b%C3%A1o%20gi%C3%A1%20m%E1%BA%ABu%20${encodeURIComponent(product.name)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full py-4 bg-rose-700 hover:bg-rose-800 text-white font-bold text-sm sm:text-base rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+            class="w-full py-4 bg-gradient-to-r from-red-700 via-red-800 to-amber-900 hover:from-red-800 hover:to-amber-950 text-white font-bold text-sm sm:text-base rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group active:scale-98"
           >
-            <span>Nhận Video Mộc Thô 15s Qua Zalo</span>
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            <svg class="w-5 h-5 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
+            <span>Liên Hệ Tư Vấn & Báo Giá Xưởng</span>
           </a>
 
           <div class="grid grid-cols-2 gap-3">
@@ -204,11 +203,11 @@ const productSchema = {
     </div>
 
     {/* Related Products */}
-    <div class="mt-20 pt-12 border-t border-stone-200">
-      <h2 class="text-xl sm:text-3xl  font-black text-stone-900 mb-8">
+    <div class="mt-14 sm:mt-20 pt-10 border-t border-stone-200">
+      <h2 class="text-xl sm:text-2xl font-black text-stone-900 mb-6">
         Mẫu Bàn Thờ Cùng Phân Khúc
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6">
         {relatedProducts.map((p) => (
           <ProductCard product={p} />
         ))}

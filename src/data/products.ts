@@ -27,6 +27,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Mẫu bàn thờ treo tường thiết kế tối giản, tinh tế dành riêng cho các căn hộ chung cư hiện đại diện tích từ 45m² đến 75m². Được chế tác hoàn toàn từ gỗ Sồi Mỹ nhập khẩu loại 1 không dính rác, màu sắc vàng sồi ấm cúng hoặc nâu óc chó trang trọng.',
     imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Bán chạy nhất',
     rating: 4.9,
     reviewCount: 142,
@@ -57,6 +62,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Chất gỗ Gõ Đỏ thượng hạng từ lâu đã được mệnh danh là đệ nhất gỗ làm bàn thờ gia tiên. Với thớ gỗ đanh cứng, vân vằn hổ oai nghiêm và hương thơm tự nhiên, mẫu bàn thờ 48x89cm giúp gia chủ bày biện thoải mái 1 đến 3 bát hương cùng mâm bồng đồ cúng.',
     imageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Gỗ quý cao cấp',
     rating: 5.0,
     reviewCount: 98,
@@ -89,6 +99,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Mẫu bàn thờ đứng kết hợp bàn cơm dành cho nhà phố hiện đại hoặc căn hộ chung cư cao cấp có không gian thờ cúng riêng. Khi cúng giỗ, gia chủ kéo bàn cơm ra bày mâm cỗ mặn vô cùng rộng rãi, cúng xong đẩy gọn vào trong lòng bàn lớn để tiết kiệm diện tích.',
     imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Combo bàn cơm',
     rating: 4.95,
     reviewCount: 76,
@@ -119,6 +134,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Tranh Trúc Chỉ hoa sen tròn là linh hồn của không gian thờ tự hiện đại. Ánh sáng vàng dịu từ bức tranh tượng trưng cho vầng hào quang ấm áp của chư Phật và tổ tiên che chở cho căn nhà, mang lại cảm giác bình an mỗi khi bước vào nhà.',
     imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Tâm điểm phòng thờ',
     rating: 4.9,
     reviewCount: 185,
@@ -148,6 +168,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Vách ngăn CNC là giải pháp hoàn hảo để tách biệt không gian thờ linh thiêng với không gian phòng khách năng động của căn hộ chung cư. Hoa văn thông thoáng đảm bảo luồng sinh khí đối lưu lưu thông điều hòa.',
     imageUrl: 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'May đo theo phòng',
     rating: 4.88,
     reviewCount: 52,
@@ -177,6 +202,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Tấm chắn khói hương là phụ kiện bắt buộc phải có khi sử dụng bàn thờ treo tường chung cư. Thiết kế thông minh gồm 3 lớp giúp tản đều nhiệt và khói hương, giữ trần nhà luôn trắng sạch tinh tươm quanh năm suốt tháng.',
     imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Chống đen trần 100%',
     rating: 4.96,
     reviewCount: 310,
@@ -206,6 +236,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Chất gỗ Mít Ta từ ngàn đời nay gắn liền với cây đa bến nước sân đình và không gian thờ cúng Việt Nam. Gỗ không mối mọt, để càng lâu màu càng chuyển sang đỏ sẫm sang trọng.',
     imageUrl: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Gỗ Mít Cổ Truyền',
     rating: 4.98,
     reviewCount: 88,
@@ -235,6 +270,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Giải pháp phòng thờ siêu nhỏ gọn dành cho gia chủ ở căn hộ 1 phòng ngủ hoặc căn hộ mini, vẫn đảm bảo trọn vẹn sự tôn kính và cung đỏ Thước Lỗ Ban 38.8cm.',
     imageUrl: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Chung cư Studio',
     rating: 4.92,
     reviewCount: 65,
@@ -266,6 +306,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Mẫu bàn thờ đứng đại quy mô dành cho gia chủ sở hữu nhà phố, biệt thự hoặc căn hộ duplex diện tích lớn. Từng đường đục chạm mang lại vẻ uy nghiêm, trang trọng cho không gian thờ tự.',
     imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Đại Cát Biệt Thự',
     rating: 5.0,
     reviewCount: 43,
@@ -295,6 +340,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Phụ kiện bàn cơm thông minh giúp tối ưu hóa không gian phòng thờ hiện đại. Ngày thường đẩy gọn vào lòng bàn thờ đứng, ngày rằm mùng một và giỗ chạp kéo ra làm mâm cúng thịnh soạn.',
     imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Kéo Rút Tiện Lợi',
     rating: 4.94,
     reviewCount: 57,
@@ -324,6 +374,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Bệ tam cấp giúp không gian bàn thờ phân định tôn ti trật tự theo đúng tín ngưỡng thờ phụng tổ tiên của người Việt. Bát hương thần linh được tôn cao hơn gia tiên, thu hút vượng khí cát lành.',
     imageUrl: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Phân Ngôi Gia Tiên',
     rating: 4.97,
     reviewCount: 92,
@@ -355,6 +410,11 @@ export const PRODUCTS: Product[] = [
     ],
     description: 'Tuyệt phẩm án gian thờ gia tiên dành riêng cho nhà thờ họ, biệt thự hoặc nhà phố diện tích phòng thờ rộng rãi. Họa tiết 5 con dơi ngậm chữ Thọ mang lại Ngũ Phúc: Phú, Quý, Thọ, Khang, Ninh cho gia tộc.',
     imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
+    images: [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+    ],
     badge: 'Đại Cát Ngũ Phúc',
     rating: 5.0,
     reviewCount: 39,

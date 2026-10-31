@@ -24,15 +24,33 @@ export default function SpiritualHooks() {
 
   return (
     <>
-      {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC TRÁI (Bottom-Left Floating Contact Buttons) */}
-      <div className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40 flex flex-col items-start gap-2.5 sm:gap-3">
+      {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Bottom-Right Floating Contact Buttons) */}
+      <div className="fixed bottom-20 right-3 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
+        {/* Desktop Gift Pill CTA (Visible only on Desktop >= 768px) */}
+        <button
+          onClick={() => {
+            setIsOpen(true);
+            setSubmitted(false);
+          }}
+          className="hidden md:flex items-center gap-2.5 px-4 py-2.5 bg-stone-900/95 hover:bg-stone-800 text-white rounded-full shadow-xl border border-stone-700 transition-all duration-300 hover:scale-105 mb-1"
+        >
+          <div className="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <Gift className="w-3.5 h-3.5" />
+          </div>
+          <div className="text-left pr-1">
+            <span className="block text-[11px] font-bold text-white tracking-wide">
+              Tặng PDF Văn Khấn & Clip Mộc
+            </span>
+          </div>
+        </button>
+
         {/* Nút 1: Zalo Chat Báo Giá Nhanh */}
         <a
           href="https://zalo.me/0339533380"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Nhắn Zalo xưởng An Gia Tịnh: 0339.533.380"
-          className="group relative flex items-center"
+          className="group relative flex items-center flex-row-reverse"
         >
           {/* Hiệu ứng sóng lan tỏa nổi bật (Pulse Ripple Wave) */}
           <span className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-35 pointer-events-none"></span>
@@ -41,8 +59,8 @@ export default function SpiritualHooks() {
             <span className="font-sans font-black text-xs sm:text-sm tracking-tight">Zalo</span>
           </div>
 
-          {/* Desktop Hover Label */}
-          <span className="hidden sm:inline-block ml-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+          {/* Desktop Hover Label bên trái */}
+          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
             Chat Zalo Báo Giá
           </span>
         </a>
@@ -51,7 +69,7 @@ export default function SpiritualHooks() {
         <a
           href="tel:0339533380"
           aria-label="Gọi hotline xưởng mộc: 0339533380"
-          className="group relative flex items-center"
+          className="group relative flex items-center flex-row-reverse"
         >
           {/* Hiệu ứng sóng lan tỏa nổi bật */}
           <span 
@@ -63,8 +81,8 @@ export default function SpiritualHooks() {
             <Phone className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
           </div>
 
-          {/* Desktop Hover Label */}
-          <span className="hidden sm:inline-block ml-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+          {/* Desktop Hover Label bên trái */}
+          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
             Hotline: 0339.533.380
           </span>
         </a>
@@ -125,30 +143,7 @@ export default function SpiritualHooks() {
         </div>
       </div>
 
-      {/* 3. Desktop Floating Gift Button (Visible only on >= 768px at Bottom-Right) */}
-      <div className="hidden md:flex fixed bottom-6 right-6 z-40">
-        <button
-          onClick={() => {
-            setIsOpen(true);
-            setSubmitted(false);
-          }}
-          className="group flex items-center gap-3 px-5 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105"
-        >
-          <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
-            <Gift className="w-4 h-4" />
-          </div>
-          <div className="text-left">
-            <span className="block text-xs uppercase tracking-wider font-bold text-white">
-              Tặng Bản PDF Văn Khấn & Clip Mộc 15s
-            </span>
-            <span className="block text-[10px] text-stone-400">
-              Tra cứu phong thủy Lỗ Ban miễn phí
-            </span>
-          </div>
-        </button>
-      </div>
-
-      {/* 4. Modal Form: Nhận Tài Liệu & Video Mộc */}
+      {/* 3. Modal Form: Nhận Tài Liệu & Video Mộc */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative animate-in fade-in zoom-in duration-200">

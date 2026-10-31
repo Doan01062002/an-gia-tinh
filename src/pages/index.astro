@@ -7,21 +7,21 @@ import { PRODUCTS } from '../data/products';
 const completedProjects = [
   {
     apartment: 'Vinhomes Smart City Tây Mỗ',
-    altar: 'Ban thờ treo Gỗ Sồi 48x81cm & Vách CNC chữ Thọ',
+    altar: 'Ban thờ treo Gỗ Sồi 48x81cm',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
     tag: 'Căn hộ 2PN',
   },
   {
     apartment: 'Vinhomes Ocean Park Gia Lâm',
-    altar: 'Combo Bàn thờ Gõ Đỏ 48x89cm & Tranh Trúc Chỉ Sen D50',
+    altar: 'Combo Ban thờ Gõ Đỏ 48x89cm & Tranh Sen',
     image: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=800&q=80',
     tag: 'Căn hộ 3PN',
   },
   {
     apartment: 'KĐT Vạn Phúc, TP. Thủ Đức',
-    altar: 'Bàn thờ đứng Gỗ Gụ Lào 61x107cm kèm Tủ Cơm',
+    altar: 'Ban thờ đứng Gỗ Gụ Lào 61x107cm',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-    tag: 'Nhà phố hiện đại',
+    tag: 'Nhà phố',
   },
 ];
 
@@ -38,137 +38,91 @@ const homeSchema = {
 ---
 
 <Layout
-  title="An Gia Tịnh — Bộ Sưu Tập Bàn Thờ Hiện Đại & Chuẩn Phong Thủy Lỗ Ban 38.8cm"
-  description="Trưng bày các mẫu bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi không rác, gửi video mộc 15s duyệt trước khi giao."
+  title="An Gia Tịnh — Bàn Thờ Hiện Đại Chuẩn Phong Thủy Lỗ Ban 38.8cm"
+  description="Bộ sưu tập bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi không rác, duyệt clip mộc 15s trước khi nhận hàng."
   schema={homeSchema}
 >
-  {/* 1. Visual-First Compact Hero Section (Mobile Optimized) */}
-  <section class="relative bg-gradient-to-b from-stone-100/90 via-stone-50 to-white text-stone-900 pt-8 pb-12 sm:pt-14 sm:pb-16 border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* Left Headline & Micro-Trust Badges */}
-        <div class="lg:col-span-7 space-y-4 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-stone-300 text-stone-800 text-xs font-semibold shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
-            <span>Xưởng Mộc Làng Nghề Canh Nậu & Sơn Đồng</span>
+  {/* 1. Ultra-Compact Visual Hero for Mobile */}
+  <section class="bg-gradient-to-b from-stone-100/80 to-white text-stone-900 pt-5 pb-6 sm:pt-10 sm:pb-12 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/* Left: Concise Text */}
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-stone-200 text-stone-800 text-[11px] font-semibold shadow-2xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+            <span>Xưởng mộc Canh Nậu & Sơn Đồng, Hà Nội</span>
           </div>
 
-          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight text-stone-900 leading-tight">
-            Bộ Sưu Tập Bàn Thờ Chung Cư <br />
+          <h1 class="text-2xl sm:text-4xl font-serif font-black tracking-tight text-stone-900 leading-tight">
+            Bàn Thờ Căn Hộ Chung Cư <br class="hidden sm:inline" />
             <span class="text-amber-800">Chuẩn Thước Lỗ Ban 38.8cm</span>
           </h1>
 
-          <p class="text-stone-600 text-xs sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
-            Thiết kế tối giản cho căn hộ hiện đại. Cam kết <strong>100% gỗ lõi không pha rác</strong> (đền bù 200%), quay clip mộc 15s soi thớ vân trước khi giao tận nhà.
+          <p class="text-stone-600 text-xs sm:text-sm font-light max-w-lg mx-auto md:mx-0">
+            100% Gỗ lõi không rác (đền bù 200%) • Gửi clip mộc 15s duyệt thớ vân trước khi phun sơn.
           </p>
-
-          {/* 3 Quick Micro-Pills */}
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-xs font-medium text-stone-700">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-600 font-bold">✓</span> 100% Gỗ lõi không rác
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-600 font-bold">✓</span> Duyệt clip mộc 15s qua Zalo
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-xs">
-              <span class="text-amber-600 font-bold">✓</span> Cung Đỏ Thước Lỗ Ban 38.8cm
-            </span>
-          </div>
-
-          {/* Quick CTA Anchor */}
-          <div class="pt-2 flex items-center justify-center lg:justify-start gap-3">
-            <a
-              href="#bo-suu-tap"
-              class="px-6 py-3.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
-            >
-              <span>Xem Sản Phẩm Ngay</span>
-              <span>↓</span>
-            </a>
-            <a
-              href="/thuoc-lo-ban"
-              class="px-5 py-3.5 bg-white hover:bg-stone-50 text-stone-900 font-semibold text-xs sm:text-sm rounded-xl border border-stone-300 transition-all shadow-xs"
-            >
-              Tra Cứu Lỗ Ban
-            </a>
-          </div>
         </div>
 
-        {/* Right Hero Visual Banner */}
-        <div class="lg:col-span-5">
-          <div class="relative rounded-2xl overflow-hidden shadow-lg border border-stone-200 bg-stone-100 aspect-16/10 sm:aspect-4/3">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-              alt="Bàn thờ treo chung cư hiện đại An Gia Tịnh"
-              class="w-full h-full object-cover"
-            />
-            <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/90 text-xs shadow-md">
-              <span class="font-bold text-stone-900 block truncate">Không gian thực tế căn hộ Vinhomes</span>
-              <span class="text-[11px] text-amber-800 font-medium">Ban thờ treo Gỗ Gõ Đỏ 48x89cm & Tranh Trúc Chỉ</span>
-            </div>
-          </div>
+        {/* Right: Quick Highlights */}
+        <div class="flex items-center justify-center gap-2 text-[11px] font-semibold text-stone-700 shrink-0">
+          <span class="px-3 py-1.5 bg-white border border-stone-200 rounded-xl shadow-2xs">
+            ✓ 100% Gỗ lõi
+          </span>
+          <span class="px-3 py-1.5 bg-white border border-stone-200 rounded-xl shadow-2xs">
+            ✓ Clip mộc 15s
+          </span>
+          <a
+            href="/thuoc-lo-ban"
+            class="px-3 py-1.5 bg-stone-900 text-white rounded-xl shadow-2xs"
+          >
+            Tra Lỗ Ban →
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  {/* 2. MAIN PRODUCT SHOWCASE (Lookbook with Instant Mobile Filtering) */}
-  <section id="bo-suu-tap" class="py-10 sm:py-16 bg-[#FAFAF9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
-        <div>
-          <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-0.5">
-            Trưng Bày Mẫu Thực Tế
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
-            Sản Phẩm & Phụ Kiện Phòng Thờ
-          </h2>
-        </div>
-        <span class="text-xs text-stone-500">
-          Chạm vào ảnh để phóng to • Bấm Clip Mộc để nhận video thô
-        </span>
-      </div>
-
+  {/* 2. MAIN PRODUCT GALLERY (Front & Center) */}
+  <section id="bo-suu-tap" class="py-6 sm:py-10 bg-[#FAFAF9]">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       {/* Interactive Mobile-Friendly Gallery */}
       <ProductGallery products={PRODUCTS} client:load />
     </div>
   </section>
 
-  {/* 3. Real Apartment Installations (Ảnh Thực Tế Bàn Giao Căn Hộ) */}
-  <section class="py-12 sm:py-16 bg-white border-t border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-xl mx-auto mb-8">
-        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
-          Lookbook Bàn Giao
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
-          Hình Ảnh Thực Tế Tại Căn Hộ Gia Chủ
-        </h2>
-        <p class="text-xs sm:text-sm text-stone-600 mt-1.5 font-light">
-          Bàn thờ treo và bàn thờ đứng ăn nhập hoàn hảo với nội thất chung cư hiện đại.
-        </p>
+  {/* 3. Lookbook Ảnh Thực Tế Bàn Giao */}
+  <section class="py-8 sm:py-12 bg-white border-t border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-4">
+        <div>
+          <span class="text-[10px] font-bold text-amber-800 uppercase tracking-widest block">
+            Thực Tế Căn Hộ
+          </span>
+          <h2 class="text-lg sm:text-2xl font-serif font-black text-stone-900">
+            Ảnh Lắp Đặt Tại Nhà Gia Chủ
+          </h2>
+        </div>
+        <span class="text-[11px] text-stone-500 hidden sm:inline">Vinhomes & KĐT lớn</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-3 gap-2 sm:gap-4">
         {completedProjects.map((p) => (
-          <div class="group bg-stone-50 rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-md transition-all">
-            <div class="aspect-4/3 overflow-hidden bg-stone-100 relative">
+          <div class="bg-stone-50 rounded-xl overflow-hidden border border-stone-200 shadow-2xs">
+            <div class="aspect-square sm:aspect-4/3 overflow-hidden bg-stone-100">
               <img
                 src={p.image}
                 alt={p.apartment}
                 loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover"
               />
-              <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-stone-900/85 backdrop-blur-xs text-amber-300 text-[10px] font-bold">
-                {p.tag}
-              </span>
             </div>
-            <div class="p-4 space-y-1.5">
-              <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
+            <div class="p-2 sm:p-3">
+              <span class="text-[9px] sm:text-[10px] font-bold text-amber-800 block truncate">
                 {p.apartment}
               </span>
-              <h3 class="font-serif font-bold text-sm text-stone-900">
+              <p class="text-[10px] sm:text-xs text-stone-700 truncate font-medium">
                 {p.altar}
-              </h3>
+              </p>
             </div>
           </div>
         ))}
@@ -176,64 +130,58 @@ const homeSchema = {
     </div>
   </section>
 
-  {/* 4. 3-Step Hassle-Free Ordering Guide (Quy Trình Mua Hàng Minh Bạch) */}
-  <section class="py-12 sm:py-16 bg-[#FAFAF9] border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <span class="text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
-          An Tâm Tuyệt Đối
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
-          3 Bước Đặt Bàn Thờ Không Lo Rủi Ro
+  {/* 4. Quy Trình 3 Bước Mua Hàng An Toàn */}
+  <section class="py-8 sm:py-12 bg-[#FAFAF9] border-b border-stone-200">
+    <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="text-center mb-6">
+        <h2 class="text-lg sm:text-2xl font-serif font-black text-stone-900">
+          3 Bước Đặt Bàn Thờ Chuẩn Phong Thủy
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
+          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-serif font-black text-xs flex items-center justify-center">
             01
-          </div>
-          <h3 class="font-bold text-sm text-stone-900">Chọn Mẫu & Kích Thước Lỗ Ban</h3>
-          <p class="text-xs text-stone-600 leading-relaxed font-light">
-            Nhắn Zalo xưởng để được thợ cả tư vấn chuẩn Thước Lỗ Ban 38.8cm hợp tuổi và không gian căn hộ.
+          </span>
+          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Chọn Kích Thước Lỗ Ban</h3>
+          <p class="text-[11px] text-stone-600 font-light">
+            Chọn mẫu 48x81, 48x89cm chuẩn Cung Đỏ Hỷ Sự, Thêm Phúc.
           </p>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
+          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-serif font-black text-xs flex items-center justify-center">
             02
-          </div>
-          <h3 class="font-bold text-sm text-stone-900">Duyệt Video Mộc Thô 15s</h3>
-          <p class="text-xs text-stone-600 leading-relaxed font-light">
-            Xưởng quay cận cảnh thớ vân mộc thô trước khi phun sơn. Gia chủ duyệt thớ gỗ ưng ý xưởng mới đóng gói.
+          </span>
+          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Duyệt Video Mộc 15s</h3>
+          <p class="text-[11px] text-stone-600 font-light">
+            Xưởng quay cận cảnh thớ vân mộc thô gửi Zalo trước khi phun sơn.
           </p>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-2">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-800 font-serif font-black text-sm flex items-center justify-center">
+        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
+          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-serif font-black text-xs flex items-center justify-center">
             03
-          </div>
-          <h3 class="font-bold text-sm text-stone-900">Giao Tận Nhà — Bóc Hàng Kiểm Tra</h3>
-          <p class="text-xs text-stone-600 leading-relaxed font-light">
-            Giao COD toàn quốc. Quý gia chủ bóc hộp kiểm tra đúng chất gỗ, đúng kích thước rồi mới thanh toán.
+          </span>
+          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Giao COD Toàn Quốc</h3>
+          <p class="text-[11px] text-stone-600 font-light">
+            Giao tận nhà. Gia chủ bóc hộp kiểm tra gỗ lõi mới thanh toán.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  {/* 5. Compact Tra Cứu Thước Lỗ Ban 38.8cm */}
-  <section class="py-12 sm:py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <span class="inline-block px-3.5 py-1.5 bg-amber-500/10 text-amber-900 font-bold text-xs rounded-full uppercase tracking-wider mb-2 border border-amber-500/25">
-          Tiện Ích Trực Tuyến
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900">
-          Tra Cứu Thước Lỗ Ban 38.8cm Online
+  {/* 5. Tra Cứu Thước Lỗ Ban 38.8cm */}
+  <section class="py-8 sm:py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="text-center mb-6">
+        <h2 class="text-lg sm:text-2xl font-serif font-black text-stone-900">
+          Tra Cứu Thước Lỗ Ban 38.8cm
         </h2>
-        <p class="text-xs sm:text-sm text-stone-600 mt-1 max-w-lg mx-auto font-light">
-          Nhập số đo (cm) để kiểm tra ngay Cung Đỏ (Đại Cát) cho bàn thờ gia tiên.
+        <p class="text-[11px] sm:text-xs text-stone-600 font-light mt-0.5">
+          Kéo thước hoặc nhập kích thước (cm) để kiểm tra Cung Đỏ (Cát Tường).
         </p>
       </div>
 

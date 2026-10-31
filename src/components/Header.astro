@@ -6,51 +6,46 @@ const navLinks = [
   { href: "/", label: "Trang Chủ" },
   { href: "/san-pham", label: "Mẫu Bàn Thờ" },
   { href: "/thuoc-lo-ban", label: "Thước Lỗ Ban 38.8" },
-  { href: "/kien-thuc", label: "Văn Khấn & Phong Thủy" },
+  { href: "/kien-thuc", label: "Cẩm Nang Thờ Cúng" },
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs text-stone-900">
-  {/* Top Bar Announcement */}
-  <div class="bg-stone-50 border-b border-stone-200/80 px-4 py-2 text-xs text-stone-600">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
-      <div class="flex items-center gap-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
-        <span class="font-bold text-amber-800">CAM KẾT XƯỞNG MỘC:</span>
-        <span class="text-stone-700">100% Gỗ lõi không rác (Đền bù 200%) • Gửi video mộc 15s duyệt trước khi giao</span>
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200/90 shadow-xs text-stone-900">
+  {/* Top Bar Announcement: Visible only on Desktop (>= 768px) to save precious vertical space on mobile */}
+  <div class="hidden md:block bg-stone-50 border-b border-stone-200/80 px-4 py-1.5 text-xs text-stone-600">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2 truncate">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-600 animate-pulse shrink-0"></span>
+        <span class="font-bold text-amber-900 shrink-0">XƯỞNG MỘC LÀNG NGHỀ:</span>
+        <span class="text-stone-700 truncate">100% Gỗ lõi không rác (Đền 200%) • Clip mộc 15s duyệt trước khi giao</span>
       </div>
-      <div class="flex items-center gap-4 text-xs">
-        <span class="hidden md:inline text-stone-500">Làng nghề Thạch Thất & Sơn Đồng, Hà Nội</span>
-        <span class="hidden md:inline text-stone-300">•</span>
-        <a href="tel:0339533380" class="hover:text-amber-700 transition-colors font-semibold flex items-center gap-1.5 text-stone-800">
-          <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-          </svg>
+      <div class="flex items-center gap-3 text-xs shrink-0">
+        <span class="text-stone-500">Canh Nậu & Sơn Đồng, Hà Nội</span>
+        <span class="text-stone-300">•</span>
+        <a href="tel:0339533380" class="hover:text-amber-800 font-semibold text-stone-800 flex items-center gap-1">
           Hotline: 0339.533.380
         </a>
       </div>
     </div>
   </div>
 
-  {/* Main Navbar */}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+  {/* Main Navbar: Sleek, compact, zero text wrap */}
+  <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14 sm:h-16 lg:h-20">
       {/* Brand Logo & Name */}
-      <a href="/" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700 shadow-xs group-hover:scale-105 transition-transform">
-          <svg class="w-6 h-6 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
+      <a href="/" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
-            <path d="M5.5 12C4.5 13.5 4 15.2 4 17C4 18.5 5 19.5 6.5 19.5C9.5 19.5 11 15 11 15C11 15 8.5 14.5 5.5 12Z" opacity="0.8"/>
-            <path d="M18.5 12C19.5 13.5 20 15.2 20 17C20 18.5 19 19.5 17.5 19.5C14.5 19.5 13 15 13 15C13 15 15.5 14.5 18.5 12Z" opacity="0.8"/>
           </svg>
         </div>
 
-        <div>
-          <span class="block text-xl sm:text-2xl font-serif-luxury tracking-wider text-stone-900 font-bold group-hover:text-amber-700 transition-colors">
+        <div class="leading-none">
+          <span class="block text-base sm:text-xl lg:text-2xl font-serif font-black tracking-wide text-stone-900 group-hover:text-amber-800 transition-colors">
             AN GIA TỊNH
           </span>
-          <span class="block text-[10px] text-amber-800 tracking-[0.2em] uppercase font-bold">
-            Bàn Thờ & Không Gian Thờ Chuẩn Phong Thủy
+          <span class="block text-[9px] sm:text-[10px] text-amber-800 tracking-wider uppercase font-semibold mt-0.5">
+            Đồ Thờ Chuẩn Lỗ Ban
           </span>
         </div>
       </a>
@@ -62,9 +57,9 @@ const navLinks = [
           return (
             <a
               href={link.href}
-              class={`px-4 py-2 text-sm font-semibold rounded-xl transition-all relative ${
+              class={`px-3.5 py-2 text-sm font-semibold rounded-xl transition-all ${
                 isActive
-                  ? "text-amber-800 bg-amber-50 border border-amber-200"
+                  ? "text-amber-900 bg-amber-50/80 border border-amber-200/80"
                   : "text-stone-700 hover:text-stone-950 hover:bg-stone-100"
               }`}
             >
@@ -75,50 +70,43 @@ const navLinks = [
       </nav>
 
       {/* Desktop Actions */}
-      <div class="hidden sm:flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-2.5">
         <a
           href="/thuoc-lo-ban"
-          class="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 border border-stone-300 rounded-xl transition-all"
+          class="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-stone-800 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-xl transition-all"
         >
-          <svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-          </svg>
-          Tra Thước Lỗ Ban
+          <span>Tra Thước Lỗ Ban</span>
         </a>
 
         <a
           href="https://zalo.me/0339533380"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 px-4 py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all"
+          class="flex items-center gap-1.5 px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition-all"
         >
-          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.03 2 11C2 13.56 3.16 15.86 5 17.43V21L8.38 19.31C9.5 19.76 10.72 20 12 20C17.52 20 22 15.97 22 11C22 6.03 17.52 2 12 2ZM13 14H11V12H13V14ZM13 10H11V6H13V10Z"/>
-          </svg>
           <span>Zalo: 0339.533.380</span>
         </a>
       </div>
 
-      {/* Mobile Drawer Trigger */}
-      <div class="flex md:hidden items-center gap-2">
+      {/* Mobile Actions: Clean, compact, no wrapping text */}
+      <div class="flex md:hidden items-center gap-1.5">
         <a
-          href="tel:0339533380"
-          class="p-2.5 bg-amber-600 text-white rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-sm"
-          aria-label="Gọi điện thoại trực tiếp cho xưởng mộc"
+          href="https://zalo.me/0339533380"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 text-blue-700 flex items-center justify-center font-bold text-[11px] shadow-xs"
+          aria-label="Nhắn Zalo"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-          </svg>
-          <span>Gọi Xưởng</span>
+          Zalo
         </a>
 
         <button
           id="mobile-menu-btn"
           type="button"
           aria-label="Mở menu điều hướng"
-          class="p-2.5 rounded-xl bg-stone-100 border border-stone-200 text-stone-800 hover:bg-stone-200"
+          class="w-9 h-9 rounded-xl bg-stone-100 border border-stone-200 text-stone-800 flex items-center justify-center hover:bg-stone-200 transition-colors"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
@@ -128,32 +116,32 @@ const navLinks = [
 
   {/* Mobile Drawer Panel */}
   <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
-    <div class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white border-l border-stone-200 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+    <div class="fixed top-0 right-0 w-72 max-w-[80vw] h-full bg-white border-l border-stone-200 p-5 flex flex-col justify-between shadow-2xl overflow-y-auto">
       <div>
-        <div class="flex items-center justify-between pb-6 border-b border-stone-200">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700">
-              <svg class="w-5 h-5 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
+        <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700">
+              <svg class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
               </svg>
             </div>
             <div>
-              <span class="block font-serif-luxury font-bold text-stone-900 text-base">AN GIA TỊNH</span>
-              <span class="block text-[9px] text-amber-800 uppercase tracking-wider font-bold">Đồ Thờ Làng Nghề</span>
+              <span class="block font-serif font-black text-stone-900 text-sm">AN GIA TỊNH</span>
+              <span class="block text-[8px] text-amber-800 uppercase font-semibold">Đồ Thờ Làng Nghề</span>
             </div>
           </div>
-          <button id="mobile-close-btn" class="p-2 text-stone-500 hover:text-stone-900" aria-label="Đóng menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button id="mobile-close-btn" class="p-1.5 text-stone-500 hover:text-stone-900" aria-label="Đóng menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
 
-        <nav class="py-6 space-y-2">
+        <nav class="py-4 space-y-1">
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class="block px-4 py-3 rounded-xl text-sm font-semibold text-stone-800 hover:text-amber-800 hover:bg-amber-50 transition-all"
+              class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-stone-800 hover:text-amber-800 hover:bg-stone-50 transition-colors"
             >
               {link.label}
             </a>
@@ -161,20 +149,18 @@ const navLinks = [
         </nav>
       </div>
 
-      <div class="pt-6 border-t border-stone-200 space-y-3">
-        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-xs text-stone-700">
-          <p class="font-bold text-stone-900 mb-1">Xưởng mộc An Gia Tịnh:</p>
-          <p class="text-[11px] leading-relaxed text-stone-600">
-            Canh Nậu (Thạch Thất) & Sơn Đồng (Hoài Đức), Hà Nội.<br/>
-            Hotline: <strong class="text-stone-900">0339.533.380</strong>
-          </p>
-        </div>
-
+      <div class="pt-4 border-t border-stone-200 space-y-3">
+        <a
+          href="tel:0339533380"
+          class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs"
+        >
+          <span>Hotline: 0339.533.380</span>
+        </a>
         <a
           href="https://zalo.me/0339533380"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full py-3 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow"
+          class="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs"
         >
           <span>Nhắn Zalo Thợ Cả 24/7</span>
         </a>

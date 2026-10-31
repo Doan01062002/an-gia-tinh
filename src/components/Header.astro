@@ -88,23 +88,24 @@ const navLinks = [
         </a>
       </div>
 
-      {/* Mobile Actions: Clean, compact, no wrapping text */}
-      <div class="flex md:hidden items-center gap-1.5">
+      {/* Mobile Actions: Hotline pill & Menu button kept on top-right as requested */}
+      <div class="flex md:hidden items-center gap-2">
         <a
-          href="https://zalo.me/0339533380"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200/80 text-blue-700 flex items-center justify-center font-bold text-[11px] shadow-xs"
-          aria-label="Nhắn Zalo"
+          href="tel:0339533380"
+          class="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-stone-800 text-stone-900 font-bold text-[11px] sm:text-xs hover:bg-stone-100 transition-colors shadow-2xs"
+          aria-label="Gọi hotline: 0339.533.380"
         >
-          Zalo
+          <svg class="w-3.5 h-3.5 text-red-700" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          <span>0339.533.380</span>
         </a>
 
         <button
           id="mobile-menu-btn"
           type="button"
           aria-label="Mở menu điều hướng"
-          class="w-9 h-9 rounded-xl bg-stone-100 border border-stone-200 text-stone-800 flex items-center justify-center hover:bg-stone-200 transition-colors"
+          class="w-9 h-9 rounded-xl bg-stone-100 border border-stone-300 text-stone-800 flex items-center justify-center hover:bg-stone-200 transition-colors"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>

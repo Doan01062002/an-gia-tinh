@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
-import { Phone, MessageCircle, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video, Sparkles, Layers } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, MessageCircle, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video, Sparkles, Layers, ChevronUp } from 'lucide-react';
 
 export default function SpiritualHooks() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', checkScroll);
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +37,17 @@ export default function SpiritualHooks() {
 
   return (
     <>
+      {/* Back to Top Square Button (Exact Tâm Phát Reference) */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Cuộn lên đầu trang"
+          className="fixed bottom-40 right-3 sm:bottom-32 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
+        >
+          <ChevronUp className="w-5 h-5 stroke-[2.5]" />
+        </button>
+      )}
+
       {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Bottom-Right Floating Contact Buttons) */}
       <div className="fixed bottom-20 right-3 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
         {/* Desktop Gift Pill CTA (Visible only on Desktop >= 768px) */}

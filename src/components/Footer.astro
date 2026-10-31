@@ -1,4 +1,5 @@
 ---
+import BrandLogo from './BrandLogo.astro';
 ---
 
 <footer class="bg-stone-950 text-stone-300 border-t border-stone-800 pb-28 md:pb-12 text-sm">
@@ -7,21 +8,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       {/* Col 1: Brand & Credibility */}
       <div class="space-y-5">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-sm">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
-            </svg>
-          </div>
-          <div>
-            <span class="block text-xl font-serif font-black tracking-wider text-white">
-              AN GIA TỊNH
-            </span>
-            <span class="block text-[10px] text-amber-400 font-semibold uppercase tracking-widest">
-              Không Gian Thờ Chuẩn Lỗ Ban
-            </span>
-          </div>
-        </div>
+        <BrandLogo size="lg" />
 
         <p class="text-xs sm:text-sm text-stone-400 leading-relaxed font-light">
           Chuyên biệt không gian thờ tự hiện đại cho chung cư và nhà phố cao cấp. Tinh hoa mộc thủ công Sơn Đồng & Canh Nậu — Thạch Thất kết hợp giải pháp kiến trúc tối giản.

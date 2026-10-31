@@ -1,4 +1,6 @@
 ---
+import BrandLogo from './BrandLogo.astro';
+
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.replace(/\/$/, "");
 
@@ -33,21 +35,8 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-14 sm:h-16 lg:h-20">
       {/* Brand Logo & Name */}
-      <a href="/" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700 shadow-xs group-hover:scale-105 transition-transform shrink-0">
-          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
-          </svg>
-        </div>
-
-        <div class="leading-none">
-          <span class="block text-base sm:text-xl lg:text-2xl font-serif font-black tracking-wide text-stone-900 group-hover:text-amber-800 transition-colors">
-            AN GIA TỊNH
-          </span>
-          <span class="block text-[9px] sm:text-[10px] text-amber-800 tracking-wider uppercase font-semibold mt-0.5">
-            Đồ Thờ Chuẩn Lỗ Ban
-          </span>
-        </div>
+      <a href="/" class="shrink-0" aria-label="Trang chủ An Gia Tịnh">
+        <BrandLogo size="md" />
       </a>
 
       {/* Desktop Links */}

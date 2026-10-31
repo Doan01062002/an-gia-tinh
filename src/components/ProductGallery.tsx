@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../types';
-import { Video, X, ZoomIn, ShieldCheck } from 'lucide-react';
+import { Video, Eye, X, ZoomIn, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface Props {
   products: Product[];
@@ -8,7 +8,7 @@ interface Props {
 
 export default function ProductGallery({ products }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [zoomImage, setZoomImage] = useState<{ url: string; title: string; wood: string; dim: string } | null>(null);
+  const [zoomImage, setZoomImage] = useState<{ url: string; title: string; wood: string; dim: string; slug: string; price: number } | null>(null);
 
   const categories = [
     { id: 'all', label: 'Tất cả' },
@@ -70,7 +70,7 @@ export default function ProductGallery({ products }: Props) {
         </div>
       </div>
 
-      {/* 2. Visual Product Grid: 2 columns on mobile, clean spacing, no text overflow */}
+      {/* 2. Visual Product Grid: 2 columns on mobile, balanced height, dual action buttons */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5">
         {filteredProducts.map((product) => {
           const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
@@ -93,6 +93,8 @@ export default function ProductGallery({ products }: Props) {
                     title: product.name,
                     wood: product.woodType,
                     dim: product.dimensions,
+                    slug: product.slug,
+                    price: product.price,
                   })}
                 />
 
@@ -118,6 +120,8 @@ export default function ProductGallery({ products }: Props) {
                     title: product.name,
                     wood: product.woodType,
                     dim: product.dimensions,
+                    slug: product.slug,
+                    price: product.price,
                   })}
                   className="absolute bottom-1.5 right-1.5 p-1 rounded-md bg-black/50 text-white backdrop-blur-xs"
                   aria-label="Phóng to ảnh"
@@ -153,9 +157,9 @@ export default function ProductGallery({ products }: Props) {
                   </div>
                 </div>
 
-                {/* Pricing & 1-Tap Action */}
-                <div className="pt-2 border-t border-stone-100">
-                  <div className="flex items-baseline justify-between gap-1 mb-2">
+                {/* Pricing & Dual Action Buttons (Xem Chi Tiết + Clip Mộc 15s) */}
+                <div className="pt-2 border-t border-stone-100 space-y-2">
+                  <div className="flex items-baseline justify-between gap-1">
                     <span className="text-xs sm:text-base font-serif font-black text-rose-700 truncate">
                       {formatCurrency(product.price)}
                     </span>
@@ -164,16 +168,26 @@ export default function ProductGallery({ products }: Props) {
                     </span>
                   </div>
 
-                  {/* Single High-Impact Action Button */}
-                  <a
-                    href={`https://zalo.me/0339533380?text=${encodeURIComponent(`Chào xưởng An Gia Tịnh, tôi muốn xem video mộc 15s mẫu ${product.name} (${product.dimensions})`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2 px-1.5 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white rounded-lg text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-xs transition-colors"
-                  >
-                    <Video className="w-3 h-3 shrink-0" />
-                    <span className="truncate">Clip Mộc 15s</span>
-                  </a>
+                  {/* Dual Action Buttons Side-by-Side */}
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <a
+                      href={`/san-pham/${product.slug}`}
+                      className="w-full py-1.5 px-1.5 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded-lg text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 transition-colors border border-stone-200"
+                    >
+                      <Eye className="w-3 h-3 text-stone-600 shrink-0" />
+                      <span className="truncate">Chi Tiết</span>
+                    </a>
+
+                    <a
+                      href={`https://zalo.me/0339533380?text=${encodeURIComponent(`Chào xưởng An Gia Tịnh, tôi muốn xem video mộc 15s mẫu ${product.name} (${product.dimensions})`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-1.5 px-1.5 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white rounded-lg text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 shadow-2xs transition-colors"
+                    >
+                      <Video className="w-3 h-3 shrink-0" />
+                      <span className="truncate">Clip Mộc</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -214,22 +228,27 @@ export default function ProductGallery({ products }: Props) {
               <h4 className="font-serif font-black text-sm text-stone-900 mt-0.5 truncate">
                 {zoomImage.title}
               </h4>
+              <p className="text-sm font-serif font-black text-rose-700 mt-1">
+                {formatCurrency(zoomImage.price)}
+              </p>
 
               <div className="grid grid-cols-2 gap-2 mt-3">
+                <a
+                  href={`/san-pham/${zoomImage.slug}`}
+                  className="py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold text-xs rounded-lg text-center border border-stone-200 flex items-center justify-center gap-1"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Xem Chi Tiết</span>
+                </a>
+
                 <a
                   href={`https://zalo.me/0339533380?text=${encodeURIComponent(`Tôi muốn nhận video mộc 15s cho mẫu ${zoomImage.title}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2 bg-amber-600 text-white font-bold text-xs rounded-lg flex items-center justify-center gap-1 text-center"
+                  className="py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-lg flex items-center justify-center gap-1 text-center shadow-xs"
                 >
                   <Video className="w-3.5 h-3.5" />
-                  <span>Nhận Clip Mộc 15s</span>
-                </a>
-                <a
-                  href="tel:0339533380"
-                  className="py-2 bg-stone-100 text-stone-800 font-semibold text-xs rounded-lg text-center border border-stone-200"
-                >
-                  Gọi Xưởng
+                  <span>Clip Mộc 15s</span>
                 </a>
               </div>
             </div>

@@ -24,16 +24,62 @@ export default function SpiritualHooks() {
 
   return (
     <>
-      {/* 1. Mobile Fixed Bottom Navigation Bar (Visible only on < 768px) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/98 backdrop-blur-md border-t border-stone-200 px-2 py-2 shadow-lg">
+      {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC TRÁI (Bottom-Left Floating Contact Buttons) */}
+      <div className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40 flex flex-col items-start gap-2.5 sm:gap-3">
+        {/* Nút 1: Zalo Chat Báo Giá Nhanh */}
+        <a
+          href="https://zalo.me/0339533380"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Nhắn Zalo xưởng An Gia Tịnh: 0339.533.380"
+          className="group relative flex items-center"
+        >
+          {/* Hiệu ứng sóng lan tỏa nổi bật (Pulse Ripple Wave) */}
+          <span className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-35 pointer-events-none"></span>
+          
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-[#0052CC] via-[#0068FF] to-[#3B82F6] text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-blue-400/25">
+            <span className="font-sans font-black text-xs sm:text-sm tracking-tight">Zalo</span>
+          </div>
+
+          {/* Desktop Hover Label */}
+          <span className="hidden sm:inline-block ml-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            Chat Zalo Báo Giá
+          </span>
+        </a>
+
+        {/* Nút 2: Gọi Điện Hotline Xưởng 24/7 */}
+        <a
+          href="tel:0339533380"
+          aria-label="Gọi hotline xưởng mộc: 0339533380"
+          className="group relative flex items-center"
+        >
+          {/* Hiệu ứng sóng lan tỏa nổi bật */}
+          <span 
+            className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-35 pointer-events-none"
+            style={{ animationDelay: '0.8s' }}
+          ></span>
+          
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-emerald-400/25">
+            <Phone className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+          </div>
+
+          {/* Desktop Hover Label */}
+          <span className="hidden sm:inline-block ml-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            Hotline: 0339.533.380
+          </span>
+        </a>
+      </div>
+
+      {/* 2. Mobile Fixed Bottom Navigation Bar (Visible only on < 768px) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/98 backdrop-blur-md border-t border-stone-200 px-2 py-1.5 shadow-lg">
         <div className="grid grid-cols-4 gap-1 text-center">
           {/* Button 1: Gọi Hotline */}
           <a
             href="tel:0339533380"
-            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-stone-700 hover:text-stone-950 hover:bg-stone-100 transition-all"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mb-1 border border-emerald-200">
-              <Phone className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mb-0.5 border border-emerald-200">
+              <Phone className="w-3.5 h-3.5" />
             </div>
             <span className="text-[10px] font-bold leading-none">Gọi Xưởng</span>
           </a>
@@ -43,10 +89,10 @@ export default function SpiritualHooks() {
             href="https://zalo.me/0339533380"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-stone-700 hover:text-stone-950 hover:bg-stone-100 transition-all"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center mb-1 border border-blue-200">
-              <MessageCircle className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center mb-0.5 border border-blue-200">
+              <MessageCircle className="w-3.5 h-3.5" />
             </div>
             <span className="text-[10px] font-bold leading-none">Chat Zalo</span>
           </a>
@@ -54,10 +100,10 @@ export default function SpiritualHooks() {
           {/* Button 3: Thước Lỗ Ban */}
           <a
             href="/thuoc-lo-ban"
-            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-stone-700 hover:text-stone-950 hover:bg-stone-100 transition-all"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-1 border border-amber-200">
-              <Ruler className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-0.5 border border-amber-200">
+              <Ruler className="w-3.5 h-3.5" />
             </div>
             <span className="text-[10px] font-bold leading-none">Thước Lỗ Ban</span>
           </a>
@@ -69,24 +115,24 @@ export default function SpiritualHooks() {
               setIsOpen(true);
               setSubmitted(false);
             }}
-            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow-sm transition-all"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow-2xs transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center mb-1">
-              <Gift className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center mb-0.5">
+              <Gift className="w-3.5 h-3.5" />
             </div>
             <span className="text-[10px] font-bold leading-none">Tặng Văn Khấn</span>
           </button>
         </div>
       </div>
 
-      {/* 2. Desktop Floating CTA Group (Visible only on >= 768px) */}
-      <div className="hidden md:flex fixed bottom-8 right-8 z-40 flex-col items-end gap-3.5">
+      {/* 3. Desktop Floating Gift Button (Visible only on >= 768px at Bottom-Right) */}
+      <div className="hidden md:flex fixed bottom-6 right-6 z-40">
         <button
           onClick={() => {
             setIsOpen(true);
             setSubmitted(false);
           }}
-          className="group flex items-center gap-3 px-5 py-3.5 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105"
+          className="group flex items-center gap-3 px-5 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105"
         >
           <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
             <Gift className="w-4 h-4" />
@@ -100,29 +146,9 @@ export default function SpiritualHooks() {
             </span>
           </div>
         </button>
-
-        <div className="flex items-center gap-2.5">
-          <a
-            href="https://zalo.me/0339533380"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Nhắn Zalo cùng nghệ nhân xưởng An Gia Tịnh"
-            className="flex items-center justify-center w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl transition-transform hover:scale-110"
-          >
-            <span className="font-bold text-xs">Zalo</span>
-          </a>
-
-          <a
-            href="tel:0339533380"
-            aria-label="Gọi hotline xưởng mộc 0339533380"
-            className="flex items-center justify-center w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl transition-transform hover:scale-110"
-          >
-            <Phone className="w-5 h-5" />
-          </a>
-        </div>
       </div>
 
-      {/* 3. Modal Form: Nhận Tài Liệu & Video Mộc */}
+      {/* 4. Modal Form: Nhận Tài Liệu & Video Mộc */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative animate-in fade-in zoom-in duration-200">

@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { calculateLoBan388, POPULAR_ALTAR_SIZES } from '../data/loban';
 import { Ruler, Award, AlertCircle, MessageCircle } from 'lucide-react';
 
 export default function LoBanTool() {
   const [dimension, setDimension] = useState<number>(81);
   const result = calculateLoBan388(dimension);
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef<boolean>(false);
+  const dragStartRef = useRef<{ x: number; dim: number }>({ x: 0, dim: 81 });
 
   // Position within the 38.8cm cycle
   const cycleRemainder = ((dimension % 38.8) + 38.8) % 38.8;
@@ -23,14 +27,75 @@ export default function LoBanTool() {
     { name: 'Tài', good: true, short: 'T' },
   ];
 
+  // Update dimension based on click / pointer position
+  const updateFromPointer = (clientX: number, isDirectClick = false) => {
+    if (!trackRef.current) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const trackWidth = rect.width;
+    if (trackWidth <= 0) return;
+
+    if (isDirectClick) {
+      // Direct click on the ruler inside 0..trackWidth
+      const clampedX = Math.max(0, Math.min(x, trackWidth));
+      const percent = clampedX / trackWidth;
+      const targetRemainder = percent * 38.8;
+      const currentCycleBase = Math.floor(dimension / 38.8) * 38.8;
+      const newDim = Math.round((currentCycleBase + targetRemainder) * 2) / 2;
+      setDimension(Math.max(10, Math.min(300, newDim)));
+      dragStartRef.current = { x: clientX, dim: newDim };
+    } else {
+      // Continuous scrubbing / dragging from start point
+      const deltaX = clientX - dragStartRef.current.x;
+      const deltaDim = (deltaX / trackWidth) * 38.8;
+      const newDim = Math.round((dragStartRef.current.dim + deltaDim) * 2) / 2;
+      setDimension(Math.max(10, Math.min(300, newDim)));
+    }
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDraggingRef.current = true;
+    dragStartRef.current = { x: e.clientX, dim: dimension };
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // fallback
+    }
+    updateFromPointer(e.clientX, true);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    updateFromPointer(e.clientX, false);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    isDraggingRef.current = false;
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      // fallback
+    }
+  };
+
+  // Jump directly to a Cung by clicking its block
+  const handleCungClick = (cungIndex: number) => {
+    const currentCycleBase = Math.floor(dimension / 38.8) * 38.8;
+    const targetRemainder = cungIndex * 3.88 + 1.94;
+    const newDim = Math.round((currentCycleBase + targetRemainder) * 2) / 2;
+    setDimension(Math.max(10, Math.min(300, newDim)));
+  };
+
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-stone-200 overflow-hidden">
       {/* Sleek Compact Tool Header */}
       <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-stone-200 bg-stone-50 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
           <span className="text-xs sm:text-sm font-bold text-stone-900 tracking-tight">
-            Thước Lỗ Ban 38.8cm (Âm Phần)
+            Thước Lỗ Ban 38.8cm (Âm Phần - Đồ Thờ)
           </span>
         </div>
         <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
@@ -39,135 +104,199 @@ export default function LoBanTool() {
       </div>
 
       <div className="p-4 sm:p-8 space-y-6">
-        {/* Controls: Input & Slider */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* UNIFIED INTERACTIVE LO BAN RULER (Box 1 + Box 2 merged into ONE) */}
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-stone-900 text-white shadow-xl border border-stone-800 space-y-4 sm:space-y-5">
+          {/* Top Bar: Live Measurement & Quick Steppers */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-800">
             <div>
-              <label htmlFor="dimension-input" className="block text-xs font-bold text-stone-800 uppercase tracking-wider">
-                Nhập số đo cần tra cứu (cm):
-              </label>
-              <span className="text-[11px] text-stone-500">
-                Áp dụng cho chiều rộng, chiều sâu hoặc chiều cao bàn thờ
+              <div className="flex items-center gap-2">
+                <Ruler className="w-4 h-4 text-amber-400" />
+                <h3 className="text-xs sm:text-sm font-bold text-amber-400 tracking-wide uppercase">
+                  Dải Thước Đo 10 Cung Lỗ Ban
+                </h3>
+              </div>
+              <p className="text-[11px] text-stone-400 mt-0.5">
+                Chạm hoặc kéo ngón tay trực tiếp trên thước để chỉnh số đo
+              </p>
+            </div>
+
+            {/* Stepper Controls & Number Input */}
+            <div className="flex items-center gap-1.5 self-start sm:self-auto bg-stone-950 p-1.5 rounded-2xl border border-stone-800">
+              <button
+                type="button"
+                onClick={() => setDimension((d) => Math.max(10, Math.round((d - 10) * 2) / 2))}
+                className="px-2 py-1.5 bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-300 text-[11px] font-bold rounded-lg transition-all"
+                title="Giảm 10 cm"
+              >
+                -10
+              </button>
+              <button
+                type="button"
+                onClick={() => setDimension((d) => Math.max(10, Math.round((d - 1) * 2) / 2))}
+                className="w-8 h-8 flex items-center justify-center bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-200 text-sm font-bold rounded-lg transition-all"
+                title="Giảm 1 cm"
+              >
+                -1
+              </button>
+
+              <div className="relative flex items-center">
+                <input
+                  id="dimension-input"
+                  type="number"
+                  min="10"
+                  max="300"
+                  step="0.5"
+                  value={dimension}
+                  onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
+                  aria-label="Số đo Lỗ Ban (cm)"
+                  className="w-20 sm:w-24 text-center font-black text-lg sm:text-xl text-amber-300 bg-stone-900 border border-stone-700 rounded-lg py-1 px-1 focus:outline-none focus:border-amber-400"
+                />
+                <span className="text-xs font-bold text-stone-400 ml-1.5 mr-1">cm</span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setDimension((d) => Math.min(300, Math.round((d + 1) * 2) / 2))}
+                className="w-8 h-8 flex items-center justify-center bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-200 text-sm font-bold rounded-lg transition-all"
+                title="Tăng 1 cm"
+              >
+                +1
+              </button>
+              <button
+                type="button"
+                onClick={() => setDimension((d) => Math.min(300, Math.round((d + 10) * 2) / 2))}
+                className="px-2 py-1.5 bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-300 text-[11px] font-bold rounded-lg transition-all"
+                title="Tăng 10 cm"
+              >
+                +10
+              </button>
+            </div>
+          </div>
+
+          {/* Measuring Tape & Interactive Track */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-[11px] text-stone-400 font-mono">
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                <span>Kéo vạch hoặc chạm trực tiếp cung:</span>
+              </span>
+              <span>
+                Điểm rơi chu kỳ: <strong className="text-amber-300 font-bold">{cycleRemainder.toFixed(1)}</strong> / 38.8 cm
               </span>
             </div>
 
-            <div className="relative w-full sm:w-40">
-              <input
-                id="dimension-input"
-                type="number"
-                min="10"
-                max="300"
-                step="0.5"
-                value={dimension}
-                onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
-                className="w-full text-2xl font-black text-center px-4 py-2 bg-white border-2 border-stone-300 rounded-xl text-stone-900 shadow-inner focus:outline-none focus:border-red-600"
-              />
-              <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-stone-400">
-                cm
-              </span>
-            </div>
-          </div>
-
-          <div className="space-y-1.5 pt-1">
-            <input
-              type="range"
-              min="20"
-              max="220"
-              step="0.5"
-              value={dimension}
-              onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
-              aria-label="Thanh trượt thước Lỗ Ban"
-              className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-red-700"
-            />
-            <div className="flex justify-between text-[11px] text-stone-500 font-mono px-1">
-              <span>20</span>
-              <span>60</span>
-              <span>100</span>
-              <span>140</span>
-              <span>180</span>
-              <span>220 cm</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Visual Dual-Band Modern Architectural Ruler (Responsive & Anti-Clash) */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 text-white shadow-md">
-          <div className="flex items-center justify-between mb-2 text-xs">
-            <span className="font-semibold text-amber-400 flex items-center gap-1.5">
-              <Ruler className="w-3.5 h-3.5" />
-              <span>10 Cung Thước Lỗ Ban</span>
-            </span>
-            <span className="text-[11px] font-mono text-stone-300">
-              Điểm rơi: <strong className="text-amber-300">{cycleRemainder.toFixed(1)}</strong> / 38.8 cm
-            </span>
-          </div>
-
-          {/* Measuring Tape Track */}
-          <div className="relative h-14 sm:h-16 bg-stone-950 rounded-xl p-1 border border-stone-700 overflow-hidden select-none">
-            {/* 10 Major Cung segments with Anti-Clash design */}
-            <div className="absolute inset-1 grid grid-cols-10 gap-0.5 rounded-lg overflow-hidden">
-              {cungs.map((c, idx) => {
-                const isCurrent = result?.cung?.name === c.name;
-                return (
-                  <div
-                    key={idx}
-                    className={`min-w-0 flex flex-col items-center justify-center rounded-xs transition-all relative overflow-hidden ${
-                      c.good ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-300'
-                    } ${
-                      isCurrent
-                        ? 'ring-2 ring-amber-400 scale-[1.03] z-10 font-black shadow-md'
-                        : 'opacity-75'
-                    }`}
-                  >
-                    {/* Desktop: Full Name */}
-                    <span className="hidden sm:inline text-xs font-bold leading-tight truncate px-0.5">
-                      {c.name}
-                    </span>
-                    <span className="hidden sm:inline text-[8px] uppercase tracking-tighter opacity-90">
-                      {c.good ? 'Cát' : 'Hung'}
-                    </span>
-                    {/* Mobile: Clean Letter + Cát/Hung mark */}
-                    <span className="sm:hidden text-[10px] font-black leading-none">
-                      {c.short}
-                    </span>
-                    <span className={`sm:hidden text-[7px] font-bold mt-0.5 ${c.good ? 'text-amber-300' : 'text-stone-400'}`}>
-                      {c.good ? '●' : '○'}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Precision Indicator Needle */}
+            {/* The Interactive Ruler Tape Container */}
             <div
-              className="absolute top-0 bottom-0 w-0.5 bg-amber-400 shadow-[0_0_8px_#FBBF24] z-20 pointer-events-none -translate-x-1/2 flex flex-col items-center justify-between"
-              style={{ left: `${cursorPercent}%` }}
+              ref={trackRef}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              className="relative h-20 sm:h-22 bg-stone-950 rounded-2xl p-1.5 border-2 border-stone-700 select-none cursor-pointer touch-none shadow-inner"
             >
-              <div className="w-2.5 h-2.5 bg-amber-400 rotate-45 -mt-1 shadow" />
-              <div className="w-2.5 h-2.5 bg-amber-400 rotate-45 -mb-1 shadow" />
+              {/* Millimeter / Centimeter Scale Bar at Top */}
+              <div className="absolute top-1.5 left-1.5 right-1.5 h-3 flex justify-between items-end px-1 pointer-events-none">
+                {[0, 5, 10, 15, 20, 25, 30, 35, 38.8].map((tick, i) => (
+                  <div key={i} className="flex flex-col items-center">
+                    <span className="text-[8px] font-mono text-stone-500 leading-none">
+                      {tick === 38.8 ? '38.8' : tick}
+                    </span>
+                    <span className="w-px h-1.5 bg-stone-700 mt-0.5" />
+                  </div>
+                ))}
+              </div>
+
+              {/* 10 Major Cungs Grid */}
+              <div className="absolute top-6 bottom-1.5 left-1.5 right-1.5 grid grid-cols-10 gap-0.5 rounded-xl overflow-hidden">
+                {cungs.map((c, idx) => {
+                  const isCurrent = result?.cung?.name === c.name;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCungClick(idx);
+                      }}
+                      className={`min-w-0 flex flex-col items-center justify-center rounded-lg transition-all relative overflow-hidden py-1 ${
+                        c.good
+                          ? 'bg-gradient-to-b from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700'
+                          : 'bg-gradient-to-b from-stone-800 to-stone-900 text-stone-300 hover:from-stone-700 hover:to-stone-800'
+                      } ${
+                        isCurrent
+                          ? 'ring-2 ring-amber-400 scale-[1.03] z-10 font-black shadow-lg shadow-black/50'
+                          : 'opacity-80 hover:opacity-100'
+                      }`}
+                    >
+                      {/* Desktop Full Name */}
+                      <span className="hidden sm:inline text-xs font-bold leading-tight truncate px-0.5">
+                        {c.name}
+                      </span>
+                      <span className="hidden sm:inline text-[9px] uppercase tracking-tighter opacity-90 mt-0.5">
+                        {c.good ? 'Cát' : 'Hung'}
+                      </span>
+                      {/* Mobile Letters */}
+                      <span className="sm:hidden text-[11px] font-black leading-none">
+                        {c.short}
+                      </span>
+                      <span
+                        className={`sm:hidden text-[8px] font-bold mt-0.5 ${
+                          c.good ? 'text-amber-300' : 'text-stone-400'
+                        }`}
+                      >
+                        {c.good ? '●' : '○'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Sliding Precision Golden Needle */}
+              <div
+                className="absolute top-0 bottom-0 w-1 bg-amber-400 shadow-[0_0_12px_#FBBF24] z-20 pointer-events-none -translate-x-1/2 flex flex-col items-center justify-between"
+                style={{ left: `${cursorPercent}%` }}
+              >
+                {/* Top Marker */}
+                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-amber-400 -mt-1 shadow-xs" />
+                {/* Center Badge */}
+                <div className="px-1 py-0.5 bg-amber-400 text-stone-950 text-[9px] font-black rounded-xs shadow whitespace-nowrap -mt-0.5">
+                  {dimension}cm
+                </div>
+                {/* Bottom Marker */}
+                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[7px] border-b-amber-400 -mb-1 shadow-xs" />
+              </div>
             </div>
           </div>
 
-          {/* Active Cung Indicator Ribbon */}
+          {/* Active Cung Indicator Ribbon below the tape */}
           {result && result.cung && (
-            <div className="mt-2.5 flex items-center justify-between text-[11px] pt-1.5 border-t border-stone-800">
-              <span className="text-stone-400">
-                Số đo: <strong className="text-white">{dimension} cm</strong>
-              </span>
-              <span className={`font-bold flex items-center gap-1 ${result.isGood ? 'text-amber-400' : 'text-stone-400'}`}>
-                {result.isGood ? <Award className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
-                Cung {result.cung.name} ({result.isGood ? 'Đại Cát' : 'Cung Đen'})
-              </span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs pt-2 border-t border-stone-800 gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-stone-400">Số đo đang chọn:</span>
+                <span className="text-base font-black text-amber-300">{dimension} cm</span>
+              </div>
+              <div
+                className={`font-bold flex items-center gap-1.5 px-3 py-1 rounded-full text-xs self-start sm:self-auto ${
+                  result.isGood
+                    ? 'bg-red-950/80 text-amber-300 border border-red-700/60'
+                    : 'bg-stone-800 text-stone-300 border border-stone-700'
+                }`}
+              >
+                {result.isGood ? <Award className="w-4 h-4 text-amber-400" /> : <AlertCircle className="w-4 h-4 text-stone-400" />}
+                <span>
+                  Cung {result.cung.name} — {result.subCung?.name || ''} ({result.isGood ? 'Cung Đỏ Đại Cát' : 'Cung Đen Nên Tránh'})
+                </span>
+              </div>
             </div>
           )}
 
           {/* Mobile Legend */}
-          <div className="sm:hidden flex items-center justify-center gap-3 text-[10px] text-stone-400 pt-1">
+          <div className="sm:hidden flex items-center justify-center gap-4 text-[10px] text-stone-400 pt-1">
             <span className="flex items-center gap-1">
-              <span className="text-amber-400">●</span> Cát Tường (Đỏ)
+              <span className="text-red-500 font-bold">●</span> Cung Đỏ (Đại Cát)
             </span>
             <span className="flex items-center gap-1">
-              <span className="text-stone-500">○</span> Hung Hiểm (Đen)
+              <span className="text-stone-500 font-bold">○</span> Cung Đen (Hung Hiểm)
             </span>
           </div>
         </div>
@@ -340,7 +469,7 @@ export default function LoBanTool() {
               Gia chủ chưa rõ hướng và kích thước ban thờ hợp tuổi?
             </h4>
             <p className="text-stone-300 text-xs mt-1">
-              Liên hệ xưởng An Gia Tịnh để thợ cả hỗ trợ đo đạc chuẩn Lỗ Ban & gửi clip mộc 15s trước khi phun sơn.
+              Liên hệ xưởng An Gia Tịnh để thợ cả hỗ trợ đo đạc chuẩn Lỗ Ban & tư vấn phong thủy tận tâm.
             </p>
           </div>
           <a

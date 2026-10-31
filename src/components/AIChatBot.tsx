@@ -39,6 +39,18 @@ export default function AIChatBot() {
     }
   }, [messages, isOpen]);
 
+  // Listen to open-ai-chat or toggle-ai-chat events from mobile bottom nav bar
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    const handleToggle = () => setIsOpen((prev) => !prev);
+    window.addEventListener('open-ai-chat', handleOpen);
+    window.addEventListener('toggle-ai-chat', handleToggle);
+    return () => {
+      window.removeEventListener('open-ai-chat', handleOpen);
+      window.removeEventListener('toggle-ai-chat', handleToggle);
+    };
+  }, []);
+
   const generateAIResponse = (userText: string): string => {
     const text = userText.toLowerCase();
 
@@ -117,12 +129,12 @@ export default function AIChatBot() {
 
   return (
     <>
-      {/* 1. Floating Toggle Trigger: Bottom-Left on mobile, Bottom-Left on desktop */}
-      <div className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40">
+      {/* 1. Floating Toggle Trigger: Visible only on Desktop (>= md: 768px), since Mobile uses Bottom Navigation Bar */}
+      <div className="hidden md:block fixed bottom-6 left-6 z-40">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105 active:scale-95"
+            className="group relative flex items-center gap-2 px-4 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105 active:scale-95"
             aria-label="Mở Trợ Lý Phong Thủy AI"
           >
             {/* Pulsing indicator */}
@@ -137,9 +149,9 @@ export default function AIChatBot() {
         )}
       </div>
 
-      {/* 2. Chatbot Popup Window */}
+      {/* 2. Chatbot Popup Window: Sits above mobile bottom bar at bottom-16, and at bottom-6 on desktop */}
       {isOpen && (
-        <div className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-50 w-[340px] sm:w-[380px] max-w-[92vw] h-[500px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed bottom-16 inset-x-2 sm:inset-x-auto sm:bottom-6 sm:left-6 z-50 w-auto sm:w-[380px] max-w-[96vw] h-[520px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
           {/* Header */}
           <div className="p-3.5 sm:p-4 bg-gradient-to-r from-stone-900 via-stone-950 to-stone-900 text-white flex items-center justify-between border-b border-stone-800 shrink-0">
             <div className="flex items-center gap-2.5">

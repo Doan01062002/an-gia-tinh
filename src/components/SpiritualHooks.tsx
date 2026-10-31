@@ -42,75 +42,11 @@ export default function SpiritualHooks() {
         <button
           onClick={scrollToTop}
           aria-label="Cuộn lên đầu trang"
-          className="fixed bottom-40 right-3 sm:bottom-32 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
+          className="fixed bottom-28 right-3.5 sm:bottom-20 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
         >
           <ChevronUp className="w-5 h-5 stroke-[2.5]" />
         </button>
       )}
-
-      {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Bottom-Right Floating Contact Buttons) */}
-      <div className="fixed bottom-20 right-3 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
-        {/* Desktop Gift Pill CTA (Visible only on Desktop >= 768px) */}
-        <button
-          onClick={() => {
-            setIsOpen(true);
-            setSubmitted(false);
-          }}
-          className="hidden md:flex items-center gap-2.5 px-4 py-2.5 bg-stone-900/95 hover:bg-stone-800 text-white rounded-full shadow-xl border border-stone-700 transition-all duration-300 hover:scale-105 mb-1"
-        >
-          <div className="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
-            <Gift className="w-3.5 h-3.5" />
-          </div>
-          <div className="text-left pr-1">
-            <span className="block text-[11px] font-bold text-white tracking-wide">
-              Tặng PDF Văn Khấn & Clip Mộc
-            </span>
-          </div>
-        </button>
-
-        {/* Nút 1: Zalo Chat Báo Giá Nhanh */}
-        <a
-          href="https://zalo.me/0339533380"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Nhắn Zalo xưởng An Gia Tịnh: 0339.533.380"
-          className="group relative flex items-center flex-row-reverse"
-        >
-          {/* Hiệu ứng sóng lan tỏa nổi bật (Pulse Ripple Wave) */}
-          <span className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-35 pointer-events-none"></span>
-          
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-[#0052CC] via-[#0068FF] to-[#3B82F6] text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-blue-400/25">
-            <span className="font-sans font-black text-xs sm:text-sm tracking-tight">Zalo</span>
-          </div>
-
-          {/* Desktop Hover Label bên trái */}
-          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-            Chat Zalo Báo Giá
-          </span>
-        </a>
-
-        {/* Nút 2: Gọi Điện Hotline Xưởng 24/7 */}
-        <a
-          href="tel:0339533380"
-          aria-label="Gọi hotline xưởng mộc: 0339533380"
-          className="group relative flex items-center flex-row-reverse"
-        >
-          {/* Hiệu ứng sóng lan tỏa nổi bật */}
-          <span 
-            className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-35 pointer-events-none"
-            style={{ animationDelay: '0.8s' }}
-          ></span>
-          
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-emerald-400/25">
-            <Phone className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
-          </div>
-
-          {/* Desktop Hover Label bên trái */}
-          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-            Hotline: 0339.533.380
-          </span>
-        </a>
-      </div>
 
       {/* 2. Mobile Fixed Bottom Navigation Bar (Visible only on < 768px) */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/98 backdrop-blur-md border-t border-stone-200 px-2 py-1.5 shadow-lg">

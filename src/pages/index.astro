@@ -43,62 +43,23 @@ const homeSchema = {
   description="Bộ sưu tập bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ lõi không rác, duyệt clip mộc 15s trước khi nhận hàng."
   schema={homeSchema}
 >
-  {/* 1. Compact Promotional Banner (Exact Tâm Phát Layout: 40% Hero / 60% Visible Products) */}
-  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 pt-2 sm:pt-4">
-    <div class="relative w-full h-[185px] sm:h-[240px] md:h-[300px] lg:h-[340px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-red-950/40 bg-gradient-to-r from-[#700606] via-[#8B0E0E] to-[#4A0303] flex items-center justify-between">
-      {/* Background Decorative Sparkles & Ambient Warm Glow */}
-      <div class="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#FBBF24_1px,transparent_1px)] [background-size:20px_20px]"></div>
-
-      {/* Left Column: Festive Promotion Text & Badges */}
-      <div class="relative z-10 w-full md:w-3/5 p-3.5 sm:p-6 lg:p-8 flex flex-col justify-center text-left">
-        {/* Top Tag */}
-        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/40 border border-amber-400/50 text-amber-300 text-[10px] sm:text-xs font-black uppercase tracking-wider w-fit mb-1.5 shadow-2xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-          <span>Xưởng Mộc Làng Nghề Sơn Đồng & Canh Nậu</span>
-        </div>
-
-        {/* Cursive Subtitle */}
-        <p class="font-serif italic text-amber-200 text-xs sm:text-sm lg:text-base font-semibold leading-none mb-1">
-          Khai Xuân Rộn Ràng — An Gia Đón Lộc
-        </p>
-
-        {/* Bold Main Headline */}
-        <h1 class="text-xl sm:text-3xl lg:text-4xl font-serif-luxury font-black text-white uppercase tracking-tight leading-tight drop-shadow-sm mb-2 sm:mb-3">
-          ƯU ĐÃI NGẬP TRÀN <br />
-          <span class="text-amber-300">ĐỒ THỜ CHUẨN LỖ BAN 38.8CM</span>
-        </h1>
-
-        {/* 3 Compact Promotional Pill Badges (Exact Tâm Phát Reference) */}
-        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-black">
-          <span class="px-2 py-1 rounded bg-[#FFF8E7] text-[#8B0000] border border-amber-300 shadow-2xs">
-            GIẢM GIÁ 30%
-          </span>
-          <span class="px-2 py-1 rounded bg-[#FFF8E7] text-[#8B0000] border border-amber-300 shadow-2xs">
-            QUÀ TẶNG 500K
-          </span>
-          <span class="px-2 py-1 rounded bg-[#FFF8E7] text-[#8B0000] border border-amber-300 shadow-2xs">
-            CLIP MỘC 15S
-          </span>
-        </div>
-      </div>
-
-      {/* Right Column: Hero Altar Showcase Photo (Desktop & Tablet) */}
-      <div class="hidden sm:block relative w-2/5 h-full overflow-hidden shrink-0">
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-          alt="Không gian thờ hiện đại chuẩn Lỗ Ban"
-          class="w-full h-full object-cover object-center"
-        />
-        <div class="absolute inset-0 bg-gradient-to-r from-[#700606] via-transparent to-transparent"></div>
-        <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-xs text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-400/30">
-          100% Gỗ Lõi Không Rác
-        </div>
-      </div>
+  {/* 1. Compact Promotional Banner Image (Exact Tâm Phát Layout: 35% Hero / 65% Immediate Products) */}
+  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 pt-2 sm:pt-3">
+    <div class="relative w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-md border border-red-950/20 bg-[#660505]">
+      <img
+        src="/banner-hero-an-gia-tinh.svg"
+        alt="Ưu đãi ngập tràn bàn thờ chuẩn phong thủy Lỗ Ban An Gia Tịnh"
+        class="w-full h-auto aspect-[2/1] sm:aspect-[2.3/1] md:aspect-[2.5/1] object-cover block"
+        loading="eager"
+        fetchpriority="high"
+        width="900"
+        height="450"
+      />
     </div>
   </section>
 
   {/* 2. MAIN PRODUCT GALLERY (Front & Center) */}
-  <section id="bo-suu-tap" class="py-6 sm:py-10 bg-[#FAFAF9]">
+  <section id="bo-suu-tap" class="py-2.5 sm:py-8 bg-[#FAFAF9]">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       {/* Interactive Mobile-Friendly Gallery */}
       <ProductGallery products={PRODUCTS} client:load />

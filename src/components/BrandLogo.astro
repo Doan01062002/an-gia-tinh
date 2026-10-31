@@ -9,24 +9,24 @@ const { size = 'md', showSubtitle = true, class: className = '' } = Astro.props;
 
 const iconSizes = {
   sm: 'w-7 h-7 sm:w-8 sm:h-8',
-  md: 'w-9 h-9 sm:w-11 sm:h-11',
-  lg: 'w-12 h-12 sm:w-14 sm:h-14',
+  md: 'w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11',
+  lg: 'w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14',
 };
 
 const titleSizes = {
-  sm: 'text-sm sm:text-base font-black tracking-wider',
-  md: 'text-base sm:text-xl lg:text-2xl font-black tracking-wide',
-  lg: 'text-xl sm:text-2xl lg:text-3xl font-black tracking-wide',
+  sm: 'text-xs sm:text-sm font-black tracking-wider',
+  md: 'text-sm sm:text-lg lg:text-xl font-black tracking-wide',
+  lg: 'text-lg sm:text-xl lg:text-2xl font-black tracking-wide',
 };
 
 const subSizes = {
-  sm: 'text-[8px] sm:text-[9px] font-bold tracking-widest',
-  md: 'text-[9px] sm:text-[10px] font-bold tracking-widest',
-  lg: 'text-[11px] sm:text-xs font-bold tracking-widest',
+  sm: 'text-[7.5px] sm:text-[8.5px] font-bold tracking-widest',
+  md: 'text-[8px] sm:text-[9.5px] font-bold tracking-widest',
+  lg: 'text-[9.5px] sm:text-[11px] font-bold tracking-widest',
 };
 ---
 
-<div class={`flex items-center gap-2.5 sm:gap-3 group ${className}`}>
+<div class={`flex items-center gap-1.5 sm:gap-2.5 group ${className}`}>
   {/* Sacred Altar & Lotus Emblem (Vector SVG) */}
   <div class={`relative shrink-0 ${iconSizes[size]} rounded-xl bg-gradient-to-br from-[#8B0000] via-[#A0111E] to-[#680000] border-2 border-amber-400/90 shadow-md flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-105`}>
     <svg

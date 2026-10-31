@@ -129,29 +129,29 @@ export default function AIChatBot() {
 
   return (
     <>
-      {/* 1. Floating Toggle Trigger: Visible only on Desktop (>= md: 768px), since Mobile uses Bottom Navigation Bar */}
-      <div className="hidden md:block fixed bottom-6 left-6 z-40">
+      {/* 1. Floating Toggle Trigger: Positioned on the bottom-right corner as requested */}
+      <div className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-40">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-2 px-4 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-full shadow-2xl border border-stone-700 transition-all duration-300 hover:scale-105 active:scale-95"
+            className="group relative flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 bg-stone-900/95 hover:bg-stone-850 text-white rounded-full shadow-2xl border border-amber-500/40 hover:border-amber-400 transition-all duration-300 hover:scale-105 active:scale-95"
             aria-label="Mở Trợ Lý Phong Thủy AI"
           >
             {/* Pulsing indicator */}
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-            <div className="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
-            <span className="text-xs font-bold tracking-tight">
+            <span className="text-xs sm:text-sm font-bold tracking-tight pr-1">
               AI Phong Thủy
             </span>
           </button>
         )}
       </div>
 
-      {/* 2. Chatbot Popup Window: Sits above mobile bottom bar at bottom-16, and at bottom-6 on desktop */}
+      {/* 2. Chatbot Popup Window: Sits above mobile bottom bar at bottom-16, and at bottom-6 right-6 on desktop */}
       {isOpen && (
-        <div className="fixed bottom-16 inset-x-2 sm:inset-x-auto sm:bottom-6 sm:left-6 z-50 w-auto sm:w-[380px] max-w-[96vw] h-[520px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed bottom-16 inset-x-2 sm:inset-x-auto sm:bottom-6 sm:right-6 z-50 w-auto sm:w-[380px] max-w-[96vw] h-[520px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
           {/* Header */}
           <div className="p-3.5 sm:p-4 bg-gradient-to-r from-stone-900 via-stone-950 to-stone-900 text-white flex items-center justify-between border-b border-stone-800 shrink-0">
             <div className="flex items-center gap-2.5">

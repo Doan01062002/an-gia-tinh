@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
       'Giao hàng tận nơi có đệm chống sốc, kiểm tra sáng đèn mới thanh toán',
     ],
     description: 'Tranh Trúc Chỉ hoa sen tròn là linh hồn của không gian thờ tự hiện đại. Ánh sáng vàng dịu từ bức tranh tượng trưng cho vầng hào quang ấm áp của chư Phật và tổ tiên che chở cho căn nhà, mang lại cảm giác bình an mỗi khi bước vào nhà.',
-    imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
     badge: 'Tâm điểm phòng thờ',
     rating: 4.9,
     reviewCount: 185,

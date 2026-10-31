@@ -2,10 +2,11 @@
 interface Props {
   size?: 'sm' | 'md' | 'lg';
   showSubtitle?: boolean;
+  theme?: 'light' | 'dark';
   class?: string;
 }
 
-const { size = 'md', showSubtitle = true, class: className = '' } = Astro.props;
+const { size = 'md', showSubtitle = true, theme = 'light', class: className = '' } = Astro.props;
 
 const iconSizes = {
   sm: 'w-7 h-7 sm:w-8 sm:h-8',
@@ -104,13 +105,13 @@ const subSizes = {
   {/* Typography */}
   <div class="leading-none">
     <div class="flex items-center gap-1.5">
-      <span class={`block font-black text-stone-900 group-hover:text-red-800 transition-colors ${titleSizes[size]}`}>
+      <span class={`block font-black transition-colors ${theme === 'dark' ? 'text-white group-hover:text-amber-300' : 'text-stone-900 group-hover:text-red-800'} ${titleSizes[size]}`}>
         AN GIA TỊNH
       </span>
     </div>
 
     {showSubtitle && (
-      <span class={`block text-amber-800 uppercase font-bold mt-0.5 tracking-wider ${subSizes[size]}`}>
+      <span class={`block uppercase font-bold mt-0.5 tracking-wider ${theme === 'dark' ? 'text-amber-400' : 'text-amber-800'} ${subSizes[size]}`}>
         Đồ Thờ Chuẩn Lỗ Ban
       </span>
     )}

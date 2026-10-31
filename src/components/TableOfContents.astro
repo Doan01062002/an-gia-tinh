@@ -16,22 +16,22 @@ const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
 {filteredHeadings.length > 0 && (
-  <nav class="my-8 p-6 sm:p-8 bg-[#FAF7F2] rounded-3xl border-2 border-[#D8A268]/50 shadow-sm" aria-label="Mục lục bài viết">
-    <div class="flex items-center gap-2.5 pb-3 mb-4 border-b border-[#D8C7B5]">
-      <svg class="w-5 h-5 text-[#8F1717]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <nav class="my-8 p-6 sm:p-7 bg-stone-50 rounded-2xl border border-stone-200 shadow-xs" aria-label="Mục lục bài viết">
+    <div class="flex items-center gap-2.5 pb-3 mb-4 border-b border-stone-200">
+      <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
       </svg>
-      <h3 class="font-serif-luxury font-bold text-base sm:text-lg text-[#190F0A]">
-        Mục Lục Bài Viết (Chi Tiết H2 & H3)
+      <h3 class="font-serif font-bold text-base sm:text-lg text-stone-900">
+        Mục Lục Bài Viết
       </h3>
     </div>
 
-    <ul class="space-y-2 text-sm text-[#301B12]">
+    <ul class="space-y-2 text-sm text-stone-700">
       {filteredHeadings.map((heading) => (
-        <li class={heading.depth === 3 ? "ml-6 list-disc text-xs text-[#73432C]" : "font-bold text-[#190F0A]"}>
+        <li class={heading.depth === 3 ? "ml-5 list-disc text-xs text-stone-500" : "font-semibold text-stone-800"}>
           <a
             href={`#${heading.slug}`}
-            class="hover:text-[#8F1717] transition-colors inline-block py-0.5"
+            class="hover:text-amber-700 hover:underline transition-colors inline-block py-0.5"
           >
             {heading.text}
           </a>

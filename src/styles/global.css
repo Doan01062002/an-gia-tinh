@@ -2,40 +2,37 @@
 
 @layer base {
   :root {
-    --color-wood-950: #190f0a;
-    --color-wood-900: #24140d;
-    --color-wood-850: #301b12;
-    --color-wood-800: #3d2317;
-    --color-wood-700: #543120;
-    --color-wood-600: #73432c;
-    --color-wood-500: #965a3c;
-    --color-wood-400: #b57a55;
-    --color-wood-300: #d4a37f;
-    --color-wood-200: #e8d0bd;
-    --color-wood-100: #f4e8dc;
-    --color-wood-50: #faf5ee;
+    --color-stone-950: #0c0a09;
+    --color-stone-900: #1c1917;
+    --color-stone-800: #292524;
+    --color-stone-700: #44403c;
+    --color-stone-600: #57534e;
+    --color-stone-500: #78716c;
+    --color-stone-400: #a8a29e;
+    --color-stone-300: #d6d3d1;
+    --color-stone-200: #e7e5e4;
+    --color-stone-100: #f5f5f4;
+    --color-stone-50: #fafaf9;
 
-    --color-gold-600: #8c6b1f;
-    --color-gold-500: #af8729;
-    --color-gold-400: #cfa439;
-    --color-gold-300: #e2be5f;
-    --color-gold-200: #f1dc97;
-    --color-gold-100: #fbf5df;
+    --color-amber-900: #78350f;
+    --color-amber-800: #92400e;
+    --color-amber-700: #b45309;
+    --color-amber-600: #d97706;
+    --color-amber-500: #f59e0b;
+    --color-amber-400: #fbbf24;
+    --color-amber-100: #fef3c7;
+    --color-amber-50: #fffbeb;
 
-    --color-lacquer-red: #8f1717;
-    --color-auspicious-red: #aa1919;
-    --color-auspicious-light: #fef2f2;
-
-    --color-bg-paper: #fbf9f5;
-    --color-bg-warm: #f6f1e8;
-    --color-border-subtle: #e6ded3;
+    --color-red-700: #b91c1c;
+    --color-red-600: #dc2626;
+    --color-red-50: #fef2f2;
   }
 
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-bg-paper);
-    color: var(--color-wood-950);
+    background-color: #ffffff;
+    color: #1c1917;
   }
 
   body {
@@ -43,66 +40,44 @@
   }
 }
 
-/* Luxury Wood Craftsmanship Typography */
 .font-serif-luxury {
-  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .font-serif-classic {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* Gradients & Textures */
-.bg-wood-dark {
-  background: linear-gradient(145deg, #1f120b 0%, #29180f 60%, #170d08 100%);
-}
-
-.bg-wood-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fcfaf7 100%);
-}
-
-.bg-wood-ruler {
-  background: linear-gradient(180deg, #d8a268 0%, #c48746 40%, #a86c2e 100%);
-}
-
-.gold-gradient-bg {
-  background: linear-gradient(135deg, #dfb858 0%, #f6df94 50%, #bf9433 100%);
-}
-
+/* Modern luminous gradients */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #dfb858 0%, #f7e6a8 50%, #c59b27 100%);
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #92400e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gold-border {
-  border-color: rgba(207, 164, 57, 0.4);
-}
-
-.ruler-engraving {
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 2px rgba(255,255,255,0.3);
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1e9de;
+  background: #f5f5f4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #965a3c;
-  border-radius: 4px;
+  background: #d6d3d1;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #73432c;
+  background: #a8a29e;
 }
 
-/* Hide scrollbar for clean horizontal tabs on mobile */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

@@ -6,7 +6,7 @@ import { PRODUCTS } from '../../data/products';
 const catalogSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Danh Mục Bàn Thờ & Phụ Kiện Phòng Thờ An Gia Tịnh',
+  name: 'Danh Mục Bàn Thờ Hiện Đại & Phụ Kiện Phòng Thờ An Gia Tịnh',
   itemListElement: PRODUCTS.map((item, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -17,26 +17,45 @@ const catalogSchema = {
 ---
 
 <Layout
-  title="Bộ Sưu Tập Bàn Thờ Hiện Đại & Phụ Kiện Chuẩn Lỗ Ban — An Gia Tịnh"
+  title="Bộ Sưu Tập Bàn Thờ Hiện Đại Chuẩn Lỗ Ban 38.8cm — An Gia Tịnh"
   description="Khám phá các mẫu bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng 61x107cm, tranh Trúc Chỉ hoa sen đèn LED. 100% gỗ lõi không rác, bảo hành 10-20 năm."
   schema={catalogSchema}
 >
   {/* Category Header */}
-  <div class="bg-gradient-to-b from-[#1C100A] to-[#25150E] text-white py-14 sm:py-20 border-b-4 border-[#CFA439]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-      <span class="inline-block px-4 py-1.5 bg-[#2E1A11] text-[#E2BE5F] text-xs font-semibold rounded-full uppercase tracking-wider border border-[#CFA439]/40">
-        100% Gỗ Lõi Tự Nhiên • Đền Bù 200% Nếu Pha Rác
-      </span>
-      <h1 class="text-3xl sm:text-5xl font-serif-luxury font-black text-[#FBF5DF]">
+  <section class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-14 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-xs font-semibold tracking-wide">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+        <span>100% Gỗ Lõi Tự Nhiên • Đền Bù 200% Nếu Pha Rác</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-serif font-black text-stone-900 tracking-tight">
         Bộ Sưu Tập Bàn Thờ & Phụ Kiện Phòng Thờ
       </h1>
-      <p class="text-[#D8C7B5] text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-        Tất cả sản phẩm đều được cắt chuẩn theo Cung Đỏ Thước Lỗ Ban 38.8cm, ghép mộng đục thắt truyền thống không dùng đinh kim loại trên mặt bàn thờ.
-      </p>
-    </div>
-  </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <p class="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        Tất cả sản phẩm đều được xưởng mộc cắt chuẩn theo Cung Đỏ Thước Lỗ Ban 38.8cm (Âm Phần), kết cấu mộng đục thắt truyền thống không đinh kim loại trên mặt bàn thờ.
+      </p>
+
+      {/* Quick category filter anchors */}
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs font-medium">
+        <span class="px-3.5 py-1.5 rounded-full bg-white border border-stone-300 text-stone-900 shadow-xs">
+          Tất cả sản phẩm ({PRODUCTS.length})
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-white border border-stone-200 text-stone-600 transition-colors">
+          Bàn thờ treo chung cư
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-white border border-stone-200 text-stone-600 transition-colors">
+          Bàn thờ đứng gia tiên
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-white border border-stone-200 text-stone-600 transition-colors">
+          Tranh Trúc Chỉ & Vách CNC
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
     {/* Product Grid */}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {PRODUCTS.map((product) => (
@@ -45,16 +64,16 @@ const catalogSchema = {
     </div>
 
     {/* Custom Order Box for Phú Thọ Workshop */}
-    <div class="mt-16 bg-[#180D07] text-white p-8 sm:p-12 rounded-3xl border-2 border-[#CFA439]/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="mt-16 bg-gradient-to-br from-stone-900 via-stone-950 to-stone-900 text-white p-8 sm:p-12 rounded-3xl border border-stone-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-3 text-center md:text-left">
-        <span class="text-[#CFA439] text-xs font-bold uppercase tracking-widest block">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block">
           Xưởng Mộc Phú Thọ — Năng Lực May Đo Đại Quy Mô
         </span>
-        <h3 class="text-2xl sm:text-3xl font-serif-luxury font-bold text-[#FBF5DF]">
+        <h3 class="text-2xl sm:text-3xl font-serif font-black text-white">
           Gia Chủ Cần Thi Công Trọn Gói Phòng Thờ Theo Bản Vẽ 3D?
         </h3>
-        <p class="text-[#D8C7B5] text-xs sm:text-sm max-w-2xl leading-relaxed">
-          Xưởng gia đình tại Đoan Hùng, Phú Thọ chuyên nhận đóng án gian sập thờ ngũ phúc, cuốn thư câu đối bằng gỗ Gụ Lào, Gõ Đỏ Pachy, Mít Ta theo bản vẽ thiết kế của Kiến Trúc Sư.
+        <p class="text-stone-300 text-xs sm:text-sm max-w-2xl leading-relaxed font-light">
+          Xưởng gia đình tại Đoan Hùng, Phú Thọ chuyên nhận đóng án gian sập thờ ngũ phúc, cuốn thư câu đối bằng gỗ Gụ Lào, Gõ Đỏ Pachy, Mít Ta sấy lò ẩm độ 10–12% theo bản vẽ thiết kế của Kiến Trúc Sư.
         </p>
       </div>
 
@@ -62,10 +81,13 @@ const catalogSchema = {
         href="https://zalo.me/0339533380"
         target="_blank"
         rel="noopener noreferrer"
-        class="px-8 py-4 bg-gradient-to-r from-[#CFA439] to-[#AF8729] hover:from-[#E2BE5F] hover:to-[#CFA439] text-[#190F0A] font-bold text-sm rounded-xl shadow-lg transition-all shrink-0 whitespace-nowrap"
+        class="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm rounded-xl shadow-lg transition-all shrink-0 whitespace-nowrap flex items-center gap-2 group"
       >
-        Gửi Bản Vẽ 3D Qua Zalo
+        <span>Gửi Bản Vẽ 3D Qua Zalo</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
       </a>
     </div>
-  </div>
+  </section>
 </Layout>

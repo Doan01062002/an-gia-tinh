@@ -26,19 +26,19 @@ export default function SpiritualHooks() {
     <>
       {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Zalo & Hotline) */}
       <div className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none">
-        {/* Desktop Gift Pill CTA (Chỉ hiển thị trên Desktop >= 768px) */}
+        {/* Desktop Gift Pill CTA (Chỉ hiển thị trên Desktop >= 768px, thiết kế ngắn gọn, tinh tế) */}
         <button
           onClick={() => {
             setIsOpen(true);
             setSubmitted(false);
           }}
-          className="hidden md:flex pointer-events-auto items-center gap-2 px-3.5 py-2 bg-stone-900/95 hover:bg-stone-800 text-white rounded-full shadow-xl border border-stone-700 transition-all duration-300 hover:scale-105 mb-1"
+          className="hidden md:flex pointer-events-auto items-center gap-1.5 px-2.5 py-1.5 bg-stone-900/95 hover:bg-stone-800 text-white rounded-full shadow-lg border border-stone-700 transition-all duration-300 hover:scale-105 mb-0.5"
         >
-          <div className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
-            <Gift className="w-3 h-3" />
+          <div className="w-4.5 h-4.5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <Gift className="w-2.5 h-2.5" />
           </div>
-          <span className="text-[11px] font-bold text-white tracking-wide pr-1">
-            Tặng PDF Văn Khấn Gia Tiên
+          <span className="text-[11px] font-bold text-white tracking-tight pr-0.5 whitespace-nowrap">
+            Tặng Văn Khấn
           </span>
         </button>
 

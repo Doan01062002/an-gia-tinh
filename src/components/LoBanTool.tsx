@@ -79,13 +79,13 @@ export default function LoBanTool() {
               aria-label="Thanh trượt thước Lỗ Ban"
               className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-red-700"
             />
-            <div className="flex justify-between text-[10px] sm:text-[11px] text-stone-500 font-mono whitespace-nowrap">
-              <span>20cm</span>
-              <span>60cm</span>
-              <span>100cm</span>
-              <span>140cm</span>
-              <span>180cm</span>
-              <span>220cm</span>
+            <div className="flex justify-between text-[11px] text-stone-500 font-mono px-1">
+              <span>20</span>
+              <span>60</span>
+              <span>100</span>
+              <span>140</span>
+              <span>180</span>
+              <span>220 cm</span>
             </div>
           </div>
         </div>

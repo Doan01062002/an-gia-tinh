@@ -142,7 +142,7 @@ export default function FengShuiDirectionTool() {
           <Compass className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-serif font-black text-base sm:text-xl text-stone-900">
+          <h3 className=" font-black text-base sm:text-xl text-stone-900">
             Tra Cứu Hướng Bàn Thờ Theo Tuổi Gia Chủ
           </h3>
           <p className="text-[11px] sm:text-xs text-stone-500">
@@ -211,7 +211,7 @@ export default function FengShuiDirectionTool() {
             <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider block">
               Gia Chủ {isMale ? 'Nam' : 'Nữ'} Sinh Năm {birthYear} ({canChi}):
             </span>
-            <div className="text-base sm:text-lg font-serif font-black text-stone-900 mt-0.5">
+            <div className="text-base sm:text-lg  font-black text-stone-900 mt-0.5">
               Cung Mệnh: <span className="text-amber-800">Cung {cung.name} (Hành {cung.element})</span> • <span className="text-stone-700">{cung.group}</span>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function FengShuiDirectionTool() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* 4 Good Directions */}
           <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 space-y-3">
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-emerald-900 uppercase tracking-wider flex items-center gap-2">
+            <h4 className=" font-bold text-xs sm:text-sm text-emerald-900 uppercase tracking-wider flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>4 Hướng Đại Cát (Nên Đặt Bàn Thờ):</span>
             </h4>
@@ -266,7 +266,7 @@ export default function FengShuiDirectionTool() {
 
           {/* 4 Bad Directions */}
           <div className="p-4 sm:p-5 rounded-2xl bg-rose-50/60 border border-rose-200/80 space-y-3">
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-rose-900 uppercase tracking-wider flex items-center gap-2">
+            <h4 className=" font-bold text-xs sm:text-sm text-rose-900 uppercase tracking-wider flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-rose-600" />
               <span>4 Hướng Đại Kỵ (Tránh Đặt Bàn Thờ):</span>
             </h4>

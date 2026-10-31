@@ -42,11 +42,133 @@ export default function SpiritualHooks() {
         <button
           onClick={scrollToTop}
           aria-label="Cuộn lên đầu trang"
-          className="fixed bottom-16 sm:bottom-20 right-3.5 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
+          className="fixed bottom-44 sm:bottom-36 right-3.5 sm:right-6 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-white/95 border border-stone-800 rounded text-stone-800 hover:bg-stone-900 hover:text-white flex items-center justify-center shadow-md transition-all active:scale-95"
         >
           <ChevronUp className="w-5 h-5 stroke-[2.5]" />
         </button>
       )}
+
+      {/* 1. HAI NÚT LIÊN HỆ NỔI BẬT DƯỚI GÓC PHẢI (Zalo & Hotline) */}
+      <div className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3">
+        {/* Desktop Gift Pill CTA (Visible only on Desktop >= 768px) */}
+        <button
+          onClick={() => {
+            setIsOpen(true);
+            setSubmitted(false);
+          }}
+          className="hidden md:flex items-center gap-2.5 px-4 py-2.5 bg-stone-900/95 hover:bg-stone-800 text-white rounded-full shadow-xl border border-stone-700 transition-all duration-300 hover:scale-105 mb-1"
+        >
+          <div className="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <Gift className="w-3.5 h-3.5" />
+          </div>
+          <div className="text-left pr-1">
+            <span className="block text-[11px] font-bold text-white tracking-wide">
+              Tặng PDF Văn Khấn & Clip Mộc
+            </span>
+          </div>
+        </button>
+
+        {/* Nút 1: Zalo Chat Báo Giá Nhanh */}
+        <a
+          href="https://zalo.me/0339533380"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Nhắn Zalo xưởng An Gia Tịnh: 0339.533.380"
+          className="group relative flex items-center flex-row-reverse"
+        >
+          {/* Hiệu ứng sóng lan tỏa nổi bật (Pulse Ripple Wave) */}
+          <span className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-35 pointer-events-none"></span>
+          
+          <div className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-[#0052CC] via-[#0068FF] to-[#3B82F6] text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-blue-400/25">
+            <span className="font-sans font-black text-xs sm:text-sm tracking-tight">Zalo</span>
+          </div>
+
+          {/* Desktop Hover Label bên trái */}
+          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            Chat Zalo Báo Giá
+          </span>
+        </a>
+
+        {/* Nút 2: Gọi Điện Hotline Xưởng 24/7 */}
+        <a
+          href="tel:0339533380"
+          aria-label="Gọi hotline xưởng mộc: 0339533380"
+          className="group relative flex items-center flex-row-reverse"
+        >
+          {/* Hiệu ứng sóng lan tỏa nổi bật */}
+          <span 
+            className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-35 pointer-events-none"
+            style={{ animationDelay: '0.8s' }}
+          ></span>
+          
+          <div className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-emerald-400/25">
+            <Phone className="w-5 h-5 sm:w-5.5 sm:h-5.5 animate-pulse" />
+          </div>
+
+          {/* Desktop Hover Label bên trái */}
+          <span className="hidden sm:inline-block mr-3 px-3 py-1.5 bg-stone-900/90 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            Hotline: 0339.533.380
+          </span>
+        </a>
+      </div>
+
+      {/* 2. Mobile Fixed Sticky Bottom Navigation Bar (Visible on Mobile < 768px) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/98 backdrop-blur-md border-t border-stone-200 px-2 py-1 shadow-lg">
+        <div className="grid grid-cols-4 gap-1 text-center">
+          {/* Tab 1: AI Phong Thủy (Direct trigger to open/toggle AI Chatbot) */}
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('toggle-ai-chat'));
+            }}
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-800 hover:text-stone-950 transition-colors relative group"
+            aria-label="Mở Trợ Lý AI Phong Thủy"
+          >
+            <div className="relative w-7 h-7 rounded-full bg-gradient-to-tr from-stone-900 to-stone-800 text-amber-400 flex items-center justify-center mb-0.5 shadow-xs border border-stone-700">
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            </div>
+            <span className="text-[10px] font-bold leading-none text-stone-900">AI Phong Thủy</span>
+          </button>
+
+          {/* Tab 2: Mẫu Bàn Thờ */}
+          <a
+            href="/san-pham"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
+          >
+            <div className="w-7 h-7 rounded-full bg-stone-100 text-stone-700 flex items-center justify-center mb-0.5 border border-stone-200">
+              <Layers className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[10px] font-bold leading-none">Mẫu Bàn Thờ</span>
+          </a>
+
+          {/* Tab 3: Thước Lỗ Ban */}
+          <a
+            href="/thuoc-lo-ban"
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-stone-700 hover:text-stone-950 transition-colors"
+          >
+            <div className="w-7 h-7 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-0.5 border border-amber-200">
+              <Ruler className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[10px] font-bold leading-none">Thước Lỗ Ban</span>
+          </a>
+
+          {/* Tab 4: Tặng Văn Khấn */}
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(true);
+              setSubmitted(false);
+            }}
+            className="flex flex-col items-center justify-center py-1 px-1 rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow-2xs transition-colors"
+          >
+            <div className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center mb-0.5">
+              <Gift className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-[10px] font-bold leading-none">Tặng Văn Khấn</span>
+          </button>
+        </div>
+      </div>
 
       {/* Modal Form: Nhận Tài Liệu & Video Mộc */}
       {isOpen && (
@@ -69,7 +191,7 @@ export default function SpiritualHooks() {
                   <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block mb-1">
                     Cẩm Nang Tâm Linh Độc Quyền
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900">
+                  <h3 className="text-xl sm:text-2xl  font-bold text-stone-900">
                     Trọn Bộ Văn Khấn & Clip Mộc 15s
                   </h3>
                   <p className="text-xs text-stone-600 mt-1.5 leading-relaxed">
@@ -132,7 +254,7 @@ export default function SpiritualHooks() {
                 <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-serif font-bold text-stone-900 mb-2">
+                <h3 className="text-xl  font-bold text-stone-900 mb-2">
                   Đã Tiếp Nhận Yêu Cầu Của Gia Chủ!
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 mb-6 leading-relaxed">

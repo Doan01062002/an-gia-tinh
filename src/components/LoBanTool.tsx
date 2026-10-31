@@ -19,7 +19,7 @@ export default function LoBanTool() {
           <span>Thước Lỗ Ban 38.8cm Âm Phần Chuẩn Phong Thủy</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-serif-luxury font-bold text-stone-900 mb-2">
+        <h2 className="text-2xl sm:text-3xl font-black font-bold text-stone-900 mb-2">
           Tra Cứu Kích Thước Bàn Thờ Chuẩn Cung Đỏ
         </h2>
 
@@ -50,7 +50,7 @@ export default function LoBanTool() {
                 step="0.5"
                 value={dimension}
                 onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
-                className="w-full text-2xl font-serif font-black text-center px-4 py-2 bg-white border-2 border-stone-300 rounded-xl text-stone-900 shadow-inner focus:outline-none focus:border-amber-600"
+                className="w-full text-2xl  font-black text-center px-4 py-2 bg-white border-2 border-stone-300 rounded-xl text-stone-900 shadow-inner focus:outline-none focus:border-amber-600"
               />
               <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-stone-500">
                 cm
@@ -166,7 +166,7 @@ export default function LoBanTool() {
                 </span>
 
                 <div className="flex items-baseline gap-3">
-                  <span className="text-4xl sm:text-5xl font-serif font-black text-stone-900">
+                  <span className="text-4xl sm:text-5xl  font-black text-stone-900">
                     {dimension} cm
                   </span>
                   <span className="text-xl sm:text-2xl font-bold text-stone-800">
@@ -255,7 +255,7 @@ export default function LoBanTool() {
         {/* Zalo Callout Banner */}
         <div className="p-6 rounded-2xl bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="font-serif font-bold text-lg text-amber-400">
+            <h4 className=" font-bold text-lg text-amber-400">
               Gia chủ chưa rõ hướng và kích thước ban thờ hợp tuổi?
             </h4>
             <p className="text-stone-300 text-xs sm:text-sm mt-1">

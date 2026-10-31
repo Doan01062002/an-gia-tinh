@@ -184,7 +184,7 @@ export default function ProductGallery({ products }: Props) {
               {/* Chevron Ribbon Header Tag (Exact Tâm Phát Style) */}
               <div className="flex items-center justify-between mb-3.5 sm:mb-5 border-b-2 border-[#7A1212]">
                 <div className="relative inline-flex items-center">
-                  <div className="bg-[#7A1212] text-white font-serif font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-3.5 py-1.5 sm:px-5 sm:py-2 flex items-center gap-2">
+                  <div className="bg-[#7A1212] text-white font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-3.5 py-1.5 sm:px-5 sm:py-2 flex items-center gap-2">
                     <span>{section.title}</span>
                   </div>
                   {/* Chevron Right Arrow Point */}
@@ -218,7 +218,7 @@ export default function ProductGallery({ products }: Props) {
           {/* Filtered Chevron Ribbon Header */}
           <div className="flex items-center justify-between mb-3.5 sm:mb-5 border-b-2 border-[#7A1212]">
             <div className="relative inline-flex items-center">
-              <div className="bg-[#7A1212] text-white font-serif font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-3.5 py-1.5 sm:px-5 sm:py-2">
+              <div className="bg-[#7A1212] text-white font-black text-xs sm:text-sm md:text-base uppercase tracking-wider px-3.5 py-1.5 sm:px-5 sm:py-2">
                 <span>{categories.find(c => c.id === activeCategory)?.label || 'DANH MỤC'}</span>
               </div>
               <div className="w-0 h-0 border-y-[15px] sm:border-y-[19px] border-y-transparent border-l-[10px] sm:border-l-[14px] border-l-[#7A1212]" />
@@ -259,7 +259,7 @@ export default function ProductGallery({ products }: Props) {
             </div>
 
             <div className="p-4 sm:p-5">
-              <h4 className="font-serif font-bold text-stone-900 text-sm sm:text-base mb-1">
+              <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-1">
                 {zoomImage.title}
               </h4>
               <p className="text-xs text-amber-900 font-semibold mb-2">

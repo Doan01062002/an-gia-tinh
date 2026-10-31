@@ -1,4 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="48" fill="#2C1A11" stroke="#D4AF37" stroke-width="4"/>
-  <text x="50" y="65" font-size="42" text-anchor="middle" fill="#D4AF37">🪷</text>
+  <defs>
+    <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B0000" />
+      <stop offset="100%" stop-color="#550000" />
+    </linearGradient>
+    <linearGradient id="fav-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2A3" />
+      <stop offset="40%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Crimson Base Circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#fav-bg)" stroke="url(#fav-gold)" stroke-width="3"/>
+
+  <!-- Altar Curved Roof / Mái Đình -->
+  <path d="M 22 42 Q 50 34 78 42 Q 68 47 50 45 Q 32 47 22 42 Z" fill="url(#fav-gold)" />
+
+  <!-- Sacred Lotus Petals -->
+  <!-- Center Main Petal -->
+  <path d="M 50 20 C 58 32, 62 46, 50 62 C 38 46, 42 32, 50 20 Z" fill="url(#fav-gold)" />
+  <!-- Left Petal -->
+  <path d="M 50 62 C 38 58, 28 44, 32 32 C 38 42, 44 54, 50 62 Z" fill="url(#fav-gold)" opacity="0.9" />
+  <!-- Right Petal -->
+  <path d="M 50 62 C 62 58, 72 44, 68 32 C 62 42, 56 54, 50 62 Z" fill="url(#fav-gold)" opacity="0.9" />
+
+  <!-- Lotus Pedestal Base -->
+  <path d="M 30 68 Q 50 64 70 68 Q 62 76 50 76 Q 38 76 30 68 Z" fill="url(#fav-gold)" />
+  <rect x="36" y="77" width="28" height="3" rx="1.5" fill="url(#fav-gold)" />
 </svg>

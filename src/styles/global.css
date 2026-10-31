@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wood-950: #1a0f0a;
+  --color-wood-900: #2c1a11;
+  --color-wood-800: #3d2317;
+  --color-wood-700: #543120;
+  --color-wood-600: #73432c;
+  --color-wood-500: #965a3c;
+  --color-wood-400: #b57a55;
+  --color-wood-300: #d4a37f;
+  --color-wood-200: #e9ccaF;
+  --color-wood-100: #f5e9dc;
+  --color-wood-50: #faf6f0;
+
+  --color-gold-600: #9e7529;
+  --color-gold-500: #bfa044;
+  --color-gold-400: #d4af37;
+  --color-gold-300: #e5c76b;
+  --color-gold-100: #fbf5de;
+
+  --color-auspicious-red: #b91c1c;
+  --color-auspicious-darkred: #991b1b;
+}
+
+:root {
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #faf7f2;
+  color: #2c1a11;
+}
+
+/* Custom styling for wooden spiritual warmth */
+.wood-gradient {
+  background: linear-gradient(135deg, #2c1a11 0%, #3d2317 50%, #1a0f0a 100%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37 0%, #e5c76b 50%, #bfa044 100%);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f3df9b 50%, #c5a059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

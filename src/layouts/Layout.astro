@@ -1,0 +1,46 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEOHead from '../components/SEOHead.astro';
+import SpiritualHooks from '../components/SpiritualHooks';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'product';
+  schema?: Record<string, any>;
+}
+
+const { title, description, image, type, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      schema={schema}
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#FAF7F2] text-[#2C1A11] antialiased selection:bg-gold-300 selection:text-wood-950">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    {/* Floating spiritual hooks & phone/zalo actions */}
+    <SpiritualHooks client:idle />
+  </body>
+</html>

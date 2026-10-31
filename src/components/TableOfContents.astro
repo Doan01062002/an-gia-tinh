@@ -1,0 +1,40 @@
+---
+export interface HeadingItem {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+export interface Props {
+  headings: HeadingItem[];
+}
+
+const { headings } = Astro.props;
+
+// Filter only h2 and h3
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class="my-8 p-6 bg-wood-50 rounded-2xl border-2 border-wood-200/80 shadow-sm" aria-label="Mục lục bài viết">
+    <div class="flex items-center gap-2 pb-3 mb-4 border-b border-wood-200">
+      <span class="text-xl">📑</span>
+      <h3 class="font-serif font-bold text-lg text-wood-950">
+        Mục Lục Bài Viết (Chi Tiết H2 & H3)
+      </h3>
+    </div>
+
+    <ul class="space-y-2 text-sm text-wood-800">
+      {filteredHeadings.map((heading) => (
+        <li class={heading.depth === 3 ? "ml-6 list-disc text-xs text-wood-600" : "font-semibold text-wood-900"}>
+          <a
+            href={`#${heading.slug}`}
+            class="hover:text-gold-600 transition-colors inline-block py-0.5"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

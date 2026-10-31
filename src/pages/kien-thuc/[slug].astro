@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { ARTICLES, type Article } from '../../data/articles';
+
+export function getStaticPaths() {
+  return ARTICLES.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+export interface Props {
+  article: Article;
+}
+
+const { article } = Astro.props;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  image: article.coverImage,
+  datePublished: article.publishDate,
+  author: {
+    '@type': 'Person',
+    name: article.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'An Gia Tịnh',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80',
+    },
+  },
+};
+---
+
+<Layout
+  title={`${article.title} — An Gia Tịnh`}
+  description={article.description}
+  image={article.coverImage}
+  type="article"
+  schema={articleSchema}
+>
+  {/* Article Header */}
+  <header class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-wood-800 text-gold-300 text-xs font-semibold border border-gold-500/30">
+        <span>{article.category}</span>
+        <span>•</span>
+        <span>{article.readingTime}</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-black leading-tight">
+        {article.title}
+      </h1>
+
+      <div class="text-xs sm:text-sm text-wood-300 flex items-center justify-center gap-4 pt-2">
+        <span>Tác giả: <strong class="text-white">{article.author}</strong></span>
+        <span>•</span>
+        <span>Ngày đăng: 31/10/2026</span>
+      </div>
+    </div>
+  </header>
+
+  {/* Main Article Container */}
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <div class="bg-white p-6 sm:p-12 rounded-3xl border border-wood-100 shadow-sm">
+      {/* Featured Image */}
+      <div class="aspect-16/9 rounded-2xl overflow-hidden mb-8 shadow-md">
+        <img
+          src={article.coverImage}
+          alt={article.title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Hierarchical Table of Contents (H2 -> H3) */}
+      <TableOfContents headings={article.headings} />
+
+      {/* Article Body */}
+      <div class="prose prose-wood prose-lg max-w-none text-wood-900 leading-relaxed space-y-6">
+        <Fragment set:html={article.contentHtml} />
+      </div>
+
+      {/* Author Credential Box */}
+      <div class="mt-12 p-6 rounded-2xl bg-wood-50 border border-wood-200 flex flex-col sm:flex-row items-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-wood-800 text-gold-400 flex items-center justify-center text-3xl font-serif font-bold shrink-0">
+          🪵
+        </div>
+        <div>
+          <h4 class="font-serif font-bold text-base text-wood-950">
+            {article.author}
+          </h4>
+          <p class="text-xs text-wood-600 mt-1 leading-relaxed">
+            Hơn 25 năm kinh nghiệm đục mộng gỗ truyền thống và tư vấn phong thủy Thước Lỗ Ban 38.8cm cho hàng nghìn không gian thờ tự tại làng nghề Thạch Thất & Sơn Đồng, Hà Nội.
+          </p>
+        </div>
+      </div>
+
+      {/* Article Bottom CTA */}
+      <div class="mt-10 p-6 sm:p-8 bg-gradient-to-r from-wood-950 to-wood-900 text-white rounded-2xl border border-gold-500/40 text-center space-y-4">
+        <h3 class="text-xl sm:text-2xl font-serif font-bold text-gold-300">
+          Gia Chủ Cần Tư Vấn Kích Thước Bàn Thờ Chuẩn Cung Đỏ Hợp Tuổi?
+        </h3>
+        <p class="text-xs sm:text-sm text-wood-200 max-w-xl mx-auto">
+          Nhắn tin trực tiếp với nghệ nhân xưởng An Gia Tịnh để nhận bản vẽ kích thước Lỗ Ban 38.8cm và clip mộc thô 15s kiểm tra thớ vân miễn phí.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a
+            href="https://zalo.me/0339533380"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-wood-950 font-bold text-sm rounded-lg shadow-md transition-all"
+          >
+            Nhắn Zalo Thợ Cả: 0339.533.380
+          </a>
+          <a
+            href="/thuoc-lo-ban"
+            class="px-5 py-3 bg-wood-800 hover:bg-wood-700 text-white font-semibold text-sm rounded-lg border border-gold-500/30 transition-all"
+          >
+            Tra Cứu Thước Lỗ Ban Online
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

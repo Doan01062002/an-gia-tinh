@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ARTICLES } from '../../data/articles';
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Cẩm Nang Văn Khấn & Phong Thủy Bàn Thờ — An Gia Tịnh',
+  description: 'Chuyên mục chia sẻ kiến thức chuẩn phong thủy về Thước Lỗ Ban 38.8cm, bài văn khấn an vị bàn thờ gia tiên, cách nhận biết gỗ lõi không dính rác.',
+  url: 'https://an-gia-tinh.vercel.app/kien-thuc',
+};
+---
+
+<Layout
+  title="Cẩm Nang Văn Khấn & Phong Thủy Bàn Thờ — An Gia Tịnh"
+  description="Chia sẻ kinh nghiệm chọn bàn thờ chung cư chuẩn Lỗ Ban 38.8cm, bài văn khấn an vị bàn thờ mới, cách phân biệt 100% gỗ lõi tự nhiên không dính rác."
+  schema={blogSchema}
+>
+  <div class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-3 py-1 bg-wood-800 text-gold-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-3 border border-gold-500/30">
+        Kiến Thức Mộc Làng Nghề & Tâm Linh Cổ Truyền
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-serif font-black mb-3">
+        Cẩm Nang Không Gian Thờ Tự
+      </h1>
+      <p class="text-wood-200 text-sm sm:text-base max-w-2xl mx-auto">
+        Tổng hợp các bài viết chuyên sâu về phong thủy Thước Lỗ Ban 38.8cm, trọn bộ bài văn khấn gia tiên và cẩm nang kiểm tra gỗ lõi không rác.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {ARTICLES.map((article) => (
+        <article class="bg-white rounded-2xl overflow-hidden border border-wood-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="aspect-16/9 overflow-hidden bg-wood-100">
+            <img
+              src={article.coverImage}
+              alt={article.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs text-gold-600 font-bold mb-2">
+                <span>{article.category}</span>
+                <span>•</span>
+                <span class="text-wood-400 font-normal">{article.readingTime}</span>
+              </div>
+              <h2 class="text-lg sm:text-xl font-serif font-bold text-wood-950 group-hover:text-gold-600 transition-colors line-clamp-2 mb-2">
+                <a href={`/kien-thuc/${article.slug}`}>
+                  {article.title}
+                </a>
+              </h2>
+              <p class="text-xs sm:text-sm text-wood-600 line-clamp-3 mb-4 leading-relaxed">
+                {article.description}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-wood-100 flex items-center justify-between text-xs text-wood-500">
+              <span>{article.author}</span>
+              <a href={`/kien-thuc/${article.slug}`} class="font-bold text-red-700 hover:text-red-900">
+                Đọc bài viết →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

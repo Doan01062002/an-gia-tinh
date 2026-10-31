@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { PRODUCTS } from '../../data/products';
+
+const categories = [
+  { id: 'all', name: 'Tất Cả Mẫu' },
+  { id: 'ban-tho-treo', name: 'Bàn Thờ Treo Chung Cư' },
+  { id: 'ban-tho-dung', name: 'Bàn Thờ Đứng Gia Tiên' },
+  { id: 'combo-phong-tho', name: 'Tranh Trúc Chỉ & Combo' },
+  { id: 'phu-kien', name: 'Vách CNC & Tấm Chắn Khói' },
+];
+
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Danh Mục Bàn Thờ & Phụ Kiện Phòng Thờ An Gia Tịnh',
+  itemListElement: PRODUCTS.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: `https://an-gia-tinh.vercel.app/san-pham/${item.slug}`,
+  })),
+};
+---
+
+<Layout
+  title="Bộ Sưu Tập Bàn Thờ Hiện Đại & Phụ Kiện Chuẩn Lỗ Ban — An Gia Tịnh"
+  description="Khám phá các mẫu bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng 61x107cm, tranh Trúc Chỉ hoa sen đèn LED. 100% gỗ lõi không rác, bảo hành 10-20 năm."
+  schema={catalogSchema}
+>
+  <div class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-3 py-1 bg-wood-800 text-gold-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-3 border border-gold-500/30">
+        100% Gỗ Lõi Tự Nhiên • Đền Bù 200% Nếu Pha Rác
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-serif font-black mb-3">
+        Bộ Sưu Tập Bàn Thờ & Không Gian Thờ
+      </h1>
+      <p class="text-wood-200 text-sm sm:text-base max-w-2xl mx-auto">
+        Tất cả sản phẩm đều được tính toán kích thước chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ, hoàn thiện thủ công bằng mộng đục thắt truyền thống không dùng đinh kim loại.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {/* Product Grid */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {PRODUCTS.map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+
+    {/* Custom Order Box for Phú Thọ Workshop */}
+    <div class="mt-16 bg-gradient-to-r from-wood-950 via-wood-900 to-wood-950 text-white p-8 sm:p-10 rounded-3xl border border-gold-500/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <span class="text-gold-400 text-xs font-bold uppercase tracking-widest block">
+          Xưởng Mộc Phú Thọ — Năng Lực May Đo Đại Quy Mô
+        </span>
+        <h3 class="text-2xl font-serif font-bold text-white">
+          Gia Chủ Cần Thi Công Trọn Gói Phòng Thờ Theo Bản Vẽ 3D?
+        </h3>
+        <p class="text-wood-300 text-xs sm:text-sm max-w-xl">
+          Xưởng gia đình tại Đoan Hùng, Phú Thọ nhận đóng án gian, sập thờ ngũ phúc, cuốn thư câu đối bằng gỗ Gụ, Gõ Đỏ, Mít Ta theo đúng thiết kế của Kiến trúc sư.
+        </p>
+      </div>
+
+      <a
+        href="https://zalo.me/0339533380"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-wood-950 font-bold text-sm rounded-xl shadow-lg hover:shadow-gold-500/30 transition-all shrink-0 whitespace-nowrap"
+      >
+        Gửi Bản Vẽ Qua Zalo
+      </a>
+    </div>
+  </div>
+</Layout>

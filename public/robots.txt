@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://an-gia-tinh.vercel.app/sitemap-index.xml

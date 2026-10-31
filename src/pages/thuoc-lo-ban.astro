@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LoBanTool from '../components/LoBanTool';
+
+const loBanSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Thước Lỗ Ban 38.8cm Online — Tra Cứu Phong Thủy Bàn Thờ Chuẩn Cung Đỏ',
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'VND',
+  },
+  description: 'Công cụ tra cứu Thước Lỗ Ban 38.8cm (Âm Phần - Đồ Thờ) online chuẩn xác nhất. Giúp xác định kích thước ban thờ gia tiên, bàn thờ chung cư rơi vào cung đỏ đại cát.',
+};
+---
+
+<Layout
+  title="Thước Lỗ Ban 38.8cm Online — Tra Cứu Kích Thước Bàn Thờ Chuẩn Cung Đỏ | An Gia Tịnh"
+  description="Công cụ tra cứu Thước Lỗ Ban 38.8cm (Âm phần - Đồ thờ) trực tuyến miễn phí. Kiểm tra ngay kích thước bàn thờ gia tiên, bàn thờ chung cư chuẩn Cung Đỏ: Đinh, Vượng, Nghĩa, Quan, Hưng, Tài."
+  schema={loBanSchema}
+>
+  <div class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-3 py-1 bg-wood-800 text-gold-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-3 border border-gold-500/30">
+        Tra Cứu Phong Thủy Bàn Thờ Miễn Phí
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-serif font-black mb-3">
+        Thước Lỗ Ban 38.8cm Âm Phần Online
+      </h1>
+      <p class="text-wood-200 text-sm sm:text-base max-w-2xl mx-auto">
+        Kéo trượt hoặc nhập số đo (cm) để tra cứu chính xác Cung Đỏ (Đại Cát) hay Cung Đen (Hung Hiểm) cho bàn thờ treo tường và bàn thờ đứng gia tiên.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    {/* Interactive React Tool */}
+    <LoBanTool client:load />
+
+    {/* Educational content for SEO & AI Answer Engine */}
+    <article class="bg-white p-8 sm:p-10 rounded-3xl border border-wood-100 shadow-sm space-y-8 text-wood-800 text-sm sm:text-base leading-relaxed">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-wood-950 mb-3">
+          1. Thước Lỗ Ban 38.8cm Là Gì? Tại Sao Bắt Buộc Dùng Cho Bàn Thờ?
+        </h2>
+        <p>
+          Trong văn hóa kiến trúc phong thủy phương Đông, có 3 loại Thước Lỗ Ban với mục đích hoàn toàn khác nhau:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-wood-700">
+          <li><strong>Thước Lỗ Ban 52.2cm (Thông Thủy):</strong> Dùng đo khoảng lọt sáng của cửa đi, cửa sổ, giếng trời.</li>
+          <li><strong>Thước Lỗ Ban 42.9cm (Dương Trạch):</strong> Dùng đo khối xây dựng, bậc cầu thang, bếp, giường ngủ.</li>
+          <li><strong>Thước Lỗ Ban 38.8cm (hay 39cm - Âm Phần):</strong> <em>DÙNG RIÊNG CHO BÀN THỜ, ĐỒ THỜ TÂM LINH VÀ MỒ MẢ.</em></li>
+        </ul>
+        <p class="mt-3">
+          Nếu người thợ mộc thiếu hiểu biết mà dùng nhầm thước 52.2cm hoặc 42.9cm để đóng bàn thờ thì rất dễ rơi vào cung hung hại của thước 38.8cm, ảnh hưởng trực tiếp đến gia đạo và tài lộc của gia chủ.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-wood-950 mb-3">
+          2. Cấu Trúc 10 Cung Của Thước Lỗ Ban 38.8cm
+        </h2>
+        <p>
+          Một chu kỳ của thước là <strong>38.8 cm</strong>, được chia làm 10 cung lớn (mỗi cung rộng 3.88 cm). Trong đó có <strong>6 Cung Tốt (Cung Đỏ)</strong> và <strong>4 Cung Xấu (Cung Đen)</strong>:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div class="p-4 rounded-xl bg-red-50 border border-red-200">
+            <h3 class="font-bold text-red-700 text-base mb-2">🔴 6 CUNG ĐỎ CÁT TƯỜNG (NÊN CHỌN):</h3>
+            <ul class="space-y-1 text-xs text-red-900">
+              <li><strong>1. Cung Đinh:</strong> Con cái đỗ đạt, tiền của dồi dào, phúc tinh chiếu rọi.</li>
+              <li><strong>2. Cung Vượng:</strong> Hỷ sự liên miên, thêm phúc thêm lộc.</li>
+              <li><strong>3. Cung Nghĩa:</strong> Gia đình hiếu thảo, đại cát đại lợi, có quý nhân giúp đỡ.</li>
+              <li><strong>4. Cung Quan:</strong> Đường công danh thăng tiến, thi cử đỗ đạt cao.</li>
+              <li><strong>5. Cung Hưng:</strong> Gia đạo hưng thịnh phồn vinh, sinh quý tử.</li>
+              <li><strong>6. Cung Tài:</strong> Đón nhận phúc lớn, lục hợp tương sinh, tài lộc hanh thông.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-xl bg-zinc-100 border border-zinc-300">
+            <h3 class="font-bold text-zinc-800 text-base mb-2">⚫ 4 CUNG ĐEN HUNG HIỂM (TRÁNH CHỌN):</h3>
+            <ul class="space-y-1 text-xs text-zinc-700">
+              <li><strong>1. Cung Hại:</strong> Vướng khẩu thiệt thị phi, ốm đau bệnh tật.</li>
+              <li><strong>2. Cung Khổ:</strong> Tiền tài thất thoát, dính líu quan quỷ kiện cáo.</li>
+              <li><strong>3. Cung Tử:</strong> Ly hương phân tán, hao tổn con cháu.</li>
+              <li><strong>4. Cung Thất:</strong> Công sức đổ sông đổ biển, cô quả bần hàn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</Layout>

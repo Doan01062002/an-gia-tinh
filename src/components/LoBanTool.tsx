@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { calculateLoBan388, POPULAR_ALTAR_SIZES } from '../data/loban';
-import { Ruler, Award, AlertCircle, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { Ruler, Award, AlertCircle, MessageCircle } from 'lucide-react';
 
 export default function LoBanTool() {
   const [dimension, setDimension] = useState<number>(81);
@@ -11,16 +11,16 @@ export default function LoBanTool() {
   const cursorPercent = Math.min(Math.max((cycleRemainder / 38.8) * 100, 0), 100);
 
   const cungs = [
-    { name: 'Đinh', good: true },
-    { name: 'Hại', good: false },
-    { name: 'Vượng', good: true },
-    { name: 'Khổ', good: false },
-    { name: 'Nghĩa', good: true },
-    { name: 'Quan', good: true },
-    { name: 'Tử', good: false },
-    { name: 'Hưng', good: true },
-    { name: 'Thất', good: false },
-    { name: 'Tài', good: true },
+    { name: 'Đinh', good: true, short: 'Đ' },
+    { name: 'Hại', good: false, short: 'H' },
+    { name: 'Vượng', good: true, short: 'V' },
+    { name: 'Khổ', good: false, short: 'K' },
+    { name: 'Nghĩa', good: true, short: 'N' },
+    { name: 'Quan', good: true, short: 'Q' },
+    { name: 'Tử', good: false, short: 'T' },
+    { name: 'Hưng', good: true, short: 'H' },
+    { name: 'Thất', good: false, short: 'T' },
+    { name: 'Tài', good: true, short: 'T' },
   ];
 
   return (
@@ -79,26 +79,26 @@ export default function LoBanTool() {
               aria-label="Thanh trượt thước Lỗ Ban"
               className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-red-700"
             />
-            <div className="flex justify-between text-[10px] sm:text-[11px] text-stone-500 font-mono">
-              <span>20 cm</span>
-              <span>60 cm</span>
-              <span>100 cm</span>
-              <span>140 cm</span>
-              <span>180 cm</span>
-              <span>220 cm</span>
+            <div className="flex justify-between text-[10px] sm:text-[11px] text-stone-500 font-mono whitespace-nowrap">
+              <span>20cm</span>
+              <span>60cm</span>
+              <span>100cm</span>
+              <span>140cm</span>
+              <span>180cm</span>
+              <span>220cm</span>
             </div>
           </div>
         </div>
 
         {/* Visual Dual-Band Modern Architectural Ruler (Responsive & Anti-Clash) */}
         <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 text-white shadow-md">
-          <div className="flex items-center justify-between mb-2.5 text-xs">
+          <div className="flex items-center justify-between mb-2 text-xs">
             <span className="font-semibold text-amber-400 flex items-center gap-1.5">
               <Ruler className="w-3.5 h-3.5" />
-              <span>10 Cung Lỗ Ban 38.8cm</span>
+              <span>10 Cung Thước Lỗ Ban</span>
             </span>
             <span className="text-[11px] font-mono text-stone-300">
-              Điểm rơi chu kỳ: <strong className="text-amber-300">{cycleRemainder.toFixed(1)}</strong> / 38.8 cm
+              Điểm rơi: <strong className="text-amber-300">{cycleRemainder.toFixed(1)}</strong> / 38.8 cm
             </span>
           </div>
 
@@ -111,7 +111,7 @@ export default function LoBanTool() {
                 return (
                   <div
                     key={idx}
-                    className={`flex flex-col items-center justify-center rounded-xs transition-all relative ${
+                    className={`min-w-0 flex flex-col items-center justify-center rounded-xs transition-all relative overflow-hidden ${
                       c.good ? 'bg-red-700 text-white' : 'bg-stone-800 text-stone-300'
                     } ${
                       isCurrent
@@ -119,11 +119,19 @@ export default function LoBanTool() {
                         : 'opacity-75'
                     }`}
                   >
-                    <span className="text-[10px] sm:text-xs font-bold leading-tight truncate px-0.5">
+                    {/* Desktop: Full Name */}
+                    <span className="hidden sm:inline text-xs font-bold leading-tight truncate px-0.5">
                       {c.name}
                     </span>
                     <span className="hidden sm:inline text-[8px] uppercase tracking-tighter opacity-90">
                       {c.good ? 'Cát' : 'Hung'}
+                    </span>
+                    {/* Mobile: Clean Letter + Cát/Hung mark */}
+                    <span className="sm:hidden text-[10px] font-black leading-none">
+                      {c.short}
+                    </span>
+                    <span className={`sm:hidden text-[7px] font-bold mt-0.5 ${c.good ? 'text-amber-300' : 'text-stone-400'}`}>
+                      {c.good ? '●' : '○'}
                     </span>
                   </div>
                 );
@@ -142,9 +150,9 @@ export default function LoBanTool() {
 
           {/* Active Cung Indicator Ribbon */}
           {result && result.cung && (
-            <div className="mt-2.5 flex items-center justify-between text-[11px] pt-1 border-t border-stone-800">
+            <div className="mt-2.5 flex items-center justify-between text-[11px] pt-1.5 border-t border-stone-800">
               <span className="text-stone-400">
-                Đang đo: <strong className="text-white">{dimension} cm</strong>
+                Số đo: <strong className="text-white">{dimension} cm</strong>
               </span>
               <span className={`font-bold flex items-center gap-1 ${result.isGood ? 'text-amber-400' : 'text-stone-400'}`}>
                 {result.isGood ? <Award className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
@@ -152,6 +160,16 @@ export default function LoBanTool() {
               </span>
             </div>
           )}
+
+          {/* Mobile Legend */}
+          <div className="sm:hidden flex items-center justify-center gap-3 text-[10px] text-stone-400 pt-1">
+            <span className="flex items-center gap-1">
+              <span className="text-amber-400">●</span> Cát Tường (Đỏ)
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="text-stone-500">○</span> Hung Hiểm (Đen)
+            </span>
+          </div>
         </div>
 
         {/* Real-time Result Card */}

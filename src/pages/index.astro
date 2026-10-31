@@ -4,6 +4,7 @@ import ProductGallery from '../components/ProductGallery';
 import LoBanTool from '../components/LoBanTool';
 import FengShuiDirectionTool from '../components/FengShuiDirectionTool';
 import { PRODUCTS } from '../data/products';
+import { ARTICLES } from '../data/articles';
 
 const completedProjects = [
   {
@@ -106,51 +107,8 @@ const homeSchema = {
     </div>
   </section>
 
-  {/* 4. Quy Trình 3 Bước Mua Hàng An Toàn */}
-  <section class="py-8 sm:py-12 bg-[#FAFAF9] border-b border-stone-200">
-    <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
-      <div class="text-center mb-6">
-        <h2 class="text-lg sm:text-2xl font-black text-stone-900 tracking-tight">
-          3 Bước Đặt Bàn Thờ Chuẩn Phong Thủy
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
-          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-black text-xs flex items-center justify-center">
-            01
-          </span>
-          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Chọn Kích Thước Lỗ Ban</h3>
-          <p class="text-[11px] text-stone-600 font-light">
-            Chọn mẫu 48x81, 48x89cm chuẩn Cung Đỏ Hỷ Sự, Thêm Phúc.
-          </p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
-          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-black text-xs flex items-center justify-center">
-            02
-          </span>
-          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Duyệt Video Mộc 15s</h3>
-          <p class="text-[11px] text-stone-600 font-light">
-            Xưởng quay cận cảnh thớ vân mộc thô gửi Zalo trước khi phun sơn.
-          </p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-white border border-stone-200 shadow-2xs space-y-1">
-          <span class="w-6 h-6 rounded-md bg-amber-500/15 text-amber-800 font-black text-xs flex items-center justify-center">
-            03
-          </span>
-          <h3 class="font-bold text-xs sm:text-sm text-stone-900">Giao COD Toàn Quốc</h3>
-          <p class="text-[11px] text-stone-600 font-light">
-            Giao tận nhà. Gia chủ bóc hộp kiểm tra gỗ lõi mới thanh toán.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* 5. Bộ Tiện Ích Phong Thủy: Thước Lỗ Ban 38.8cm & Tra Hướng Đặt Ban Thờ Theo Tuổi */}
-  <section class="py-8 sm:py-12 bg-white space-y-10">
+  {/* 4. Bộ Tiện Ích Phong Thủy: Thước Lỗ Ban 38.8cm & Tra Hướng Đặt Ban Thờ Theo Tuổi */}
+  <section class="py-8 sm:py-12 bg-white space-y-10 border-b border-stone-200">
     <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
       <div class="text-center mb-6">
         <h2 class="text-lg sm:text-2xl font-black text-stone-900 tracking-tight">
@@ -166,6 +124,82 @@ const homeSchema = {
 
     <div class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
       <FengShuiDirectionTool client:load />
+    </div>
+  </section>
+
+  {/* 5. Cẩm Nang & Blog Phong Thủy Thờ Cúng (Ngay Trên Đoạn Footer) */}
+  <section class="py-10 sm:py-16 bg-[#FAFAF9]">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+        <div>
+          <span class="text-[10px] sm:text-xs font-bold text-amber-800 uppercase tracking-widest block mb-1">
+            Cẩm Nang Thờ Cúng
+          </span>
+          <h2 class="text-xl sm:text-3xl font-black text-stone-900 tracking-tight">
+            Kiến Thức Phong Thủy & Không Gian Thờ
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 font-light mt-1 max-w-xl">
+            Tổng hợp bài văn khấn an vị, kinh nghiệm tra Thước Lỗ Ban 38.8cm và cẩm nang lựa chọn gỗ tự nhiên bền đẹp.
+          </p>
+        </div>
+        <a
+          href="/kien-thuc"
+          class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-900 group shrink-0"
+        >
+          <span>Xem tất cả bài viết</span>
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        {ARTICLES.slice(0, 3).map((article) => (
+          <article class="bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-2xs hover:shadow-lg hover:border-amber-700/30 transition-all duration-300 flex flex-col group">
+            <div class="aspect-16/9 overflow-hidden bg-stone-100 relative">
+              <img
+                src={article.coverImage}
+                alt={article.title}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[10px] font-bold shadow-xs">
+                {article.category}
+              </span>
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 text-[11px] text-stone-500 mb-2">
+                  <span>{article.readingTime}</span>
+                  <span class="text-stone-300">•</span>
+                  <span>{article.publishDate}</span>
+                </div>
+
+                <h3 class="text-sm sm:text-base font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-2 leading-snug mb-2">
+                  <a href={`/kien-thuc/${article.slug}`}>
+                    {article.title}
+                  </a>
+                </h3>
+
+                <p class="text-xs text-stone-600 line-clamp-2 font-light leading-relaxed mb-4">
+                  {article.description}
+                </p>
+              </div>
+
+              <div class="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                <span class="text-stone-500 text-[11px] font-medium truncate max-w-[150px]">
+                  {article.author.split('(')[0].trim()}
+                </span>
+                <a
+                  href={`/kien-thuc/${article.slug}`}
+                  class="font-bold text-amber-800 hover:text-amber-900 flex items-center gap-1 group/btn"
+                >
+                  <span>Đọc tiếp</span>
+                  <span class="group-hover/btn:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>

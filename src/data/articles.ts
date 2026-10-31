@@ -129,4 +129,54 @@ export const ARTICLES: Article[] = [
       <p>An Gia Tịnh áp dụng chính sách bảo hành chất lượng 10 năm cho gỗ Sồi Mỹ và 20 năm cho các dòng gỗ quý (Gõ Đỏ, Gụ Lào, Mít Ta), bảo trì trọn đời và hỗ trợ đổi mới nếu phát sinh lỗi kỹ thuật từ nhà sản xuất.</p>
     `,
   },
+  {
+    slug: 'van-khan-an-vi-ban-tho-nhap-trach-ve-nha-moi',
+    title: 'Trọn Bộ Văn Khấn An Vị Bàn Thờ & Lễ Nhập Trạch Về Nhà Mới Chuẩn Cổ Truyền',
+    description: 'Hướng dẫn chi tiết lễ an vị bàn thờ gia tiên, thần linh khi chuyển về nhà mới hoặc căn hộ chung cư. Văn khấn chuẩn nghi thức cổ truyền đón vượng khí bình an.',
+    publishDate: '2026-10-31',
+    author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
+    category: 'Văn Khấn Cổ Truyền',
+    readingTime: '5 phút đọc',
+    coverImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80',
+    headings: [
+      { depth: 2, slug: '1-y-nghia-le-an-vi-ban-tho', text: '1. Ý nghĩa thiêng liêng của lễ an vị bàn thờ gia tiên' },
+      { depth: 2, slug: '2-le-vat-chuan-bi-an-vi-ban-tho', text: '2. Lễ vật cần chuẩn bị cho mâm cúng an vị bàn thờ mới' },
+      { depth: 3, slug: '2-1-mam-le-thanh-tinh-chay', text: '2.1. Mâm lễ thanh tịnh: Hương, hoa, trà quả' },
+      { depth: 3, slug: '2-2-nghi-thuc-bao-sai-bat-huong', text: '2.2. Nghi thức bao sái và an vị bát hương' },
+      { depth: 2, slug: '3-bai-van-khan-an-vi-ban-tho-chuan', text: '3. Bài văn khấn an vị bàn thờ gia tiên chuẩn cổ truyền' },
+      { depth: 2, slug: '4-nhung-luu-y-sau-khi-an-vi', text: '4. Những điều cần lưu ý giữ hương hỏa ấm cúng 100 ngày đầu' },
+    ],
+    contentHtml: `
+      <h2 id="1-y-nghia-le-an-vi-ban-tho">1. Ý nghĩa thiêng liêng của lễ an vị bàn thờ gia tiên</h2>
+      <p>Lễ an vị bàn thờ (còn gọi là lễ cáo yết gia tiên, an vị bát hương) là nghi thức tâm linh trang trọng nhất khi gia chủ lập bàn thờ mới hoặc chuyển về căn hộ, nhà phố mới. Nghi lễ thể hiện lòng thành kính hiếu thảo, kính cáo tiền tổ và thần linh bản thổ ngự về nơi cư ngụ mới để phù hộ độ trì cho gia đình ấm no, vạn sự hanh thông.</p>
+
+      <h2 id="2-le-vat-chuan-bi-an-vi-ban-tho">2. Lễ vật cần chuẩn bị cho mâm cúng an vị bàn thờ mới</h2>
+      <p>Tùy theo điều kiện và tập quán từng vùng miền, gia chủ có thể sắm sửa mâm lễ chay thanh tịnh hoặc mâm cỗ mặn truyền thống:</p>
+
+      <h3 id="2-1-mam-le-thanh-tinh-chay">2.1. Mâm lễ thanh tịnh: Hương, hoa, trà quả</h3>
+      <ul>
+        <li><strong>Hoa tươi:</strong> Hoa cúc vàng, hoa huệ trắng hoặc hoa sen tươi (tuyệt đối không dùng hoa giả).</li>
+        <li><strong>Mâm ngũ quả:</strong> 5 loại quả tươi ngon, màu sắc hài hòa tươi tắn.</li>
+        <li><strong>Trầu cau:</strong> 1 quả cau tươi, 3 lá trầu đẹp không rách mép.</li>
+        <li><strong>Nước chén sạch, trà thơm, nến thơm hoặc đèn dầu.</strong></li>
+        <li><strong>Gạo, muối trắng, vàng mã tạ thần linh gia tiên.</strong></li>
+      </ul>
+
+      <h3 id="2-2-nghi-thuc-bao-sai-bat-huong">2.2. Nghi thức bao sái và an vị bát hương</h3>
+      <p>Trước khi đặt bát hương lên mặt bàn thờ, cần dùng khăn sạch nhúng nước rượu gừng hoặc nước ngũ vị hương ấm để lau sạch bụi bẩn (bao sái). Tro nếp thơm sạch đóng kín trong bát hương, đặt đúng tâm giữa mặt bàn thờ.</p>
+
+      <h2 id="3-bai-van-khan-an-vi-ban-tho-chuan">3. Bài văn khấn an vị bàn thờ gia tiên chuẩn cổ truyền</h2>
+      <p><em>Nam mô A Di Đà Phật! (3 lần kèm 3 lạy)</em></p>
+      <p><em>Con lạy chín phương Trời, mười phương Chư Phật, Chư Phật mười phương.</em></p>
+      <p><em>Con kính lạy Hoàng Thiên Hậu Thổ chư vị Tôn Thần.</em></p>
+      <p><em>Con kính lạy ngài Đông Trù Tư Mệnh Táo Phủ Thần Quân, Thổ Địa Long Mạch Tôn Thần, Ngũ Phương Ngũ Thổ Phúc Đức Chính Thần.</em></p>
+      <p><em>Con kính lạy các cụ Tổ Tiên, Hiển khảo, Hiển tỷ, Bá thúc huynh đệ họ...</em></p>
+      <p><em>Hôm nay là ngày... tháng... năm... (âm lịch), gia chủ con là... cùng toàn thể gia quyến, ngụ tại địa chỉ... thành tâm thiết lập linh sàng, an vị phụng thờ tại nơi cư ngụ mới. Kính cẩn sắm sửa hương hoa trà quả, lễ vật kim ngân, kính mời chư vị Tôn Thần, Gia Tiên tiền tổ giáng lâm trước án, chứng giám lòng thành, thụ hưởng lễ vật.</em></p>
+      <p><em>Cúi xin phù hộ độ trì cho toàn thể gia quyến chúng con luôn được bình an, sức khỏe dồi dào, gia đạo hòa thuận, công danh đỗ đạt, sở cầu như ý, sở nguyện tòng tâm.</em></p>
+      <p><em>Nam mô A Di Đà Phật! (3 lần kèm 3 lạy)</em></p>
+
+      <h2 id="4-nhung-luu-y-sau-khi-an-vi">4. Những điều cần lưu ý giữ hương hỏa ấm cúng 100 ngày đầu</h2>
+      <p>Trong 100 ngày đầu sau khi an vị, gia chủ nên thắp mỗi ngày một nén nhang thơm để không gian thờ luôn tụ khí ấm áp (tụ linh). Đèn thờ hoặc tranh Trúc Chỉ hào quang LED nên duy trì ánh sáng vàng ấm dịu để tạo sinh khí tốt lành cho ngôi nhà.</p>
+    `,
+  },
 ];

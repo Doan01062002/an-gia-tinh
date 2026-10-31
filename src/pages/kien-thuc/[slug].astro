@@ -46,31 +46,31 @@ const articleSchema = {
   schema={articleSchema}
 >
   {/* Article Header */}
-  <header class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
+  <header class="bg-gradient-to-b from-[#1C100A] to-[#25150E] text-white py-14 sm:py-20 border-b-4 border-[#CFA439]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-wood-800 text-gold-300 text-xs font-semibold border border-gold-500/30">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2E1A11] text-[#E2BE5F] text-xs font-semibold border border-[#CFA439]/40">
         <span>{article.category}</span>
         <span>•</span>
         <span>{article.readingTime}</span>
       </div>
 
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-black leading-tight">
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif-luxury font-black text-[#FBF5DF] leading-tight">
         {article.title}
       </h1>
 
-      <div class="text-xs sm:text-sm text-wood-300 flex items-center justify-center gap-4 pt-2">
+      <div class="text-xs sm:text-sm text-[#D8C7B5] flex items-center justify-center gap-4 pt-2">
         <span>Tác giả: <strong class="text-white">{article.author}</strong></span>
         <span>•</span>
-        <span>Ngày đăng: 31/10/2026</span>
+        <span>Cập nhật: 31/10/2026</span>
       </div>
     </div>
   </header>
 
-  {/* Main Article Container */}
+  {/* Main Content */}
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <div class="bg-white p-6 sm:p-12 rounded-3xl border border-wood-100 shadow-sm">
-      {/* Featured Image */}
-      <div class="aspect-16/9 rounded-2xl overflow-hidden mb-8 shadow-md">
+    <div class="bg-white p-6 sm:p-12 rounded-3xl border border-[#E6DED3] shadow-sm">
+      {/* Cover Image */}
+      <div class="aspect-16/9 rounded-3xl overflow-hidden mb-8 shadow-lg bg-[#F4E8DC]">
         <img
           src={article.coverImage}
           alt={article.title}
@@ -78,51 +78,53 @@ const articleSchema = {
         />
       </div>
 
-      {/* Hierarchical Table of Contents (H2 -> H3) */}
+      {/* Hierarchical Nested TOC */}
       <TableOfContents headings={article.headings} />
 
-      {/* Article Body */}
-      <div class="prose prose-wood prose-lg max-w-none text-wood-900 leading-relaxed space-y-6">
+      {/* Body Content */}
+      <div class="prose prose-lg max-w-none text-[#24140D] leading-relaxed space-y-6 text-sm sm:text-base">
         <Fragment set:html={article.contentHtml} />
       </div>
 
       {/* Author Credential Box */}
-      <div class="mt-12 p-6 rounded-2xl bg-wood-50 border border-wood-200 flex flex-col sm:flex-row items-center gap-4">
-        <div class="w-16 h-16 rounded-full bg-wood-800 text-gold-400 flex items-center justify-center text-3xl font-serif font-bold shrink-0">
-          🪵
+      <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-[#D8A268]/60 flex flex-col sm:flex-row items-center gap-5 shadow-xs">
+        <div class="w-16 h-16 rounded-2xl bg-[#1C100A] text-[#CFA439] flex items-center justify-center font-serif font-black text-2xl shrink-0 border border-[#CFA439]/50 shadow-md">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
+          </svg>
         </div>
         <div>
-          <h4 class="font-serif font-bold text-base text-wood-950">
+          <h4 class="font-serif-luxury font-bold text-base text-[#190F0A]">
             {article.author}
           </h4>
-          <p class="text-xs text-wood-600 mt-1 leading-relaxed">
-            Hơn 25 năm kinh nghiệm đục mộng gỗ truyền thống và tư vấn phong thủy Thước Lỗ Ban 38.8cm cho hàng nghìn không gian thờ tự tại làng nghề Thạch Thất & Sơn Đồng, Hà Nội.
+          <p class="text-xs text-[#543120] mt-1.5 leading-relaxed">
+            Hơn 25 năm kinh nghiệm chế tác đồ thờ gỗ truyền thống tại làng nghề Canh Nậu - Thạch Thất và làng nghề đồ thờ Sơn Đồng - Hoài Đức, Hà Nội. Cố vấn phong thủy Thước Lỗ Ban 38.8cm cho hàng nghìn gia đình Việt.
           </p>
         </div>
       </div>
 
-      {/* Article Bottom CTA */}
-      <div class="mt-10 p-6 sm:p-8 bg-gradient-to-r from-wood-950 to-wood-900 text-white rounded-2xl border border-gold-500/40 text-center space-y-4">
-        <h3 class="text-xl sm:text-2xl font-serif font-bold text-gold-300">
-          Gia Chủ Cần Tư Vấn Kích Thước Bàn Thờ Chuẩn Cung Đỏ Hợp Tuổi?
+      {/* Bottom CTA */}
+      <div class="mt-10 p-8 sm:p-10 bg-gradient-to-r from-[#1C100A] to-[#25150E] text-white rounded-3xl border-2 border-[#CFA439]/50 text-center space-y-4 shadow-xl">
+        <h3 class="text-xl sm:text-2xl font-serif-luxury font-bold text-[#E2BE5F]">
+          Gia Chủ Cần Tư Vấn Kích Thước Bàn Thờ Hợp Mệnh?
         </h3>
-        <p class="text-xs sm:text-sm text-wood-200 max-w-xl mx-auto">
-          Nhắn tin trực tiếp với nghệ nhân xưởng An Gia Tịnh để nhận bản vẽ kích thước Lỗ Ban 38.8cm và clip mộc thô 15s kiểm tra thớ vân miễn phí.
+        <p class="text-xs sm:text-sm text-[#D8C7B5] max-w-xl mx-auto leading-relaxed">
+          Nghệ nhân xưởng An Gia Tịnh sẽ tính toán chuẩn Thước Lỗ Ban 38.8cm và quay video mộc thô 15s gửi trực tiếp qua Zalo.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <a
             href="https://zalo.me/0339533380"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-6 py-3 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-wood-950 font-bold text-sm rounded-lg shadow-md transition-all"
+            class="px-8 py-3.5 bg-gradient-to-r from-[#CFA439] to-[#AF8729] hover:from-[#E2BE5F] hover:to-[#CFA439] text-[#190F0A] font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all"
           >
-            Nhắn Zalo Thợ Cả: 0339.533.380
+            Nhắn Zalo Nghệ Nhân: 0339.533.380
           </a>
           <a
             href="/thuoc-lo-ban"
-            class="px-5 py-3 bg-wood-800 hover:bg-wood-700 text-white font-semibold text-sm rounded-lg border border-gold-500/30 transition-all"
+            class="px-6 py-3.5 bg-[#2E1A11] hover:bg-[#3D2517] text-[#FBF5DF] font-semibold text-xs sm:text-sm rounded-xl border border-[#CFA439]/40 transition-all"
           >
-            Tra Cứu Thước Lỗ Ban Online
+            Tra Cứu Thước Lỗ Ban
           </a>
         </div>
       </div>

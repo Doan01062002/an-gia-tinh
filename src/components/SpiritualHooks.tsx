@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Phone, MessageCircle, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video } from 'lucide-react';
 
 export default function SpiritualHooks() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,102 +9,169 @@ export default function SpiritualHooks() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!phone || phone.replace(/\D/g, '').length < 10) {
-      alert('Vui lòng nhập số điện thoại hợp lệ (10 chữ số).');
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length < 10) {
+      alert('Vui lòng nhập số điện thoại hợp lệ gồm 10 chữ số.');
       return;
     }
 
     setLoading(true);
-    // Simulate sending to webhook or local storage
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 600);
+    }, 500);
   };
 
   return (
     <>
-      {/* Floating CTA Group */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        {/* Gift Bubble */}
+      {/* 1. Mobile Fixed Bottom Navigation Bar (Visible only on < 768px) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#1A0E08]/98 backdrop-blur-lg border-t border-[#3D2517] px-2 py-2 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+        <div className="grid grid-cols-4 gap-1 text-center">
+          {/* Button 1: Gọi Hotline */}
+          <a
+            href="tel:0339533380"
+            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[#E8D0BD] hover:text-white hover:bg-[#2C190F] transition-all"
+          >
+            <div className="w-8 h-8 rounded-full bg-green-600/20 text-green-400 flex items-center justify-center mb-1">
+              <Phone className="w-4 h-4" />
+            </div>
+            <span className="text-[10px] font-semibold leading-none">Gọi Xưởng</span>
+          </a>
+
+          {/* Button 2: Zalo Chat */}
+          <a
+            href="https://zalo.me/0339533380"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[#E8D0BD] hover:text-white hover:bg-[#2C190F] transition-all"
+          >
+            <div className="w-8 h-8 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center mb-1">
+              <MessageCircle className="w-4 h-4" />
+            </div>
+            <span className="text-[10px] font-semibold leading-none">Chat Zalo</span>
+          </a>
+
+          {/* Button 3: Thước Lỗ Ban */}
+          <a
+            href="/thuoc-lo-ban"
+            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[#E8D0BD] hover:text-white hover:bg-[#2C190F] transition-all"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#CFA439]/20 text-[#E2BE5F] flex items-center justify-center mb-1">
+              <Ruler className="w-4 h-4" />
+            </div>
+            <span className="text-[10px] font-semibold leading-none">Thước Lỗ Ban</span>
+          </a>
+
+          {/* Button 4: Nhận Ebook & Video Mộc */}
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(true);
+              setSubmitted(false);
+            }}
+            className="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-[#FBF5DF] bg-gradient-to-br from-[#8F1717] to-[#6E1111] border border-[#CFA439]/40 shadow-sm transition-all"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#CFA439]/20 text-[#E2BE5F] flex items-center justify-center mb-1">
+              <Gift className="w-4 h-4" />
+            </div>
+            <span className="text-[10px] font-bold leading-none text-[#FBF5DF]">Tặng Văn Khấn</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 2. Desktop Floating CTA Group (Visible only on >= 768px) */}
+      <div className="hidden md:flex fixed bottom-8 right-8 z-40 flex-col items-end gap-3.5">
+        {/* Gift Trigger Button */}
         <button
           onClick={() => {
             setIsOpen(true);
             setSubmitted(false);
           }}
-          className="group flex items-center gap-2.5 px-4 py-2.5 bg-gradient-to-r from-red-700 to-red-800 hover:from-red-800 hover:to-red-900 text-white rounded-full shadow-2xl border-2 border-gold-400 transition-all duration-300 hover:scale-105 animate-bounce"
+          className="group flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[#8F1717] via-[#AA1919] to-[#8F1717] hover:from-[#AA1919] hover:to-[#7A1313] text-[#FBF5DF] rounded-full shadow-2xl border-2 border-[#CFA439] transition-all duration-300 hover:scale-105"
         >
-          <span className="text-xl">🎁</span>
-          <span className="text-xs sm:text-sm font-bold tracking-wide">
-            Tặng PDF Văn Khấn & Clip Mộc 15s
-          </span>
+          <div className="w-8 h-8 rounded-full bg-[#CFA439]/20 flex items-center justify-center text-[#FBF5DF]">
+            <Gift className="w-4 h-4 text-[#FBF5DF]" />
+          </div>
+          <div className="text-left">
+            <span className="block text-xs uppercase tracking-wider font-bold text-[#FBF5DF]">
+              Tặng Bản PDF Văn Khấn & Clip Mộc 15s
+            </span>
+            <span className="block text-[10px] text-[#E8D0BD]/80">
+              Tra cứu phong thủy Lỗ Ban miễn phí
+            </span>
+          </div>
         </button>
 
-        {/* Zalo / Call direct buttons */}
-        <div className="flex items-center gap-2">
+        {/* Quick Contact Buttons */}
+        <div className="flex items-center gap-2.5">
           <a
             href="https://zalo.me/0339533380"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Chat Zalo cùng Xưởng mộc An Gia Tịnh"
+            aria-label="Nhắn Zalo cùng nghệ nhân xưởng An Gia Tịnh"
             className="flex items-center justify-center w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl transition-transform hover:scale-110"
           >
             <span className="font-bold text-xs">Zalo</span>
           </a>
+
           <a
             href="tel:0339533380"
-            aria-label="Gọi điện thoại trực tiếp hotline xưởng mộc"
-            className="flex items-center justify-center w-12 h-12 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-xl transition-transform hover:scale-110"
+            aria-label="Gọi hotline xưởng mộc 0339533380"
+            className="flex items-center justify-center w-12 h-12 bg-[#8F1717] hover:bg-[#AA1919] text-[#FBF5DF] rounded-full shadow-xl border border-[#CFA439]/50 transition-transform hover:scale-110"
           >
-            <span className="text-xl">📞</span>
+            <Phone className="w-5 h-5 text-[#FBF5DF]" />
           </a>
         </div>
       </div>
 
-      {/* Modal Dialog */}
+      {/* 3. Modal Form: Nhận Tài Liệu & Video Mộc */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-wood-200 relative animate-in fade-in zoom-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-[#FAF7F2] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-[#D8A268]/50 relative animate-in fade-in zoom-in duration-200">
+            {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-wood-400 hover:text-wood-700 p-2 text-xl font-bold"
+              className="absolute top-4 right-4 text-[#73432C] hover:text-[#190F0A] p-2 rounded-full hover:bg-[#E8D0BD]/40 transition-colors"
               aria-label="Đóng hộp thoại"
             >
-              ✕
+              <X className="w-5 h-5" />
             </button>
 
             {!submitted ? (
               <>
                 <div className="text-center mb-6">
-                  <div className="w-14 h-14 bg-red-100 text-red-700 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
-                    📜
+                  <div className="w-14 h-14 rounded-full bg-[#190F0A] text-[#E2BE5F] border border-[#CFA439] flex items-center justify-center mx-auto mb-3 shadow-md">
+                    <FileText className="w-7 h-7 text-[#E2BE5F]" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-wood-950">
-                    Nhận Trọn Bộ Cẩm Nang & Video Mộc
+                  <span className="text-[11px] font-bold text-[#8F1717] uppercase tracking-widest block mb-1">
+                    Cẩm Nang Tâm Linh Độc Quyền
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-serif-luxury font-bold text-[#190F0A]">
+                    Trọn Bộ Văn Khấn & Clip Mộc 15s
                   </h3>
-                  <p className="text-xs sm:text-sm text-wood-600 mt-2">
-                    Xưởng mộc <strong>An Gia Tịnh</strong> xin gửi tặng gia chủ tài liệu chuẩn tâm linh hoàn toàn miễn phí:
+                  <p className="text-xs text-[#543120] mt-1.5 leading-relaxed">
+                    Xưởng mộc <strong>An Gia Tịnh</strong> xin gửi tặng gia chủ tư liệu chuẩn chỉ trước khi thỉnh bàn thờ về nhà mới:
                   </p>
                 </div>
 
-                <div className="space-y-2.5 text-xs sm:text-sm text-wood-800 bg-wood-50 p-4 rounded-xl border border-wood-200/60 mb-6">
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold">✓</span>
+                <div className="space-y-3 text-xs text-[#301B12] bg-[#F1E8DC]/80 p-4 rounded-2xl border border-[#D8C7B5] mb-6">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#8F1717] shrink-0 mt-0.5" />
                     <span><strong>Ebook PDF:</strong> Trọn bộ văn khấn an vị bàn thờ & bao sái bát hương chuẩn cổ truyền</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold">✓</span>
+                  <div className="flex items-start gap-2.5">
+                    <Video className="w-4 h-4 text-[#8F1717] shrink-0 mt-0.5" />
                     <span><strong>Clip mộc 15s:</strong> Cận cảnh thớ gỗ lõi không rác tại xưởng trước khi phun sơn</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-600 font-bold">✓</span>
-                    <span><strong>Tra cứu Thước Lỗ Ban 38.8cm:</strong> Hướng dẫn chọn kích thước hợp tuổi gia chủ</span>
+                  <div className="flex items-start gap-2.5">
+                    <ShieldCheck className="w-4 h-4 text-[#8F1717] shrink-0 mt-0.5" />
+                    <span><strong>Tư vấn Lỗ Ban 38.8cm:</strong> Hướng dẫn chọn kích thước đại cát hợp tuổi gia chủ</span>
                   </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-wood-900 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#190F0A] uppercase tracking-wider mb-2">
                       Số điện thoại Zalo của Gia Chủ:
                     </label>
                     <input
@@ -112,44 +180,45 @@ export default function SpiritualHooks() {
                       placeholder="Ví dụ: 0912 345 678"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 bg-white border-2 border-wood-300 rounded-lg focus:outline-none focus:border-red-600 text-wood-950 font-medium"
+                      className="w-full px-4 py-3.5 bg-white border-2 border-[#D8A268] rounded-xl focus:outline-none focus:border-[#8F1717] text-[#190F0A] font-medium text-sm shadow-inner"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 bg-gradient-to-r from-red-700 to-red-800 hover:from-red-800 hover:to-red-900 text-white font-bold text-sm rounded-lg shadow-lg hover:shadow-red-700/30 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-gradient-to-r from-[#8F1717] via-[#AA1919] to-[#8F1717] hover:from-[#AA1919] hover:to-[#7A1313] text-[#FBF5DF] font-bold text-sm rounded-xl shadow-lg hover:shadow-[#8F1717]/30 transition-all flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <span>Đang kết nối Zalo...</span>
                     ) : (
                       <>
-                        <span>📲</span>
-                        <span>Gửi Tài Liệu Qua Zalo Cho Tôi Ngay</span>
+                        <MessageCircle className="w-4 h-4" />
+                        <span>Gửi Tài Liệu & Video Qua Zalo Cho Tôi</span>
                       </>
                     )}
                   </button>
                 </form>
 
-                <p className="text-[11px] text-wood-400 text-center mt-3">
-                  🔒 Bảo mật tuyệt đối. Xưởng cam kết không gọi làm phiền ngoài giờ nghỉ ngơi.
+                <p className="text-[11px] text-[#73432C] text-center mt-3">
+                  Cam kết bảo mật tuyệt đối. Xưởng không gọi làm phiền ngoài giờ gia chủ nghỉ ngơi.
                 </p>
               </>
             ) : (
               <div className="text-center py-6">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-                  ✓
+                <div className="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-green-300">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-serif font-bold text-wood-950 mb-2">
+                <h3 className="text-xl font-serif-luxury font-bold text-[#190F0A] mb-2">
                   Đã Tiếp Nhận Yêu Cầu Của Gia Chủ!
                 </h3>
-                <p className="text-sm text-wood-700 mb-6">
+                <p className="text-xs sm:text-sm text-[#543120] mb-6 leading-relaxed">
                   Xưởng mộc <strong>An Gia Tịnh</strong> đã lưu số điện thoại <strong>{phone}</strong>. Đội ngũ thợ cả sẽ gửi file PDF văn khấn và clip mộc 15s qua Zalo của quý gia chủ ngay lập tức.
                 </p>
                 <button
+                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="px-6 py-2.5 bg-wood-900 hover:bg-wood-800 text-white text-sm font-semibold rounded-lg"
+                  className="px-8 py-3 bg-[#190F0A] hover:bg-[#2C190F] text-[#FBF5DF] text-xs font-bold rounded-xl transition-colors"
                 >
                   Đóng lại
                 </button>

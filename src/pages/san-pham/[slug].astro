@@ -57,22 +57,22 @@ const productSchema = {
   type="product"
   schema={productSchema}
 >
-  {/* Breadcrumbs */}
-  <div class="bg-wood-100/70 border-b border-wood-200/80 py-3 text-xs text-wood-600">
+  {/* Breadcrumb Bar */}
+  <div class="bg-[#F4E8DC] border-b border-[#D8C7B5] py-3 text-xs text-[#73432C]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
-      <a href="/" class="hover:text-gold-600">Trang Chủ</a>
+      <a href="/" class="hover:text-[#8F1717]">Trang Chủ</a>
       <span>/</span>
-      <a href="/san-pham" class="hover:text-gold-600">Sản Phẩm</a>
+      <a href="/san-pham" class="hover:text-[#8F1717]">Sản Phẩm</a>
       <span>/</span>
-      <span class="text-wood-950 font-semibold truncate">{product.name}</span>
+      <span class="text-[#190F0A] font-semibold truncate">{product.name}</span>
     </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-      {/* Left Column: Image showcase */}
+      {/* Left Column: Product Showcase */}
       <div class="lg:col-span-6 space-y-4">
-        <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border-2 border-wood-200/80 bg-wood-100">
+        <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D8A268]/60 bg-[#F4E8DC]">
           <img
             src={product.imageUrl}
             alt={product.name}
@@ -80,127 +80,130 @@ const productSchema = {
           />
         </div>
 
-        {/* Trust verification banner */}
-        <div class="p-4 rounded-2xl bg-wood-50 border border-wood-200 text-xs text-wood-700 flex items-center justify-between">
-          <div class="flex items-center gap-2 font-bold text-red-700">
-            <span>🛡️</span>
-            <span>Cam Kết Gỗ Lõi Đền 200%</span>
+        {/* Guarantee Banner */}
+        <div class="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E6DED3] text-xs text-[#543120] flex items-center justify-between">
+          <div class="flex items-center gap-2 font-bold text-[#8F1717]">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span>Cam Kết 100% Gỗ Lõi (Đền Bù 200%)</span>
           </div>
-          <div class="text-wood-500">Bảo hành {product.warrantyYears} năm</div>
+          <div class="text-[#73432C]">Bảo hành {product.warrantyYears} năm</div>
         </div>
       </div>
 
-      {/* Right Column: Specs & Buying CTAs */}
+      {/* Right Column: Specs & CTAs */}
       <div class="lg:col-span-6 space-y-6">
         <div>
-          <span class="text-xs font-bold text-gold-600 uppercase tracking-widest block mb-2">
+          <span class="text-xs font-bold text-[#AF8729] uppercase tracking-widest block mb-2">
             {product.categoryName}
           </span>
-          <h1 class="text-2xl sm:text-4xl font-serif font-black text-wood-950 leading-snug">
+          <h1 class="text-2xl sm:text-4xl font-serif-luxury font-black text-[#190F0A] leading-snug">
             {product.name}
           </h1>
 
           <div class="flex items-center gap-3 mt-3 text-xs sm:text-sm">
-            <div class="flex items-center text-amber-500 font-bold">
+            <div class="flex items-center text-[#AF8729] font-bold">
               <span>★★★★★</span>
-              <span class="text-wood-800 ml-1.5">{product.rating}</span>
+              <span class="text-[#190F0A] ml-1.5">{product.rating}</span>
             </div>
-            <span class="text-wood-300">•</span>
-            <span class="text-wood-600">{product.reviewCount} gia chủ đã thỉnh</span>
-            <span class="text-wood-300">•</span>
-            <span class="text-green-700 font-bold">Sẵn mộc thô tại xưởng</span>
+            <span class="text-[#D8C7B5]">•</span>
+            <span class="text-[#543120]">{product.reviewCount} gia chủ đã thỉnh</span>
+            <span class="text-[#D8C7B5]">•</span>
+            <span class="text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-xs">
+              Sẵn mộc tại xưởng
+            </span>
           </div>
         </div>
 
-        {/* Pricing Box */}
-        <div class="p-5 rounded-2xl bg-wood-50 border border-wood-200/80 flex items-baseline justify-between">
+        {/* Price Card */}
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E6DED3] flex items-baseline justify-between">
           <div>
-            <span class="text-xs text-wood-500 block">Giá xưởng ưu đãi:</span>
+            <span class="text-xs text-[#73432C] block">Giá xưởng ưu đãi:</span>
             <div class="flex items-baseline gap-3">
-              <span class="text-3xl font-serif font-black text-red-700">
+              <span class="text-3xl font-serif-classic font-black text-[#8F1717]">
                 {formatCurrency(product.price)}
               </span>
-              <span class="text-sm text-wood-400 line-through">
+              <span class="text-sm text-[#A88B74] line-through">
                 {formatCurrency(product.originalPrice)}
               </span>
             </div>
           </div>
-          <span class="text-xs font-bold text-red-700 bg-red-100 px-3 py-1 rounded-full">
+          <span class="text-xs font-bold text-[#8F1717] bg-[#FEF2F2] border border-[#8F1717]/20 px-3 py-1 rounded-full">
             Tiết kiệm {formatCurrency(product.originalPrice - product.price)}
           </span>
         </div>
 
-        {/* Feng-shui Lỗ Ban Card */}
-        <div class="p-6 rounded-2xl bg-red-50/80 border-2 border-red-300 text-xs sm:text-sm text-red-900 space-y-3 shadow-sm">
-          <div class="flex items-center gap-2 text-sm font-bold text-red-800">
-            <span>📐</span>
+        {/* Lỗ Ban Box */}
+        <div class="p-6 rounded-2xl bg-[#FEF2F2] border-2 border-[#8F1717]/30 text-xs sm:text-sm text-[#8F1717] space-y-3">
+          <div class="flex items-center justify-between text-sm font-bold">
             <span>Ý Nghĩa Kích Thước Thước Lỗ Ban 38.8cm:</span>
+            <span class="bg-[#8F1717] text-white text-[10px] font-sans px-2.5 py-0.5 rounded-full uppercase">
+              Cung Đỏ Cát Tường
+            </span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div class="p-3 bg-white/80 rounded-xl border border-red-200">
-              <span class="font-bold text-red-700 block">Kích thước chiều sâu:</span>
-              <span class="text-wood-900 font-semibold">{product.lobanInfo.depthCung}</span>
-              <p class="text-wood-600 text-[11px] mt-0.5">{product.lobanInfo.depthMeaning}</p>
+            <div class="p-3 bg-white rounded-xl border border-[#8F1717]/20">
+              <span class="font-bold text-[#8F1717] block">Chiều sâu:</span>
+              <span class="text-[#190F0A] font-semibold">{product.lobanInfo.depthCung}</span>
+              <p class="text-[#73432C] text-[11px] mt-0.5">{product.lobanInfo.depthMeaning}</p>
             </div>
-            <div class="p-3 bg-white/80 rounded-xl border border-red-200">
-              <span class="font-bold text-red-700 block">Kích thước chiều rộng:</span>
-              <span class="text-wood-900 font-semibold">{product.lobanInfo.widthCung}</span>
-              <p class="text-wood-600 text-[11px] mt-0.5">{product.lobanInfo.widthMeaning}</p>
+            <div class="p-3 bg-white rounded-xl border border-[#8F1717]/20">
+              <span class="font-bold text-[#8F1717] block">Chiều rộng:</span>
+              <span class="text-[#190F0A] font-semibold">{product.lobanInfo.widthCung}</span>
+              <p class="text-[#73432C] text-[11px] mt-0.5">{product.lobanInfo.widthMeaning}</p>
             </div>
           </div>
         </div>
 
-        {/* Highlights */}
+        {/* Features */}
         <div>
-          <h3 class="text-xs font-bold text-wood-900 uppercase tracking-wider mb-3">
+          <h3 class="text-xs font-bold text-[#190F0A] uppercase tracking-wider mb-3">
             Đặc điểm mộc truyền thống:
           </h3>
-          <ul class="space-y-2 text-xs sm:text-sm text-wood-800">
+          <ul class="space-y-2 text-xs sm:text-sm text-[#301B12]">
             {product.features.map((feature) => (
               <li class="flex items-start gap-2.5">
-                <span class="text-red-700 font-bold">✓</span>
+                <span class="text-[#8F1717] font-bold">✓</span>
                 <span>{feature}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Action Buttons */}
+        {/* CTAs */}
         <div class="pt-4 space-y-3">
           <a
             href="https://zalo.me/0339533380"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-full py-4 bg-gradient-to-r from-red-700 via-red-800 to-red-900 hover:from-red-800 hover:to-red-950 text-white font-bold text-base rounded-xl shadow-xl hover:shadow-red-700/30 transition-all flex items-center justify-center gap-2"
+            class="w-full py-4 bg-gradient-to-r from-[#8F1717] via-[#AA1919] to-[#8F1717] hover:from-[#AA1919] hover:to-[#7A1313] text-[#FBF5DF] font-bold text-sm sm:text-base rounded-xl shadow-xl hover:shadow-[#8F1717]/30 transition-all flex items-center justify-center gap-2"
           >
-            <span>🎥</span>
-            <span>Nhận Clip Mộc Thô 15s Qua Zalo</span>
+            <span>Nhận Video Mộc Thô 15s Qua Zalo</span>
           </a>
 
           <div class="grid grid-cols-2 gap-3">
             <a
               href="tel:0339533380"
-              class="py-3 px-4 bg-wood-900 hover:bg-wood-800 text-white text-xs sm:text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-2 transition-colors"
+              class="py-3 px-4 bg-[#1C100A] hover:bg-[#2C190F] text-[#FBF5DF] text-xs sm:text-sm font-semibold rounded-xl text-center transition-colors"
             >
-              <span>📞</span>
-              <span>Gọi Thợ Cả Xưởng</span>
+              Gọi Nghệ Nhân Xưởng
             </a>
             <a
               href="/thuoc-lo-ban"
-              class="py-3 px-4 bg-wood-100 hover:bg-wood-200 text-wood-900 text-xs sm:text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-2 transition-colors border border-wood-200"
+              class="py-3 px-4 bg-[#F4E8DC] hover:bg-[#E8D0BD] text-[#190F0A] text-xs sm:text-sm font-semibold rounded-xl text-center transition-colors border border-[#D8C7B5]"
             >
-              <span>📐</span>
-              <span>Tra Thước Lỗ Ban</span>
+              Tra Thước Lỗ Ban
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    {/* Related products */}
-    <div class="mt-20 pt-12 border-t border-wood-200">
-      <h2 class="text-xl sm:text-3xl font-serif font-bold text-wood-950 mb-8">
-        Mẫu Bàn Thờ Cùng Phân Khúc Có Thể Gia Chủ Quan Tâm
+    {/* Related Products */}
+    <div class="mt-20 pt-12 border-t border-[#E6DED3]">
+      <h2 class="text-xl sm:text-3xl font-serif-luxury font-bold text-[#190F0A] mb-8">
+        Mẫu Bàn Thờ Cùng Phân Khúc
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {relatedProducts.map((p) => (

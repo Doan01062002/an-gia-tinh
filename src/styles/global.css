@@ -1,50 +1,112 @@
 @import "tailwindcss";
 
-@theme {
-  --color-wood-950: #1a0f0a;
-  --color-wood-900: #2c1a11;
-  --color-wood-800: #3d2317;
-  --color-wood-700: #543120;
-  --color-wood-600: #73432c;
-  --color-wood-500: #965a3c;
-  --color-wood-400: #b57a55;
-  --color-wood-300: #d4a37f;
-  --color-wood-200: #e9ccaF;
-  --color-wood-100: #f5e9dc;
-  --color-wood-50: #faf6f0;
+@layer base {
+  :root {
+    --color-wood-950: #190f0a;
+    --color-wood-900: #24140d;
+    --color-wood-850: #301b12;
+    --color-wood-800: #3d2317;
+    --color-wood-700: #543120;
+    --color-wood-600: #73432c;
+    --color-wood-500: #965a3c;
+    --color-wood-400: #b57a55;
+    --color-wood-300: #d4a37f;
+    --color-wood-200: #e8d0bd;
+    --color-wood-100: #f4e8dc;
+    --color-wood-50: #faf5ee;
 
-  --color-gold-600: #9e7529;
-  --color-gold-500: #bfa044;
-  --color-gold-400: #d4af37;
-  --color-gold-300: #e5c76b;
-  --color-gold-100: #fbf5de;
+    --color-gold-600: #8c6b1f;
+    --color-gold-500: #af8729;
+    --color-gold-400: #cfa439;
+    --color-gold-300: #e2be5f;
+    --color-gold-200: #f1dc97;
+    --color-gold-100: #fbf5df;
 
-  --color-auspicious-red: #b91c1c;
-  --color-auspicious-darkred: #991b1b;
+    --color-lacquer-red: #8f1717;
+    --color-auspicious-red: #aa1919;
+    --color-auspicious-light: #fef2f2;
+
+    --color-bg-paper: #fbf9f5;
+    --color-bg-warm: #f6f1e8;
+    --color-border-subtle: #e6ded3;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg-paper);
+    color: var(--color-wood-950);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
 }
 
-:root {
-  --font-serif: "Playfair Display", "Times New Roman", serif;
+/* Luxury Wood Craftsmanship Typography */
+.font-serif-luxury {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #faf7f2;
-  color: #2c1a11;
+.font-serif-classic {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* Custom styling for wooden spiritual warmth */
-.wood-gradient {
-  background: linear-gradient(135deg, #2c1a11 0%, #3d2317 50%, #1a0f0a 100%);
+/* Gradients & Textures */
+.bg-wood-dark {
+  background: linear-gradient(145deg, #1f120b 0%, #29180f 60%, #170d08 100%);
 }
 
-.gold-gradient {
-  background: linear-gradient(135deg, #d4af37 0%, #e5c76b 50%, #bfa044 100%);
+.bg-wood-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fcfaf7 100%);
 }
 
-.gold-text {
-  background: linear-gradient(135deg, #d4af37 0%, #f3df9b 50%, #c5a059 100%);
+.bg-wood-ruler {
+  background: linear-gradient(180deg, #d8a268 0%, #c48746 40%, #a86c2e 100%);
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #dfb858 0%, #f6df94 50%, #bf9433 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #dfb858 0%, #f7e6a8 50%, #c59b27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-color: rgba(207, 164, 57, 0.4);
+}
+
+.ruler-engraving {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 2px rgba(255,255,255,0.3);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1e9de;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #965a3c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #73432c;
+}
+
+/* Hide scrollbar for clean horizontal tabs on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

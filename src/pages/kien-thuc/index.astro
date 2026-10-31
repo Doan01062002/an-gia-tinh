@@ -16,15 +16,15 @@ const blogSchema = {
   description="Chia sẻ kinh nghiệm chọn bàn thờ chung cư chuẩn Lỗ Ban 38.8cm, bài văn khấn an vị bàn thờ mới, cách phân biệt 100% gỗ lõi tự nhiên không dính rác."
   schema={blogSchema}
 >
-  <div class="bg-wood-900 text-white py-12 sm:py-16 border-b-4 border-gold-400">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-block px-3 py-1 bg-wood-800 text-gold-300 text-xs font-semibold rounded-full uppercase tracking-wider mb-3 border border-gold-500/30">
+  <div class="bg-gradient-to-b from-[#1C100A] to-[#25150E] text-white py-14 sm:py-20 border-b-4 border-[#CFA439]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <span class="inline-block px-4 py-1.5 bg-[#2E1A11] text-[#E2BE5F] text-xs font-semibold rounded-full uppercase tracking-wider border border-[#CFA439]/40">
         Kiến Thức Mộc Làng Nghề & Tâm Linh Cổ Truyền
       </span>
-      <h1 class="text-3xl sm:text-5xl font-serif font-black mb-3">
+      <h1 class="text-3xl sm:text-5xl font-serif-luxury font-black text-[#FBF5DF]">
         Cẩm Nang Không Gian Thờ Tự
       </h1>
-      <p class="text-wood-200 text-sm sm:text-base max-w-2xl mx-auto">
+      <p class="text-[#D8C7B5] text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
         Tổng hợp các bài viết chuyên sâu về phong thủy Thước Lỗ Ban 38.8cm, trọn bộ bài văn khấn gia tiên và cẩm nang kiểm tra gỗ lõi không rác.
       </p>
     </div>
@@ -33,34 +33,35 @@ const blogSchema = {
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {ARTICLES.map((article) => (
-        <article class="bg-white rounded-2xl overflow-hidden border border-wood-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-          <div class="aspect-16/9 overflow-hidden bg-wood-100">
+        <article class="bg-white rounded-3xl overflow-hidden border border-[#E6DED3] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="aspect-16/9 overflow-hidden bg-[#F4E8DC]">
             <img
               src={article.coverImage}
               alt={article.title}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
             <div>
-              <div class="flex items-center gap-2 text-xs text-gold-600 font-bold mb-2">
+              <div class="flex items-center gap-2 text-xs text-[#AF8729] font-bold mb-2">
                 <span>{article.category}</span>
                 <span>•</span>
-                <span class="text-wood-400 font-normal">{article.readingTime}</span>
+                <span class="text-[#A88B74] font-normal">{article.readingTime}</span>
               </div>
-              <h2 class="text-lg sm:text-xl font-serif font-bold text-wood-950 group-hover:text-gold-600 transition-colors line-clamp-2 mb-2">
+              <h2 class="text-lg sm:text-xl font-serif-classic font-bold text-[#190F0A] group-hover:text-[#8F1717] transition-colors line-clamp-2 mb-3 leading-snug">
                 <a href={`/kien-thuc/${article.slug}`}>
                   {article.title}
                 </a>
               </h2>
-              <p class="text-xs sm:text-sm text-wood-600 line-clamp-3 mb-4 leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#543120] line-clamp-3 mb-4 leading-relaxed">
                 {article.description}
               </p>
             </div>
-            <div class="pt-4 border-t border-wood-100 flex items-center justify-between text-xs text-wood-500">
-              <span>{article.author}</span>
-              <a href={`/kien-thuc/${article.slug}`} class="font-bold text-red-700 hover:text-red-900">
-                Đọc bài viết →
+            <div class="pt-4 border-t border-[#E6DED3] flex items-center justify-between text-xs text-[#73432C]">
+              <span class="font-medium truncate max-w-[180px]">{article.author}</span>
+              <a href={`/kien-thuc/${article.slug}`} class="font-bold text-[#8F1717] hover:underline flex items-center gap-1">
+                <span>Đọc bài viết</span>
+                <span>→</span>
               </a>
             </div>
           </div>

@@ -29,18 +29,18 @@ const { title, description, image, type, schema } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#FAF7F2] text-[#2C1A11] antialiased selection:bg-gold-300 selection:text-wood-950">
+  <body class="min-h-screen flex flex-col bg-[#FBF9F5] text-[#190F0A] antialiased selection:bg-[#E2BE5F] selection:text-[#190F0A] pb-16 md:pb-0">
     <Header />
     <main class="flex-1">
       <slot />
     </main>
     <Footer />
 
-    {/* Floating spiritual hooks & phone/zalo actions */}
+    {/* Floating spiritual hooks & mobile bottom sticky navigation bar */}
     <SpiritualHooks client:idle />
   </body>
 </html>

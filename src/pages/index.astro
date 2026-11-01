@@ -90,6 +90,9 @@ const homeSchema = {
                 src={p.image}
                 alt={p.apartment}
                 loading="lazy"
+                decoding="async"
+                width="360"
+                height="270"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -159,9 +162,12 @@ const homeSchema = {
                 src={article.coverImage}
                 alt={article.title}
                 loading="lazy"
+                decoding="async"
+                width="400"
+                height="225"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[10px] font-bold shadow-xs">
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#451a03]/90 text-amber-200 text-[10px] font-bold shadow-xs">
                 {article.category}
               </span>
             </div>

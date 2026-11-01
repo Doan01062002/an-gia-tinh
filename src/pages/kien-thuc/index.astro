@@ -91,8 +91,11 @@ function formatCurrency(amount: number) {
               alt={featuredArticle.title}
               class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
               loading="eager"
+              decoding="async"
+              width="700"
+              height="394"
             />
-            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#451a03]/90 backdrop-blur-xs text-amber-200 text-xs font-bold shadow-xs">
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#451a03]/90 text-amber-200 text-xs font-bold shadow-xs">
               {featuredArticle.category}
             </span>
           </div>
@@ -181,8 +184,11 @@ function formatCurrency(amount: number) {
                   alt={article.title}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="281"
                 />
-                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[10px] font-bold shadow-xs">
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#451a03]/90 text-amber-200 text-[10px] font-bold shadow-xs">
                   {article.category}
                 </span>
               </div>
@@ -301,6 +307,9 @@ function formatCurrency(amount: number) {
                     alt={p.name}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform"
                     loading="lazy"
+                    decoding="async"
+                    width="64"
+                    height="64"
                   />
                 </div>
                 <div class="flex-1 min-w-0">

@@ -126,6 +126,9 @@ export default function ProductGallery({ products }: Props) {
             src={product.imageUrl}
             alt={product.name}
             loading="lazy"
+            decoding="async"
+            width={400}
+            height={400}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             onClick={() => openProductModal(product)}
           />
@@ -139,7 +142,7 @@ export default function ProductGallery({ products }: Props) {
 
           {/* Top-Left Category Tag */}
           {product.badge && (
-            <div className="absolute top-1.5 left-1.5 bg-[#451a03]/85 backdrop-blur-xs text-amber-300 text-[9px] font-bold px-1.5 py-0.5 rounded pointer-events-none">
+            <div className="absolute top-1.5 left-1.5 bg-[#451a03] text-amber-300 text-[9px] font-bold px-1.5 py-0.5 rounded pointer-events-none shadow-xs">
               {product.badge}
             </div>
           )}
@@ -148,7 +151,7 @@ export default function ProductGallery({ products }: Props) {
           <button
             onClick={() => openProductModal(product)}
             aria-label="Phóng to ảnh"
-            className="absolute bottom-1.5 right-1.5 p-1 rounded-md bg-[#451a03]/80 text-white backdrop-blur-xs opacity-80 group-hover:opacity-100 transition-opacity"
+            className="absolute bottom-1.5 right-1.5 p-1 rounded-md bg-[#451a03]/90 text-white opacity-80 group-hover:opacity-100 transition-opacity"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
@@ -199,8 +202,8 @@ export default function ProductGallery({ products }: Props) {
 
   return (
     <div className="w-full">
-      {/* 1. Category Quick-Scroll Chips */}
-      <div className="sticky top-14 sm:top-16 lg:top-20 z-20 bg-[#FAFAF9]/95 backdrop-blur-md py-2.5 -mx-3 px-3 sm:mx-0 sm:px-0 border-b border-stone-200/80 mb-6">
+      {/* 1. Category Quick-Scroll Chips (Solid background to avoid mobile GPU blur lag) */}
+      <div className="sticky top-14 sm:top-16 lg:top-20 z-20 bg-[#FAFAF9] py-2.5 -mx-3 px-3 sm:mx-0 sm:px-0 border-b border-stone-200 mb-6 shadow-2xs">
         <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar scroll-smooth">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
@@ -225,7 +228,7 @@ export default function ProductGallery({ products }: Props) {
       {activeCategory === 'all' ? (
         <div className="space-y-10 sm:space-y-14">
           {sections.map((section) => (
-            <section key={section.id} className="scroll-mt-24">
+            <section key={section.id} className="scroll-mt-24 [content-visibility:auto] [contain-intrinsic-size:auto_500px]">
               {/* Chevron Ribbon Header Tag */}
               <div className="flex items-center justify-between mb-3.5 sm:mb-5 border-b-2 border-[#7A1212]">
                 <div className="relative inline-flex items-center">
@@ -298,11 +301,14 @@ export default function ProductGallery({ products }: Props) {
               <img
                 src={modalProduct.images[modalProduct.currentIndex]}
                 alt={`${modalProduct.title} - Ảnh ${modalProduct.currentIndex + 1}`}
+                decoding="async"
+                width={600}
+                height={600}
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
 
               {/* Image Counter Badge */}
-              <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[11px] font-bold shadow-xs">
+              <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/90 text-amber-200 text-[11px] font-bold shadow-xs">
                 Ảnh {modalProduct.currentIndex + 1} / {modalProduct.images.length}
               </div>
 

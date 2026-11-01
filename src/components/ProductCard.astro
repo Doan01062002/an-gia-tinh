@@ -19,6 +19,9 @@ function formatCurrency(amount: number) {
       src={product.imageUrl}
       alt={product.name}
       loading="lazy"
+      decoding="async"
+      width="400"
+      height="300"
       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
     />
 
@@ -30,7 +33,7 @@ function formatCurrency(amount: number) {
     )}
 
     {/* Warranty Pill */}
-    <span class="absolute bottom-3 right-3 px-2.5 py-1 bg-[#451a03]/85 backdrop-blur-md text-amber-200 text-[11px] font-medium rounded-md shadow-xs">
+    <span class="absolute bottom-3 right-3 px-2.5 py-1 bg-[#451a03]/90 text-amber-200 text-[11px] font-medium rounded-md shadow-xs">
       Bảo hành {product.warrantyYears} năm
     </span>
   </div>

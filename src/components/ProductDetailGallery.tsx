@@ -55,11 +55,14 @@ export default function ProductDetailGallery({ images, name }: Props) {
         <img
           src={galleryList[currentIndex]}
           alt={`${name} - Ảnh ${currentIndex + 1}`}
+          decoding="async"
+          width={800}
+          height={600}
           className="w-full h-full object-cover transition-opacity duration-300"
         />
 
         {/* Image Counter */}
-        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/85 backdrop-blur-xs text-amber-200 text-[11px] font-bold shadow-xs">
+        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#451a03]/90 text-amber-200 text-[11px] font-bold shadow-xs">
           Ảnh {currentIndex + 1} / {galleryList.length}
         </div>
 
@@ -70,7 +73,7 @@ export default function ProductDetailGallery({ images, name }: Props) {
               type="button"
               onClick={prevImage}
               aria-label="Ảnh trước"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/90 hover:bg-[#5c2406] text-white flex items-center justify-center transition-transform active:scale-90 shadow-md"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -78,7 +81,7 @@ export default function ProductDetailGallery({ images, name }: Props) {
               type="button"
               onClick={nextImage}
               aria-label="Ảnh kế tiếp"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/80 hover:bg-[#5c2406] text-white flex items-center justify-center backdrop-blur-xs transition-transform active:scale-90 shadow-md"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#451a03]/90 hover:bg-[#5c2406] text-white flex items-center justify-center transition-transform active:scale-90 shadow-md"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -104,6 +107,10 @@ export default function ProductDetailGallery({ images, name }: Props) {
               <img
                 src={img}
                 alt={`${name} thumbnail ${idx + 1}`}
+                loading="lazy"
+                decoding="async"
+                width={96}
+                height={80}
                 className="w-full h-full object-cover"
               />
             </button>

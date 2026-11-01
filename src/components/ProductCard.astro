@@ -12,7 +12,7 @@ function formatCurrency(amount: number) {
 }
 ---
 
-<div class="group bg-white rounded-2xl overflow-hidden border border-stone-200 hover:border-amber-400 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1">
+<div class="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-stone-200 hover:border-amber-400 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1">
   {/* Image Container */}
   <div class="relative aspect-4/3 overflow-hidden bg-stone-100">
     <img
@@ -27,81 +27,83 @@ function formatCurrency(amount: number) {
 
     {/* Badge */}
     {product.badge && (
-      <span class="absolute top-3 left-3 px-3 py-1 bg-amber-600 text-white text-[11px] font-bold tracking-wider uppercase rounded-full shadow-sm">
+      <span class="absolute top-2 left-2 px-2 py-0.5 sm:px-3 sm:py-1 bg-amber-600 text-white text-[9px] sm:text-[11px] font-bold tracking-wider uppercase rounded-full shadow-xs">
         {product.badge}
       </span>
     )}
 
     {/* Warranty Pill */}
-    <span class="absolute bottom-3 right-3 px-2.5 py-1 bg-[#451a03]/90 text-amber-200 text-[11px] font-medium rounded-md shadow-xs">
+    <span class="absolute bottom-2 right-2 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#451a03]/90 text-amber-200 text-[9px] sm:text-[11px] font-medium rounded-md shadow-xs">
       Bảo hành {product.warrantyYears} năm
     </span>
   </div>
 
   {/* Content */}
-  <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-    <div>
-      <div class="flex items-center justify-between text-xs text-stone-500 mb-2">
-        <span class="font-bold uppercase tracking-wider text-amber-800">
+  <div class="p-2.5 sm:p-4 md:p-5 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
+    <div class="space-y-1.5 sm:space-y-2">
+      <div class="flex items-center justify-between gap-1 text-[10px] sm:text-xs text-stone-500">
+        <span class="font-bold uppercase tracking-wider text-amber-800 truncate">
           {product.categoryName}
         </span>
-        <div class="flex items-center gap-1 text-amber-600 font-bold">
+        <div class="flex items-center gap-0.5 text-amber-600 font-bold shrink-0">
           <span>★</span>
           <span>{product.rating}</span>
-          <span class="text-stone-400 font-normal">({product.reviewCount})</span>
+          <span class="text-stone-400 font-normal hidden sm:inline">({product.reviewCount})</span>
         </div>
       </div>
 
-      <h3 class="text-base sm:text-lg font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-2 leading-snug mb-2">
+      <h3 class="text-xs sm:text-sm md:text-base font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-2 leading-snug">
         <a href={`/san-pham/${product.slug}`}>
           {product.name}
         </a>
       </h3>
 
-      {/* Lỗ Ban Auspicious Badge */}
-      <div class="p-2.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-900 space-y-0.5">
-        <div class="flex items-center justify-between font-bold text-red-700">
-          <span>Thước Lỗ Ban 38.8cm:</span>
-          <span class="text-[10px] bg-red-700 text-white px-2 py-0.5 rounded-full uppercase">
+      {/* Lỗ Ban Auspicious Badge (Compact & Responsive) */}
+      <div class="p-2 rounded-lg bg-red-50/90 border border-red-200/80 text-[10px] sm:text-xs space-y-0.5">
+        <div class="flex items-center justify-between gap-1 font-bold text-red-700">
+          <span class="truncate">Lỗ Ban 38.8cm</span>
+          <span class="text-[9px] bg-red-700 text-white px-1.5 py-0.2 rounded-full uppercase shrink-0 font-bold">
             Cung Đỏ
           </span>
         </div>
-        <p class="text-[11px] text-stone-700 leading-tight">
-          • Kích thước: <strong>{product.dimensions}</strong><br />
-          • Cung: <strong>{product.lobanInfo.depthCung}</strong> — <strong>{product.lobanInfo.widthCung}</strong>
-        </p>
+        <div class="text-stone-800 text-[10px] sm:text-[11px] font-medium truncate">
+          KT: <strong>{product.dimensions}</strong>
+        </div>
+        <div class="text-red-900/90 text-[9px] sm:text-[10px] truncate">
+          {product.lobanInfo.depthCung} — {product.lobanInfo.widthCung}
+        </div>
       </div>
 
       {/* Wood Type */}
-      <div class="mt-2.5 text-xs text-stone-600 font-medium">
+      <div class="text-[10px] sm:text-xs text-stone-600 line-clamp-1">
         Chất liệu: <strong class="text-stone-800">{product.woodType}</strong>
       </div>
     </div>
 
     {/* Price & Action */}
-    <div class="pt-4 border-t border-stone-100">
-      <div class="flex items-baseline justify-between mb-3.5">
-        <div>
-          <span class="text-lg sm:text-xl font-black text-red-700">
+    <div class="pt-2 sm:pt-3 border-t border-stone-100 mt-auto">
+      <div class="flex items-baseline justify-between gap-1 mb-2 flex-wrap">
+        <div class="flex items-baseline gap-1.5 flex-wrap">
+          <span class="text-sm sm:text-lg font-black text-red-700">
             {formatCurrency(product.price)}
           </span>
-          <span class="text-xs text-stone-400 line-through ml-2">
+          <span class="text-[10px] sm:text-xs text-stone-400 line-through">
             {formatCurrency(product.originalPrice)}
           </span>
         </div>
-        <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+        <span class="text-[9px] sm:text-[10px] font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 shrink-0">
           100% Gỗ Lõi
         </span>
       </div>
 
-      <div class="mt-3 pt-3 border-t border-stone-100">
+      <div>
         <a
           href={`https://zalo.me/0339533380?text=Ch%C3%A0o%20x%C6%B0%E1%BB%9Fng%20An%20Gia%20T%E1%BB%8Bnh,%20t%C3%B4i%20c%E1%BA%A7n%20t%C6%B0%20v%E1%BA%A5n%20m%E1%BA%ABu%20${encodeURIComponent(product.name)}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full py-2.5 bg-gradient-to-r from-red-700 via-red-800 to-amber-900 hover:from-red-800 hover:to-amber-950 text-white text-xs sm:text-sm font-bold rounded-xl text-center transition-all flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md active:scale-98"
+          class="w-full py-2 sm:py-2.5 bg-gradient-to-r from-red-700 via-red-800 to-amber-900 hover:from-red-800 hover:to-amber-950 text-white text-xs sm:text-sm font-bold rounded-lg sm:rounded-xl text-center transition-all flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md active:scale-98"
         >
-          <svg class="w-4 h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
           <span>Liên Hệ</span>

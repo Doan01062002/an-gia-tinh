@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { ARTICLES, type Article } from '../../data/articles';
+import { PRODUCTS } from '../../data/products';
 
 export function getStaticPaths() {
   return ARTICLES.map((article) => ({
@@ -15,6 +16,14 @@ export interface Props {
 }
 
 const { article } = Astro.props;
+
+// Other articles for related section
+const relatedArticles = ARTICLES.filter((a) => a.slug !== article.slug);
+const suggestedProducts = PRODUCTS.slice(0, 3);
+
+function formatCurrency(amount: number) {
+  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+}
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -32,7 +41,7 @@ const articleSchema = {
     name: 'An Gia Tịnh',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80',
+      url: 'https://an-gia-tinh.vercel.app/banner-hero-an-gia-tinh.svg',
     },
   },
 };
@@ -45,89 +54,273 @@ const articleSchema = {
   type="article"
   schema={articleSchema}
 >
-  {/* Article Header */}
-  <header class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-14 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-xs font-semibold">
-        <span>{article.category}</span>
-        <span class="text-stone-300">•</span>
-        <span>{article.readingTime}</span>
-      </div>
+  {/* 1. Article Header (Compact Editorial Style) */}
+  <header class="bg-gradient-to-b from-stone-100/90 via-stone-50 to-[#FAF9F6] border-b border-stone-200/80 pt-2.5 pb-3 sm:pt-3.5 sm:pb-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Breadcrumbs */}
+      <nav class="flex items-center gap-2 text-[11px] text-stone-500 mb-1.5" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-amber-800 transition-colors">Trang Chủ</a>
+        <span>/</span>
+        <a href="/kien-thuc" class="hover:text-amber-800 transition-colors">Cẩm Nang Thờ Cúng</a>
+        <span>/</span>
+        <span class="text-stone-800 font-semibold truncate max-w-xs sm:max-w-md">{article.title}</span>
+      </nav>
 
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl  font-black text-stone-900 leading-tight">
-        {article.title}
-      </h1>
+      <div class="max-w-4xl space-y-1.5">
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <span class="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 font-bold text-[11px]">
+            {article.category}
+          </span>
+          <span class="text-stone-300">•</span>
+          <span class="text-stone-600 font-medium text-[11px]">{article.readingTime}</span>
+          <span class="text-stone-300">•</span>
+          <span class="text-stone-500 text-[11px]">Cập nhật: {article.publishDate}</span>
+        </div>
 
-      <div class="text-xs sm:text-sm text-stone-500 flex items-center justify-center gap-4 pt-1">
-        <span>Tác giả: <strong class="text-stone-800 font-semibold">{article.author}</strong></span>
-        <span>•</span>
-        <span>Cập nhật: 31/10/2026</span>
+        <h1 class="text-lg sm:text-2xl lg:text-3xl font-black text-stone-900 tracking-tight leading-snug">
+          {article.title}
+        </h1>
+
+        {/* Author Verification Stamp */}
+        <div class="flex items-center gap-2 pt-0.5 text-xs text-stone-600">
+          <div class="w-6 h-6 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 font-bold text-[10px] flex items-center justify-center shrink-0">
+            BT
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span class="font-bold text-stone-900 text-xs">{article.author}</span>
+            <span class="text-emerald-700 font-normal bg-emerald-50 px-1 py-0.2 rounded text-[10px] border border-emerald-200">✓ Đã kiểm duyệt</span>
+            <span class="hidden sm:inline text-[11px] text-stone-500">• Nghệ nhân chế tác đồ thờ gỗ lõi</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  {/* Main Content */}
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <div class="bg-white p-6 sm:p-12 rounded-3xl border border-stone-200 shadow-sm">
-      {/* Cover Image */}
-      <div class="aspect-16/9 rounded-2xl overflow-hidden mb-8 shadow-sm bg-stone-100 border border-stone-200">
-        <img
-          src={article.coverImage}
-          alt={article.title}
-          class="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Hierarchical Nested TOC */}
-      <TableOfContents headings={article.headings} />
-
-      {/* Body Content */}
-      <div class="prose prose-lg max-w-none text-stone-800 leading-relaxed space-y-6 text-sm sm:text-base">
-        <Fragment set:html={article.contentHtml} />
-      </div>
-
-      {/* Author Credential Box */}
-      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-stone-50 border border-stone-200 flex flex-col sm:flex-row items-center gap-5 shadow-xs">
-        <div class="w-14 h-14 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-700 flex items-center justify-center shrink-0 shadow-xs">
-          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
-          </svg>
+  {/* 2. Main Two-Column Layout */}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      {/* 2.1 Main Article Column (Col 8) */}
+      <main class="lg:col-span-8 space-y-8">
+        {/* Cover Photo with Subtle Frame */}
+        <div class="aspect-16/9 rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm relative group">
+          <img
+            src={article.coverImage}
+            alt={article.title}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
         </div>
-        <div>
-          <h4 class=" font-black text-base text-stone-900">
-            {article.author}
-          </h4>
-          <p class="text-xs text-stone-600 mt-1.5 leading-relaxed font-light">
-            Hơn 25 năm kinh nghiệm chế tác đồ thờ gỗ truyền thống cao cấp và phân phối trên toàn quốc. Cố vấn phong thủy Thước Lỗ Ban 38.8cm cho hàng nghìn gia đình gia chủ chung cư và nhà phố.
+
+        {/* Key Takeaways Callout */}
+        <div class="p-5 sm:p-6 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-bold text-amber-900 uppercase tracking-wider">
+            <span>💡</span>
+            <span>Tóm Tắt Điểm Cốt Lõi Cần Nhớ</span>
+          </div>
+          <p class="text-xs sm:text-sm text-stone-800 leading-relaxed font-medium">
+            {article.description}
           </p>
         </div>
-      </div>
 
-      {/* Bottom CTA */}
-      <div class="mt-10 p-8 sm:p-10 bg-gradient-to-br from-[#802219] via-[#6d1b13] to-[#59140e] text-white rounded-3xl border border-[#a83226] text-center space-y-4 shadow-xl">
-        <h3 class="text-xl sm:text-2xl  font-black text-amber-400">
-          Gia Chủ Cần Tư Vấn Kích Thước Bàn Thờ Hợp Mệnh?
-        </h3>
-        <p class="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto leading-relaxed font-light">
-          Đội ngũ chuyên gia An Gia Tịnh sẽ hỗ trợ tính toán chuẩn Thước Lỗ Ban 38.8cm và tư vấn chi tiết mẫu bàn thờ hợp mệnh qua Zalo.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        {/* Hierarchical Table of Contents */}
+        <TableOfContents headings={article.headings} />
+
+        {/* Main Prose Content with Bold Headings & Editorial Styling */}
+        <div class="article-body max-w-none">
+          <Fragment set:html={article.contentHtml} />
+        </div>
+
+        {/* Author Bio Card */}
+        <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-stone-50 border border-stone-200 flex flex-col sm:flex-row items-center gap-5 shadow-2xs">
+          <div class="w-16 h-16 rounded-2xl bg-amber-600 text-amber-100 flex items-center justify-center font-bold text-xl shrink-0 shadow-xs">
+            BT
+          </div>
+          <div class="space-y-1.5 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+              <h4 class="font-black text-base text-stone-900">
+                {article.author}
+              </h4>
+              <span class="text-[10px] text-amber-800 bg-amber-50 px-2 py-0.5 rounded font-bold border border-amber-200">
+                25 Năm Nghề Mộc
+              </span>
+            </div>
+            <p class="text-xs text-stone-600 font-light leading-relaxed">
+              Thợ cả chế tác đồ thờ gỗ truyền thống tại xưởng An Gia Tịnh. Chuyên sâu về phong thủy Thước Lỗ Ban 38.8cm, kỹ thuật mộng thắt thủ công và quy trình sấy lò hạ ẩm 10-12% chống cong vênh nứt nẻ.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom CTA Banner */}
+        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#802219] via-[#6d1b13] to-[#59140e] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-amber-900/40">
+          <div class="space-y-2 text-center sm:text-left">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-300 block">
+              Tư Vấn Trực Tiếp 24/7
+            </span>
+            <h3 class="text-lg sm:text-2xl font-black text-white">
+              Cần Tư Vấn Kích Thước Bàn Thờ Hợp Mệnh?
+            </h3>
+            <p class="text-xs text-amber-100/80 font-light max-w-md">
+              Đội ngũ nghệ nhân An Gia Tịnh sẵn sàng hỗ trợ tra cứu phong thủy và gửi video mộc 15s cận cảnh thớ vân gỗ cho gia chủ.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <a
+              href="https://zalo.me/0339533380"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-stone-950 text-xs sm:text-sm font-bold rounded-xl shadow-md transition-all text-center whitespace-nowrap active:scale-95"
+            >
+              Nhắn Zalo: 0339.533.380
+            </a>
+            <a
+              href="/thuoc-lo-ban"
+              class="px-4 py-3 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold rounded-xl border border-white/20 transition-all text-center whitespace-nowrap"
+            >
+              Tra Thước Lỗ Ban
+            </a>
+          </div>
+        </div>
+      </main>
+
+      {/* 2.2 Sticky Sidebar Column (Col 4) */}
+      <aside class="lg:col-span-4 space-y-6">
+        {/* Sticky Container */}
+        <div class="space-y-6 sticky top-24">
+          {/* Sidebar 1: Quick Feng Shui Tool */}
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-3.5">
+            <div class="flex items-center gap-2 pb-2 border-b border-stone-100">
+              <span class="text-base">📏</span>
+              <h3 class="font-bold text-sm text-stone-900">Tra Cứu Nhanh Thước Lỗ Ban</h3>
+            </div>
+            <p class="text-xs text-stone-600 leading-relaxed font-light">
+              Kiểm tra ngay chiều sâu, chiều ngang bàn thờ nhà bạn có rơi vào Cung Đỏ Cát Tường (Hỷ Sự, Đăng Khoa, Tiến Bảo, Thêm Đinh) hay không.
+            </p>
+            <a
+              href="/thuoc-lo-ban"
+              class="block w-full py-2.5 px-3 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-xl transition-colors text-center shadow-xs"
+            >
+              Mở Thước Lỗ Ban 38.8cm Online →
+            </a>
+          </div>
+
+          {/* Sidebar 2: Suggested Altars for New Homes */}
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-stone-100">
+              <h3 class="font-bold text-sm text-stone-900">Mẫu Bàn Thờ Chuẩn Cung Đỏ</h3>
+              <span class="text-[10px] text-amber-800 bg-amber-50 px-2 py-0.5 rounded font-bold">100% Gỗ Lõi</span>
+            </div>
+
+            <div class="space-y-3">
+              {suggestedProducts.map((p) => (
+                <a
+                  href={`/san-pham/${p.slug}`}
+                  class="flex items-center gap-3 p-2 rounded-xl hover:bg-stone-50 transition-colors group"
+                >
+                  <div class="w-16 h-16 rounded-lg overflow-hidden bg-stone-100 shrink-0 border border-stone-200">
+                    <img
+                      src={p.imageUrl}
+                      alt={p.name}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <span class="block text-[11px] font-bold text-stone-900 truncate group-hover:text-amber-800 transition-colors">
+                      {p.name}
+                    </span>
+                    <span class="block text-[10px] text-stone-500 truncate mt-0.5">
+                      {p.dimensions} • {p.woodType.split(' ')[1] || 'Gỗ tự nhiên'}
+                    </span>
+                    <span class="block text-xs font-black text-red-700 mt-1">
+                      {formatCurrency(p.price)}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <a
+              href="/san-pham"
+              class="block text-center text-xs font-bold text-amber-800 hover:text-amber-900 pt-1"
+            >
+              Xem bộ sưu tập bàn thờ →
+            </a>
+          </div>
+
+          {/* Sidebar 3: Direct Hotline */}
+          <div class="p-5 rounded-2xl bg-stone-100/80 border border-stone-200 space-y-2.5 text-center">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-stone-500 block">
+              Cần Hỗ Trợ Gấp
+            </span>
+            <div class="font-black text-lg text-stone-900">
+              0339.533.380
+            </div>
+            <p class="text-[11px] text-stone-600 font-light">
+              Nghệ nhân trực tiếp nghe máy tư vấn 24/7
+            </p>
+            <a
+              href="tel:0339533380"
+              class="inline-block w-full py-2 bg-[#451a03] hover:bg-[#5c2406] text-white text-xs font-bold rounded-lg shadow-xs transition-colors"
+            >
+              Gọi Ngay Cho Nghệ Nhân
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    {/* 3. Related Articles Section (Bottom Grid) */}
+    {relatedArticles.length > 0 && (
+      <section class="mt-16 sm:mt-24 pt-10 border-t border-stone-200">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl sm:text-2xl font-black text-stone-900">
+            Bài Viết Cùng Chuyên Mục
+          </h2>
           <a
-            href="https://zalo.me/0339533380"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all"
+            href="/kien-thuc"
+            class="text-xs font-bold text-amber-800 hover:text-amber-900"
           >
-            Nhắn Zalo Nghệ Nhân: 0339.533.380
-          </a>
-          <a
-            href="/thuoc-lo-ban"
-            class="px-6 py-3.5 bg-[#54160e] hover:bg-[#6e1e14] text-amber-100 font-semibold text-xs sm:text-sm rounded-xl border border-[#8f281e] transition-all"
-          >
-            Tra Cứu Thước Lỗ Ban
+            Xem tất cả bài viết →
           </a>
         </div>
-      </div>
-    </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {relatedArticles.map((rel) => (
+            <article class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-2xs hover:shadow-lg transition-all flex flex-col sm:flex-row group">
+              <div class="sm:w-2/5 aspect-16/9 sm:aspect-auto overflow-hidden bg-stone-100 shrink-0">
+                <img
+                  src={rel.coverImage}
+                  alt={rel.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                <div>
+                  <div class="flex items-center gap-2 text-[10px] text-stone-500 mb-1">
+                    <span class="font-bold text-amber-800">{rel.category}</span>
+                    <span>•</span>
+                    <span>{rel.readingTime}</span>
+                  </div>
+                  <h3 class="text-sm sm:text-base font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-2 leading-snug">
+                    <a href={`/kien-thuc/${rel.slug}`}>
+                      {rel.title}
+                    </a>
+                  </h3>
+                  <p class="text-xs text-stone-600 line-clamp-2 font-light mt-1">
+                    {rel.description}
+                  </p>
+                </div>
+                <div class="pt-2 text-xs font-bold text-amber-800 flex items-center gap-1">
+                  <span>Đọc bài viết</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 </Layout>

@@ -10,19 +10,19 @@ const completedProjects = [
   {
     apartment: 'Vinhomes Smart City Tây Mỗ',
     altar: 'Ban thờ treo Gỗ Sồi 48x81cm',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/completed/completed-smart-city.webp',
     tag: 'Căn hộ 2PN',
   },
   {
     apartment: 'Vinhomes Ocean Park Gia Lâm',
     altar: 'Combo Ban thờ Gõ Đỏ 48x89cm & Tranh Sen',
-    image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
+    image: '/images/completed/completed-ocean-park.webp',
     tag: 'Căn hộ 3PN',
   },
   {
     apartment: 'KĐT Vạn Phúc, TP. Thủ Đức',
     altar: 'Ban thờ đứng Gỗ Gụ Lào 61x107cm',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/completed/completed-van-phuc.webp',
     tag: 'Nhà phố',
   },
 ];
@@ -44,13 +44,13 @@ const homeSchema = {
   description="Bộ sưu tập bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng gia tiên, tranh Trúc Chỉ sen LED. 100% gỗ tự nhiên tuyển chọn, chuẩn Thước Lỗ Ban 38.8cm, giao hàng toàn quốc."
   schema={homeSchema}
 >
-  {/* 1. Compact Promotional Banner Image (Exact Tâm Phát Layout: 35% Hero / 65% Immediate Products) */}
-  <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 pt-2 sm:pt-3">
-    <div class="relative w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-md border border-red-950/20 bg-[#660505]">
+  {/* 1. Compact Promotional Banner Image */}
+  <section class="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 pt-1.5 sm:pt-2">
+    <div class="relative w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-md border border-red-950/20 bg-[#660505] max-h-[180px] sm:max-h-[220px] md:max-h-[250px]">
       <img
         src="/banner-hero-an-gia-tinh.svg"
         alt="Ưu đãi ngập tràn bàn thờ chuẩn phong thủy Lỗ Ban An Gia Tịnh"
-        class="w-full h-auto aspect-[2/1] sm:aspect-[2.3/1] md:aspect-[2.5/1] object-cover block"
+        class="w-full h-full object-cover block"
         loading="eager"
         fetchpriority="high"
         width="900"
@@ -60,7 +60,7 @@ const homeSchema = {
   </section>
 
   {/* 2. MAIN PRODUCT GALLERY (Front & Center) */}
-  <section id="bo-suu-tap" class="py-2.5 sm:py-8 bg-[#FAFAF9]">
+  <section id="bo-suu-tap" class="py-1.5 sm:py-4 bg-[#FAFAF9]">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       {/* Interactive Mobile-Friendly Gallery */}
       <ProductGallery products={PRODUCTS} client:load />

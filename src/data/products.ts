@@ -2,6 +2,41 @@ import type { Product } from '../types';
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'BTT-4161-XOAN',
+    slug: 'ban-tho-treo-tuong-41x61-go-xoan-dao',
+    name: 'Bàn Thờ Treo Tường 41x61cm Gỗ Xoan Đào Bình An (Giá Mềm)',
+    category: 'ban-tho-treo',
+    categoryName: 'Bàn Thờ Treo Tường',
+    dimensions: 'Sâu 41cm x Rộng 61cm',
+    lobanInfo: {
+      depthCung: 'Tài Vượng (Cung Đinh)',
+      depthMeaning: 'Gia đạo hưng vượng, tài lộc dồi dào, phúc khí gia tăng',
+      widthCung: 'Hoạnh Tài (Cung Quan)',
+      widthMeaning: 'Của cải bất ngờ đến, buôn may bán đắt, công việc thuận buồm',
+    },
+    woodType: 'Gỗ Xoan Đào tuyển chọn 100% lõi đã qua sấy lò chống mối',
+    price: 990000,
+    originalPrice: 1450000,
+    warrantyYears: 2,
+    features: [
+      '100% Gỗ Xoan tự nhiên đã sấy lò công nghiệp độ ẩm 10-12%, không mối mọt',
+      'Kích thước chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ (Tài Vượng - Hoạnh Tài)',
+      'Thớ gỗ mịn, vân hồng đào ấm cúng, thiết kế hiện đại gọn nhẹ',
+      'Sơn phủ PU bóng mờ 3 lớp chống bám bụi và chống ẩm mốc',
+      'Phù hợp tuyệt đối cho căn hộ mini, studio, gia đình trẻ tiết kiệm chi phí',
+    ],
+    description: 'Mẫu bàn thờ treo tường gỗ Xoan Đào tự nhiên thiết kế hiện đại, thanh thoát, giá thành tiết kiệm tối đa dành cho căn hộ studio, chung cư mini hoặc gia đình trẻ cần giải pháp thờ tự trang nghiêm, chuẩn Lỗ Ban với chi phí hợp lý nhất.',
+    imageUrl: '/images/products/ban-tho-treo-mini-41x61-go-soi.webp',
+    images: [
+      '/images/products/ban-tho-treo-mini-41x61-go-soi.webp',
+      '/images/products/ban-tho-treo-mini-41x61-go-soi-2.webp',
+    ],
+    badge: 'Giá tốt nhất',
+    rating: 4.8,
+    reviewCount: 96,
+  },
+
+  {
     id: 'BTT-4881-SOI',
     slug: 'ban-tho-treo-chung-cu-48x81-go-soi',
     name: 'Bàn Thờ Treo Chung Cư 48x81cm Gỗ Sồi Mỹ Khang Gia',
@@ -17,7 +52,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Sồi Mỹ tự nhiên 100% lõi chọn lọc',
     price: 1850000,
     originalPrice: 2450000,
-    warrantyYears: 10,
+    warrantyYears: 3,
     features: [
       '100% Gỗ Sồi Mỹ lõi không rác, sấy lò chống co ngót nứt nẻ',
       'Kích thước chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ Cát Tường',
@@ -26,11 +61,11 @@ export const PRODUCTS: Product[] = [
       'Tặng kèm bộ ốc vít nở bê tông chuyên dụng lắp đặt an toàn',
     ],
     description: 'Mẫu bàn thờ treo tường thiết kế tối giản, tinh tế dành riêng cho các căn hộ chung cư hiện đại diện tích từ 45m² đến 75m². Được chế tác hoàn toàn từ gỗ Sồi Mỹ nhập khẩu loại 1 không dính rác, màu sắc vàng sồi ấm cúng hoặc nâu óc chó trang trọng.',
-    imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-treo-chung-cu-48x81-go-soi.webp',
     images: [
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-treo-chung-cu-48x81-go-soi.webp',
+      '/images/products/ban-tho-treo-chung-cu-48x81-go-soi-2.webp',
+      '/images/products/ban-tho-treo-chung-cu-48x81-go-soi-3.webp'
     ],
     badge: 'Bán chạy nhất',
     rating: 4.9,
@@ -52,7 +87,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Gõ Đỏ Pachy Nam Phi đanh chắc 100% lõi',
     price: 2950000,
     originalPrice: 3800000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Gỗ Gõ Đỏ Pachy vân cuộn xoáy tự nhiên, nặng đanh không mối mọt',
       'Chuẩn Thước Lỗ Ban 38.8cm: Cặp cung Vượng - Vượng đại cát',
@@ -61,11 +96,11 @@ export const PRODUCTS: Product[] = [
       'Kiểm tra video mộc thô 15s trước khi phun sơn hoàn thiện',
     ],
     description: 'Chất gỗ Gõ Đỏ thượng hạng từ lâu đã được mệnh danh là đệ nhất gỗ làm bàn thờ gia tiên. Với thớ gỗ đanh cứng, vân vằn hổ oai nghiêm và hương thơm tự nhiên, mẫu bàn thờ 48x89cm giúp gia chủ bày biện thoải mái 1 đến 3 bát hương cùng mâm bồng đồ cúng.',
-    imageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-treo-tuong-48x89-go-go-do.webp',
     images: [
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-treo-tuong-48x89-go-go-do.webp',
+      '/images/products/ban-tho-treo-tuong-48x89-go-go-do-2.webp',
+      '/images/products/ban-tho-treo-tuong-48x89-go-go-do-3.webp'
     ],
     badge: 'Gỗ quý cao cấp',
     rating: 5.0,
@@ -89,7 +124,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Gụ Lào xịn 100% lõi không rác, thơm nhẹ thảo mộc',
     price: 8900000,
     originalPrice: 11500000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Combo Bàn lớn uy nghiêm + Tủ cơm nhỏ có bánh xe cất gọn bên dưới',
       '100% Gỗ Gụ Lào tuyển chọn lõi già, lên màu gụ son thâm trầm trang nhã',
@@ -98,11 +133,11 @@ export const PRODUCTS: Product[] = [
       'Bề mặt chống bám tàn nhang và chịu nhiệt độ nến ấm chén',
     ],
     description: 'Mẫu bàn thờ đứng kết hợp bàn cơm dành cho nhà phố hiện đại hoặc căn hộ chung cư cao cấp có không gian thờ cúng riêng. Khi cúng giỗ, gia chủ kéo bàn cơm ra bày mâm cỗ mặn vô cùng rộng rãi, cúng xong đẩy gọn vào trong lòng bàn lớn để tiết kiệm diện tích.',
-    imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-dung-gia-tien-61x107-go-gu-lao.webp',
     images: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-dung-gia-tien-61x107-go-gu-lao.webp',
+      '/images/products/ban-tho-dung-gia-tien-61x107-go-gu-lao-2.webp',
+      '/images/products/ban-tho-dung-gia-tien-61x107-go-gu-lao-3.webp'
     ],
     badge: 'Combo bàn cơm',
     rating: 4.95,
@@ -133,11 +168,11 @@ export const PRODUCTS: Product[] = [
       'Giao hàng tận nơi có đệm chống sốc, kiểm tra sáng đèn mới thanh toán',
     ],
     description: 'Tranh Trúc Chỉ hoa sen tròn là linh hồn của không gian thờ tự hiện đại. Ánh sáng vàng dịu từ bức tranh tượng trưng cho vầng hào quang ấm áp của chư Phật và tổ tiên che chở cho căn nhà, mang lại cảm giác bình an mỗi khi bước vào nhà.',
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/tranh-truc-chi-hoa-sen-den-led.webp',
     images: [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80"
+      '/images/products/tranh-truc-chi-hoa-sen-den-led.webp',
+      '/images/products/tranh-truc-chi-hoa-sen-den-led-2.webp',
+      '/images/products/tranh-truc-chi-hoa-sen-den-led-3.webp'
     ],
     badge: 'Tâm điểm phòng thờ',
     rating: 4.9,
@@ -159,7 +194,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Khung gỗ Sồi tự nhiên kết hợp cốt MDF chống ẩm phủ Melamine',
     price: 1200000,
     originalPrice: 1550000,
-    warrantyYears: 10,
+    warrantyYears: 3,
     features: [
       'Hoa văn chữ Thọ, hoa sen, chữ Vạn đục cắt máy CNC công nghệ Đức sắc nét',
       'Khung gỗ thịt bao quanh tạo độ vững chắc không cong vênh',
@@ -167,11 +202,11 @@ export const PRODUCTS: Product[] = [
       'Thi công lắp ráp nhanh gọn sạch sẽ trong 1 buổi',
     ],
     description: 'Vách ngăn CNC là giải pháp hoàn hảo để tách biệt không gian thờ linh thiêng với không gian phòng khách năng động của căn hộ chung cư. Hoa văn thông thoáng đảm bảo luồng sinh khí đối lưu lưu thông điều hòa.',
-    imageUrl: 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/vach-ngan-phong-tho-cnc-tho-van.webp',
     images: [
-      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+      '/images/products/vach-ngan-phong-tho-cnc-tho-van.webp',
+      '/images/products/vach-ngan-phong-tho-cnc-tho-van-2.webp',
+      '/images/products/vach-ngan-phong-tho-cnc-tho-van-3.webp'
     ],
     badge: 'May đo theo phòng',
     rating: 4.88,
@@ -193,7 +228,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Khung gỗ tự nhiên + Tấm tản khói mica + Tấm chắn hoa văn',
     price: 320000,
     originalPrice: 450000,
-    warrantyYears: 10,
+    warrantyYears: 3,
     features: [
       'Ngăn 100% vệt khói hương ố vàng làm đen trần thạch cao và trần sơn',
       'Dễ dàng rút tấm mica ra lau chùi vệ sinh mỗi dịp bao sái cuối năm',
@@ -201,11 +236,11 @@ export const PRODUCTS: Product[] = [
       'Gắn vít chuyên dụng nhẹ nhàng không vỡ trần',
     ],
     description: 'Tấm chắn khói hương là phụ kiện bắt buộc phải có khi sử dụng bàn thờ treo tường chung cư. Thiết kế thông minh gồm 3 lớp giúp tản đều nhiệt và khói hương, giữ trần nhà luôn trắng sạch tinh tươm quanh năm suốt tháng.',
-    imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/tam-chan-am-khoi-huong-tran-nha.webp',
     images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+      '/images/products/tam-chan-am-khoi-huong-tran-nha.webp',
+      '/images/products/tam-chan-am-khoi-huong-tran-nha-2.webp',
+      '/images/products/tam-chan-am-khoi-huong-tran-nha-3.webp'
     ],
     badge: 'Chống đen trần 100%',
     rating: 4.96,
@@ -227,7 +262,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Mít Ta tự nhiên 100% lõi vàng tâm',
     price: 2600000,
     originalPrice: 3400000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Gỗ Mít Ta già vân vàng tươi sáng, mùi thơm dịu nhẹ xua tà khí',
       'Đục mộng cổ truyền Sơn Đồng thủ công không dùng đinh kim loại',
@@ -235,11 +270,11 @@ export const PRODUCTS: Product[] = [
       'Sơn bóng mờ giữ màu vàng tâm mộc mạc trang nghiêm',
     ],
     description: 'Chất gỗ Mít Ta từ ngàn đời nay gắn liền với cây đa bến nước sân đình và không gian thờ cúng Việt Nam. Gỗ không mối mọt, để càng lâu màu càng chuyển sang đỏ sẫm sang trọng.',
-    imageUrl: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-treo-48x81-go-mit-ta.webp',
     images: [
-      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-treo-48x81-go-mit-ta.webp',
+      '/images/products/ban-tho-treo-48x81-go-mit-ta-2.webp',
+      '/images/products/ban-tho-treo-48x81-go-mit-ta-3.webp'
     ],
     badge: 'Gỗ Mít Cổ Truyền',
     rating: 4.98,
@@ -261,7 +296,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Sồi Mỹ tự nhiên sấy lò chuẩn 10-12%',
     price: 1450000,
     originalPrice: 1950000,
-    warrantyYears: 10,
+    warrantyYears: 3,
     features: [
       'Kích thước siêu nhỏ gọn 41x61cm tối ưu cho căn hộ Studio và 1PN',
       'Chân thang vuông chữ V chịu lực khoan tắc kê sâu chắc chắn',
@@ -269,11 +304,11 @@ export const PRODUCTS: Product[] = [
       'Màu nâu óc chó ấm cúng hoặc vàng sồi Bắc Âu thanh lịch',
     ],
     description: 'Giải pháp phòng thờ siêu nhỏ gọn dành cho gia chủ ở căn hộ 1 phòng ngủ hoặc căn hộ mini, vẫn đảm bảo trọn vẹn sự tôn kính và cung đỏ Thước Lỗ Ban 38.8cm.',
-    imageUrl: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-treo-mini-41x61-go-soi.webp',
     images: [
-      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-treo-mini-41x61-go-soi.webp',
+      '/images/products/ban-tho-treo-mini-41x61-go-soi-2.webp',
+      '/images/products/ban-tho-treo-mini-41x61-go-soi-3.webp'
     ],
     badge: 'Chung cư Studio',
     rating: 4.92,
@@ -297,19 +332,19 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Gõ Đỏ Pachy Nam Phi 100% lõi không rác',
     price: 10800000,
     originalPrice: 14200000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Khổ rộng 127cm bề thế, bày biện được 3 đến 5 bát hương lớn',
       'Chân quỳ nghê uy nghi, yếm chạm hoa sen sen ngậm hạt ngọc',
-      '100% gỗ Gõ Đỏ lõi đanh nặng, chống mối mọt trọn đời',
+      '100% gỗ Gõ Đỏ lõi đanh nặng, chống mối mọt, bảo hành gỗ lõi 5 năm',
       'Đi kèm bàn cơm con kê dưới gầm tiện lợi ngày giỗ chạp',
     ],
     description: 'Mẫu bàn thờ đứng đại quy mô dành cho gia chủ sở hữu nhà phố, biệt thự hoặc căn hộ duplex diện tích lớn. Từng đường đục chạm mang lại vẻ uy nghiêm, trang trọng cho không gian thờ tự.',
-    imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/ban-tho-dung-gia-tien-67x127-go-go-do.webp',
     images: [
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      '/images/products/ban-tho-dung-gia-tien-67x127-go-go-do.webp',
+      '/images/products/ban-tho-dung-gia-tien-67x127-go-go-do-2.webp',
+      '/images/products/ban-tho-dung-gia-tien-67x127-go-go-do-3.webp'
     ],
     badge: 'Đại Cát Biệt Thự',
     rating: 5.0,
@@ -331,7 +366,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Gõ Đỏ Pachy Nam Phi tự nhiên 100% lõi',
     price: 3200000,
     originalPrice: 4200000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       '2 cánh mở và 1 ngăn kéo lớn cất gọn văn khấn, nến, hương, ấm chén',
       'Bánh xe bọc cao su chịu lực lăn êm ái, kéo ra đẩy vào nhẹ nhàng',
@@ -339,11 +374,11 @@ export const PRODUCTS: Product[] = [
       'Sơn bóng mờ Inchem cao cấp lau chùi dầu mỡ dễ dàng',
     ],
     description: 'Phụ kiện bàn cơm thông minh giúp tối ưu hóa không gian phòng thờ hiện đại. Ngày thường đẩy gọn vào lòng bàn thờ đứng, ngày rằm mùng một và giỗ chạp kéo ra làm mâm cúng thịnh soạn.',
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/tu-com-ke-gam-ban-tho-61x81-go-go-do.webp',
     images: [
-      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+      '/images/products/tu-com-ke-gam-ban-tho-61x81-go-go-do.webp',
+      '/images/products/tu-com-ke-gam-ban-tho-61x81-go-go-do-2.webp',
+      '/images/products/tu-com-ke-gam-ban-tho-61x81-go-go-do-3.webp'
     ],
     badge: 'Kéo Rút Tiện Lợi',
     rating: 4.94,
@@ -365,7 +400,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Mít Ta Sơn Đồng 100% lõi vàng óng',
     price: 950000,
     originalPrice: 1300000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Phân chia ngôi thứ rõ ràng: Tầng 1 Thần Linh, Tầng 2 Gia Tiên, Tầng 3 Bà Cô Ông Mãnh',
       'Chạm sen tinh xảo 4 góc và diềm tam cấp',
@@ -373,11 +408,11 @@ export const PRODUCTS: Product[] = [
       'Kê bát hương chắc chắn không rung lắc',
     ],
     description: 'Bệ tam cấp giúp không gian bàn thờ phân định tôn ti trật tự theo đúng tín ngưỡng thờ phụng tổ tiên của người Việt. Bát hương thần linh được tôn cao hơn gia tiên, thu hút vượng khí cát lành.',
-    imageUrl: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/be-tam-cap-tho-gia-tien-go-mit-ta.webp',
     images: [
-      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      '/images/products/be-tam-cap-tho-gia-tien-go-mit-ta.webp',
+      '/images/products/be-tam-cap-tho-gia-tien-go-mit-ta-2.webp',
+      '/images/products/be-tam-cap-tho-gia-tien-go-mit-ta-3.webp'
     ],
     badge: 'Phân Ngôi Gia Tiên',
     rating: 4.97,
@@ -401,7 +436,7 @@ export const PRODUCTS: Product[] = [
     woodType: 'Gỗ Hương Đá Nam Phi tuyển chọn vân chỉ hồng',
     price: 16500000,
     originalPrice: 21000000,
-    warrantyYears: 20,
+    warrantyYears: 5,
     features: [
       'Đục Ngũ Phúc Lâm Môn kênh bong sắc nét tinh xảo',
       'Chân 12cm hoặc 14cm vững như bàn thạch chịu lực cực tốt',
@@ -409,11 +444,11 @@ export const PRODUCTS: Product[] = [
       'Gửi video mộc thô 15s kiểm tra kỹ lưỡng trước khi nhận',
     ],
     description: 'Tuyệt phẩm án gian thờ gia tiên dành riêng cho nhà thờ họ, biệt thự hoặc nhà phố diện tích phòng thờ rộng rãi. Họa tiết 5 con dơi ngậm chữ Thọ mang lại Ngũ Phúc: Phú, Quý, Thọ, Khang, Ninh cho gia tộc.',
-    imageUrl: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/products/an-gian-tho-ngu-phuc-81x153-go-huong-da.webp',
     images: [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+      '/images/products/an-gian-tho-ngu-phuc-81x153-go-huong-da.webp',
+      '/images/products/an-gian-tho-ngu-phuc-81x153-go-huong-da-2.webp',
+      '/images/products/an-gian-tho-ngu-phuc-81x153-go-huong-da-3.webp'
     ],
     badge: 'Đại Cát Ngũ Phúc',
     rating: 5.0,

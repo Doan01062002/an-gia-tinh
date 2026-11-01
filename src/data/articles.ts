@@ -20,7 +20,7 @@ export const ARTICLES: Article[] = [
     author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
     category: 'Phong Thủy Bàn Thờ',
     readingTime: '6 phút đọc',
-    coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80',
+    coverImage: '/images/articles/kich-thuoc-ban-tho-chung-cu-chuan-thuoc-lo-ban-38-8cm.webp',
     headings: [
       { depth: 2, slug: '1-tong-quan-thuoc-lo-ban-38-8cm', text: '1. Tổng quan về Thước Lỗ Ban 38.8cm Âm Phần' },
       { depth: 3, slug: '1-1-su-khac-nhau-giua-3-loai-thuoc-lo-ban', text: '1.1. Sự khác nhau giữa 3 loại Thước Lỗ Ban phổ biến' },
@@ -89,7 +89,7 @@ export const ARTICLES: Article[] = [
     author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
     category: 'Kiến Thức Nghề Mộc',
     readingTime: '5 phút đọc',
-    coverImage: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=1000&q=80',
+    coverImage: '/images/articles/bi-quyet-nhan-biet-100-go-loi-khong-pha-rac-ban-tho.webp',
     headings: [
       { depth: 2, slug: '1-khai-niem-go-loi-va-go-rac', text: '1. Khái niệm khoa học: Gỗ Lõi (Heartwood) và Gỗ Rác (Sapwood)' },
       { depth: 3, slug: '1-1-go-loi-la-gi-vi-sao-sieu-ben', text: '1.1. Gỗ lõi là gì? Vì sao đanh chắc không mối mọt?' },
@@ -99,7 +99,7 @@ export const ARTICLES: Article[] = [
       { depth: 3, slug: '2-2-phan-biet-qua-trong-luong-va-do-cung', text: '2.2. Phân biệt qua trọng lượng và độ đanh chắc' },
       { depth: 2, slug: '3-chinh-sach-bao-hanh-tai-an-gia-tinh', text: '3. Chính sách bảo hành chất lượng tại An Gia Tịnh' },
       { depth: 3, slug: '3-1-quy-trinh-quay-video-moc-15s-truoc-khi-son', text: '3.1. Quy trình quay video mộc 15s cận cảnh thớ vân' },
-      { depth: 3, slug: '3-2-chinh-sach-bao-hanh-10-20-nam', text: '3.2. Chính sách bảo hành nứt nẻ, mối mọt 10-20 năm' },
+      { depth: 3, slug: '3-2-chinh-sach-bao-hanh-theo-chat-go', text: '3.2. Chính sách bảo hành kết cấu 2 – 5 năm theo chất gỗ' },
     ],
     contentHtml: `
       <h2 id="1-khai-niem-go-loi-va-go-rac">1. Khái niệm khoa học: Gỗ Lõi (Heartwood) và Gỗ Rác (Sapwood)</h2>
@@ -137,7 +137,7 @@ export const ARTICLES: Article[] = [
     author: 'Nghệ Nhân Bùi Văn Thắng (Thợ Cả Chế Tác Đồ Thờ An Gia Tịnh)',
     category: 'Văn Khấn Cổ Truyền',
     readingTime: '5 phút đọc',
-    coverImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80',
+    coverImage: '/images/articles/van-khan-an-vi-ban-tho-nhap-trach-ve-nha-moi.webp',
     headings: [
       { depth: 2, slug: '1-y-nghia-le-an-vi-ban-tho', text: '1. Ý nghĩa thiêng liêng của lễ an vị bàn thờ gia tiên' },
       { depth: 2, slug: '2-le-vat-chuan-bi-an-vi-ban-tho', text: '2. Lễ vật cần chuẩn bị cho mâm cúng an vị bàn thờ mới' },

@@ -1,22 +1,86 @@
 import React, { useState } from 'react';
-import { Phone, Ruler, Gift, CheckCircle2, ShieldCheck, X, FileText, Video, Sparkles, Layers } from 'lucide-react';
+import {
+  Phone,
+  Ruler,
+  Gift,
+  CheckCircle2,
+  ShieldCheck,
+  X,
+  FileText,
+  Video,
+  Sparkles,
+  Layers,
+  AlertCircle,
+  ShieldAlert,
+} from 'lucide-react';
+
+function isValidVNPhone(cleanPhone: string): boolean {
+  if (!/^(03|05|07|08|09)\d{8}$/.test(cleanPhone)) return false;
+  // Chặn số rác lặp: 0999999999, 0888888888, 0333333333, v.v.
+  if (/^(03|05|07|08|09)(\d)\2{7}$/.test(cleanPhone)) return false;
+  if (cleanPhone === '0123456789' || cleanPhone === '0987654321') return false;
+  return true;
+}
 
 export default function SpiritualHooks() {
   const [isOpen, setIsOpen] = useState(false);
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
+
+    // 0. Bẫy Bot Honeypot
+    if (honeypot.trim()) {
+      return;
+    }
+
     const cleanPhone = phone.replace(/\D/g, '');
-    if (cleanPhone.length < 10) {
-      alert('Vui lòng nhập số điện thoại hợp lệ gồm 10 chữ số.');
+
+    // 1. Kiểm tra định dạng số điện thoại Việt Nam
+    if (!isValidVNPhone(cleanPhone)) {
+      setErrorMsg(
+        'Vui lòng nhập đúng số điện thoại di động Việt Nam (10 chữ số, bắt đầu bằng 03, 05, 07, 08, 09).'
+      );
+      return;
+    }
+
+    // 2. Chống spam gửi liên tục (Cooldown 60 giây)
+    const now = Date.now();
+    let lastSubmit: string | null = null;
+    let todayKey = '';
+    let dailyCount = 0;
+    try {
+      lastSubmit = localStorage.getItem('agt_lead_last_submit');
+      const today = new Date();
+      todayKey = `agt_lead_daily_${today.getFullYear()}_${today.getMonth() + 1}_${today.getDate()}`;
+      dailyCount = parseInt(localStorage.getItem(todayKey) || '0', 10);
+    } catch {}
+
+    if (lastSubmit && now - parseInt(lastSubmit, 10) < 60000) {
+      const waitSec = Math.ceil((60000 - (now - parseInt(lastSubmit, 10))) / 1000);
+      setErrorMsg(`Gia chủ vừa gửi yêu cầu rồi ạ. Vui lòng đợi ${waitSec} giây để gửi lại nhé!`);
+      return;
+    }
+
+    // 3. Giới hạn số lần gửi trong ngày (Tối đa 3 lần/ngày/thiết bị)
+    if (dailyCount >= 3) {
+      setErrorMsg(
+        'Gia chủ đã đăng ký nhận tài liệu 3 lần hôm nay. Thợ Cả đã lưu thông tin và sẽ kết nối Zalo sớm nhất!'
+      );
       return;
     }
 
     setLoading(true);
     setTimeout(() => {
+      try {
+        localStorage.setItem('agt_lead_last_submit', now.toString());
+        localStorage.setItem(todayKey, (dailyCount + 1).toString());
+      } catch {}
       setLoading(false);
       setSubmitted(true);
     }, 500);
@@ -197,7 +261,26 @@ export default function SpiritualHooks() {
                   </div>
                 </div>
 
+                {errorMsg && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-800 text-xs font-medium flex items-start gap-2 mb-4 animate-in fade-in">
+                    <ShieldAlert className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                    <span className="flex-1 leading-relaxed">{errorMsg}</span>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot hidden input để bẫy bot spam */}
+                  <input
+                    type="text"
+                    name="b_url_trap"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
+
                   <div>
                     <label className="block text-xs font-bold text-stone-800 uppercase tracking-wider mb-2">
                       Số điện thoại Zalo của Gia Chủ:
@@ -205,9 +288,13 @@ export default function SpiritualHooks() {
                     <input
                       type="tel"
                       required
+                      maxLength={12}
                       placeholder="Ví dụ: 0912 345 678"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                        if (errorMsg) setErrorMsg(null);
+                      }}
                       className="w-full px-4 py-3.5 bg-white border-2 border-stone-300 rounded-xl focus:outline-none focus:border-amber-600 text-stone-900 font-medium text-sm shadow-xs"
                     />
                   </div>

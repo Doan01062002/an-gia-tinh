@@ -139,3 +139,113 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   Editorial Article Typography (.article-body)
+   Explicit styling for HTML headings (h2, h3, strong, lists, blockquotes)
+   ========================================================================== */
+.article-body {
+  color: #292524;
+  line-height: 1.8;
+}
+
+.article-body h2 {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  font-weight: 800 !important;
+  color: #1c1917 !important;
+  margin-top: 2.25rem !important;
+  margin-bottom: 0.85rem !important;
+  padding-left: 0.875rem;
+  border-left: 4px solid #b45309;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 640px) {
+  .article-body h2 {
+    font-size: 1.6rem;
+    margin-top: 2.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+.article-body h3 {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 700 !important;
+  color: #292524 !important;
+  margin-top: 1.6rem !important;
+  margin-bottom: 0.65rem !important;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 640px) {
+  .article-body h3 {
+    font-size: 1.28rem;
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+.article-body p {
+  color: #44403c;
+  line-height: 1.8;
+  margin-bottom: 1.15rem !important;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .article-body p {
+    font-size: 1.025rem;
+    margin-bottom: 1.35rem !important;
+  }
+}
+
+.article-body ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.35rem !important;
+  color: #44403c;
+}
+
+.article-body ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.35rem !important;
+  color: #44403c;
+}
+
+.article-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.article-body li::marker {
+  color: #b45309;
+}
+
+.article-body strong {
+  font-weight: 700 !important;
+  color: #1c1917 !important;
+}
+
+.article-body em {
+  font-style: italic;
+  color: #57534e;
+}
+
+.article-body blockquote {
+  border-left: 4px solid #f59e0b;
+  background-color: #fffbeb;
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #78350f;
+}

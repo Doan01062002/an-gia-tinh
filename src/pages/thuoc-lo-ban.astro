@@ -23,25 +23,25 @@ const loBanSchema = {
   description="Công cụ tra cứu Thước Lỗ Ban 38.8cm (Âm phần - Đồ thờ) trực tuyến miễn phí. Kiểm tra ngay kích thước bàn thờ gia tiên, bàn thờ chung cư chuẩn Cung Đỏ: Đinh, Vượng, Nghĩa, Quan, Hưng, Tài."
   schema={loBanSchema}
 >
-  {/* Header */}
-  <section class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-14 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-xs font-semibold tracking-wide">
+  {/* Compact, Focused Page Header */}
+  <section class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-3 sm:py-4">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-1">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-[11px] font-semibold tracking-wide">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
-        <span>Công Cụ Đo Trắc Phong Thủy Chuẩn Nghề Mộc Cổ Truyền</span>
+        <span>Thước Lỗ Ban 38.8cm Âm Phần • Chuẩn Đồ Thờ Cúng</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl  font-black text-stone-900 tracking-tight">
-        Thước Lỗ Ban 38.8cm Âm Phần Online
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-stone-900 tracking-tight">
+        Tra Cứu Kích Thước Bàn Thờ Chuẩn Cung Đỏ
       </h1>
 
-      <p class="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-        Kéo trượt hoặc nhập số đo (cm) để tra cứu chính xác Cung Đỏ (Đại Cát) hay Cung Đen (Hung Hiểm) cho kích thước bàn thờ treo tường và bàn thờ đứng gia tiên.
+      <p class="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto leading-normal font-light">
+        Kéo trượt hoặc nhập số đo (cm) để kiểm tra chính xác Cung Đỏ (Đại Cát) hay Cung Đen (Hung) cho bàn thờ treo & bàn thờ đứng.
       </p>
     </div>
   </section>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5 space-y-5 sm:space-y-6">
     {/* Physical Wooden Ruler Precision Component */}
     <LoBanTool client:load />
 

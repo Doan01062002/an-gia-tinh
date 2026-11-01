@@ -21,25 +21,25 @@ const catalogSchema = {
   description="Khám phá các mẫu bàn thờ treo chung cư 48x81, 48x89cm, bàn thờ đứng 61x107cm, tranh Trúc Chỉ hoa sen đèn LED. 100% gỗ lõi không rác, bảo hành 10-20 năm."
   schema={catalogSchema}
 >
-  {/* Category Header */}
-  <section class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-8 sm:py-14">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-xs font-semibold tracking-wide">
+  {/* Compact Category Header */}
+  <section class="bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200 py-3 sm:py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-1">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-900 text-[11px] font-semibold tracking-wide">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
         <span>100% Gỗ Lõi Tự Nhiên • Đền Bù 200% Nếu Pha Rác</span>
       </div>
 
-      <h1 class="text-2xl sm:text-4xl  font-black text-stone-900 tracking-tight">
+      <h1 class="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
         Bộ Sưu Tập Bàn Thờ & Phụ Kiện Phòng Thờ
       </h1>
 
-      <p class="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-light">
-        Kích thước chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ, kết cấu mộng đục thắt thủ công không đinh kim loại trên mặt bàn thờ.
+      <p class="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto leading-normal font-light">
+        Kích thước chuẩn Thước Lỗ Ban 38.8cm Cung Đỏ, mộng đục thắt thủ công không đinh kim loại trên mặt bàn thờ.
       </p>
     </div>
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5">
     {/* Product Gallery with Mobile Filter & Tap-to-Zoom */}
     <ProductGallery products={PRODUCTS} client:load />
 

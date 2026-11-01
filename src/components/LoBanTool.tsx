@@ -1,110 +1,290 @@
-import React, { useState, useRef } from 'react';
-import { calculateLoBan388 } from '../data/loban';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { calculateLoBan388, LOBAN_CUNG_LIST } from '../data/loban';
 import { Ruler, Award, AlertCircle, MessageCircle } from 'lucide-react';
 
 export default function LoBanTool() {
   const [dimension, setDimension] = useState<number>(81);
   const result = calculateLoBan388(dimension);
 
-  const trackRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef<boolean>(false);
-  const dragStartRef = useRef<{ x: number; dim: number }>({ x: 0, dim: 81 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Position within the 38.8cm cycle
-  const cycleRemainder = ((dimension % 38.8) + 38.8) % 38.8;
-  const cursorPercent = Math.min(Math.max((cycleRemainder / 38.8) * 100, 0), 100);
+  // Dragging & Momentum Physics State
+  const dragRef = useRef<{
+    isDragging: boolean;
+    startX: number;
+    startDim: number;
+    lastX: number;
+    lastTime: number;
+    velocity: number;
+  }>({
+    isDragging: false,
+    startX: 0,
+    startDim: 81,
+    lastX: 0,
+    lastTime: 0,
+    velocity: 0,
+  });
 
-  const cungs = [
-    { name: 'Đinh', good: true, short: 'Đ' },
-    { name: 'Hại', good: false, short: 'H' },
-    { name: 'Vượng', good: true, short: 'V' },
-    { name: 'Khổ', good: false, short: 'K' },
-    { name: 'Nghĩa', good: true, short: 'N' },
-    { name: 'Quan', good: true, short: 'Q' },
-    { name: 'Tử', good: false, short: 'T' },
-    { name: 'Hưng', good: true, short: 'H' },
-    { name: 'Thất', good: false, short: 'T' },
-    { name: 'Tài', good: true, short: 'T' },
-  ];
+  const animFrameRef = useRef<number | null>(null);
 
-  // Update dimension based on click / pointer position
-  const updateFromPointer = (clientX: number, isDirectClick = false) => {
-    if (!trackRef.current) return;
-    const rect = trackRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const trackWidth = rect.width;
-    if (trackWidth <= 0) return;
+  // Draw Continuous Tape Measure onto HTML5 Canvas
+  const drawRuler = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    if (isDirectClick) {
-      // Direct click on the ruler inside 0..trackWidth
-      const clampedX = Math.max(0, Math.min(x, trackWidth));
-      const percent = clampedX / trackWidth;
-      const targetRemainder = percent * 38.8;
-      const currentCycleBase = Math.floor(dimension / 38.8) * 38.8;
-      const newDim = Math.round((currentCycleBase + targetRemainder) * 2) / 2;
-      setDimension(Math.max(10, Math.min(300, newDim)));
-      dragStartRef.current = { x: clientX, dim: newDim };
-    } else {
-      // Continuous scrubbing / dragging from start point
-      const deltaX = clientX - dragStartRef.current.x;
-      const deltaDim = (deltaX / trackWidth) * 38.8;
-      const newDim = Math.round((dragStartRef.current.dim + deltaDim) * 2) / 2;
-      setDimension(Math.max(10, Math.min(300, newDim)));
+    const rect = canvas.getBoundingClientRect();
+    const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
+    const width = rect.width;
+    const height = 80;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+
+    // Responsive pixel scale: 1cm = 12px on desktop, 10px on mobile
+    const pxPerCm = width < 500 ? 10 : 12;
+    const cx = width / 2;
+
+    // Clear background
+    ctx.fillStyle = '#240705';
+    ctx.fillRect(0, 0, width, height);
+
+    // Visible range
+    const startCm = Math.max(0, Math.floor(dimension - cx / pxPerCm) - 1);
+    const endCm = Math.min(250, Math.ceil(dimension + cx / pxPerCm) + 1);
+
+    // ==========================================
+    // LAYER 1: Top Metric Scale (y: 0 -> 28)
+    // ==========================================
+    ctx.fillStyle = '#170403';
+    ctx.fillRect(0, 0, width, 28);
+
+    for (let cm = startCm; cm <= endCm; cm++) {
+      const x = cx + (cm - dimension) * pxPerCm;
+
+      if (cm % 10 === 0) {
+        // 10cm Major Tick & Number
+        ctx.fillStyle = '#fde047';
+        ctx.fillRect(x - 1, 0, 2, 13);
+
+        ctx.font = 'bold 11px system-ui, -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(cm.toString(), x, 20);
+      } else if (cm % 5 === 0) {
+        // 5cm Medium Tick
+        ctx.fillStyle = '#facc15';
+        ctx.fillRect(x - 0.75, 0, 1.5, 10);
+      } else {
+        // 1cm Tick
+        ctx.fillStyle = '#ca8a04';
+        ctx.fillRect(x - 0.5, 0, 1, 6);
+
+        // 0.5cm Sub-tick
+        const halfX = x + 0.5 * pxPerCm;
+        ctx.fillStyle = '#a16207';
+        ctx.fillRect(halfX - 0.5, 0, 1, 4);
+      }
     }
-  };
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    isDraggingRef.current = true;
-    dragStartRef.current = { x: e.clientX, dim: dimension };
+    // ==========================================
+    // LAYER 2: 10 Major Cungs (y: 28 -> 80, h: 52)
+    // ==========================================
+    const kStart = Math.floor(startCm / 38.8);
+    const kEnd = Math.ceil(endCm / 38.8);
+
+    for (let k = kStart; k <= kEnd; k++) {
+      for (let i = 0; i < 10; i++) {
+        const c = LOBAN_CUNG_LIST[i];
+        const cungStartCm = k * 38.8 + i * 3.88;
+        const cungEndCm = cungStartCm + 3.88;
+        const x1 = cx + (cungStartCm - dimension) * pxPerCm;
+        const x2 = cx + (cungEndCm - dimension) * pxPerCm;
+        const w = x2 - x1;
+
+        if (x2 < 0 || x1 > width) continue;
+
+        // Background
+        ctx.fillStyle = c.isGood ? '#991b1b' : '#1c1917';
+        ctx.fillRect(x1, 28, w, 52);
+
+        // Border divider
+        ctx.strokeStyle = c.isGood ? '#dc2626' : '#292524';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x1, 28, w, 52);
+
+        // Text
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        if (w >= 32) {
+          ctx.fillStyle = c.isGood ? '#fef08a' : '#d6d3d1';
+          ctx.font = 'bold 13px system-ui, -apple-system, sans-serif';
+          ctx.fillText(c.name, x1 + w / 2, 45);
+
+          ctx.fillStyle = c.isGood ? '#fef9c3' : '#a8a29e';
+          ctx.font = 'bold 10px system-ui, -apple-system, sans-serif';
+          ctx.fillText(c.isGood ? 'CÁT' : 'HUNG', x1 + w / 2, 63);
+        } else {
+          ctx.fillStyle = c.isGood ? '#fef08a' : '#d6d3d1';
+          ctx.font = 'bold 11px system-ui, -apple-system, sans-serif';
+          ctx.fillText(c.name, x1 + w / 2, 53);
+        }
+      }
+    }
+
+    // ==========================================
+    // LAYER 3: Fixed Golden Center Needle (cx)
+    // ==========================================
+    ctx.shadowColor = '#f59e0b';
+    ctx.shadowBlur = 10;
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 2.5;
+
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, height);
+    ctx.stroke();
+
+    ctx.shadowBlur = 0; // reset glow
+
+    // Top Indicator Arrow
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath();
+    ctx.moveTo(cx - 7, 0);
+    ctx.lineTo(cx + 7, 0);
+    ctx.lineTo(cx, 8);
+    ctx.closePath();
+    ctx.fill();
+
+    // Bottom Indicator Arrow
+    ctx.beginPath();
+    ctx.moveTo(cx - 7, height);
+    ctx.lineTo(cx + 7, height);
+    ctx.lineTo(cx, height - 8);
+    ctx.closePath();
+    ctx.fill();
+
+    // Center Dimension Badge
+    const badgeText = `${dimension.toFixed(1)} cm`;
+    ctx.font = 'bold 11px system-ui, -apple-system, sans-serif';
+    const textWidth = ctx.measureText(badgeText).width;
+
+    ctx.fillStyle = '#1c1917';
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.roundRect(cx - textWidth / 2 - 7, 39, textWidth + 14, 22, 6);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#fbbf24';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(badgeText, cx, 50);
+  }, [dimension]);
+
+  // Redraw on dimension change or window resize
+  useEffect(() => {
+    drawRuler();
+    const handleResize = () => drawRuler();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [drawRuler]);
+
+  // Pointer Drag Handlers
+  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    dragRef.current = {
+      isDragging: true,
+      startX: e.clientX,
+      startDim: dimension,
+      lastX: e.clientX,
+      lastTime: performance.now(),
+      velocity: 0,
+    };
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {
-      // fallback
+    } catch {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!dragRef.current.isDragging) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const pxPerCm = canvas.clientWidth < 500 ? 10 : 12;
+
+    const deltaX = e.clientX - dragRef.current.startX;
+    const deltaDim = deltaX / pxPerCm;
+    let newDim = dragRef.current.startDim - deltaDim;
+    newDim = Math.max(10, Math.min(250, Math.round(newDim * 10) / 10));
+    setDimension(newDim);
+
+    const now = performance.now();
+    const dt = now - dragRef.current.lastTime;
+    if (dt > 12) {
+      dragRef.current.velocity = (e.clientX - dragRef.current.lastX) / dt;
+      dragRef.current.lastX = e.clientX;
+      dragRef.current.lastTime = now;
     }
-    updateFromPointer(e.clientX, true);
   };
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current) return;
-    updateFromPointer(e.clientX, false);
-  };
-
-  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    isDraggingRef.current = false;
+  const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!dragRef.current.isDragging) return;
+    dragRef.current.isDragging = false;
     try {
       if (e.currentTarget.hasPointerCapture(e.pointerId)) {
         e.currentTarget.releasePointerCapture(e.pointerId);
       }
-    } catch {
-      // fallback
+    } catch {}
+
+    // Momentum glide on flick
+    const canvas = canvasRef.current;
+    const pxPerCm = canvas && canvas.clientWidth < 500 ? 10 : 12;
+    const v = dragRef.current.velocity;
+
+    if (Math.abs(v) > 0.25) {
+      let speed = v * 12;
+      const decelerate = () => {
+        if (Math.abs(speed) < 0.08 || dragRef.current.isDragging) return;
+        setDimension((d) => {
+          const next = Math.max(10, Math.min(250, Math.round((d - speed / pxPerCm) * 10) / 10));
+          return next;
+        });
+        speed *= 0.88;
+        animFrameRef.current = requestAnimationFrame(decelerate);
+      };
+      decelerate();
     }
   };
 
-  // Jump directly to a Cung by clicking its block
-  const handleCungClick = (cungIndex: number) => {
-    const currentCycleBase = Math.floor(dimension / 38.8) * 38.8;
-    const targetRemainder = cungIndex * 3.88 + 1.94;
-    const newDim = Math.round((currentCycleBase + targetRemainder) * 2) / 2;
-    setDimension(Math.max(10, Math.min(300, newDim)));
+  // Mouse wheel smoothly scrolls tape
+  const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    const delta = e.deltaY || e.deltaX;
+    const step = delta > 0 ? 0.5 : -0.5;
+    setDimension((d) => Math.max(10, Math.min(250, Math.round((d + step) * 2) / 2)));
   };
 
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-stone-200 overflow-hidden">
-      {/* Sleek Compact Tool Header */}
+      {/* Tool Header */}
       <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-stone-200 bg-stone-50 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
           <span className="text-xs sm:text-sm font-bold text-stone-900 tracking-tight">
-            Thước Lỗ Ban 38.8cm (Âm Phần - Đồ Thờ)
+            Thước Lỗ Ban 38.8cm (Âm Phần — Bàn Thờ & Đồ Thờ Cúng)
           </span>
         </div>
         <span className="text-[10px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
-          Chu kỳ 38.8cm
+          Chu kỳ chuẩn 38.8cm
         </span>
       </div>
 
       <div className="p-4 sm:p-8 space-y-6">
-        {/* UNIFIED INTERACTIVE LO BAN RULER (Box 1 + Box 2 merged into ONE - Nền Đỏ Son Gụ Sang Trọng, KHÔNG NỀN ĐEN) */}
+        {/* UNIFIED INTERACTIVE CONTINUOUS TAPE MEASURE (Hoàn toàn mới - Siêu mượt, không giật lag) */}
         <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#802219] via-[#6d1b13] to-[#59140e] text-white shadow-xl border border-[#a83226] space-y-4 sm:space-y-5">
           {/* Top Bar: Live Measurement & Quick Steppers */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#8f281e]">
@@ -112,11 +292,11 @@ export default function LoBanTool() {
               <div className="flex items-center gap-2">
                 <Ruler className="w-4 h-4 text-amber-300" />
                 <h3 className="text-xs sm:text-sm font-bold text-amber-300 tracking-wide uppercase">
-                  Dải Thước Đo 10 Cung Lỗ Ban
+                  Dải Thước Cuộn Lỗ Ban Tự Nhiên
                 </h3>
               </div>
               <p className="text-[11px] text-amber-100/80 mt-0.5">
-                Chạm hoặc kéo ngón tay trực tiếp trên thước để chỉnh số đo
+                Kéo ngang ngón tay hoặc cuộn chuột để di chuyển thước mượt mà
               </p>
             </div>
 
@@ -144,10 +324,13 @@ export default function LoBanTool() {
                   id="dimension-input"
                   type="number"
                   min="10"
-                  max="300"
+                  max="250"
                   step="0.5"
                   value={dimension}
-                  onChange={(e) => setDimension(parseFloat(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const val = parseFloat(e.target.value);
+                    if (!isNaN(val)) setDimension(Math.max(10, Math.min(250, val)));
+                  }}
                   aria-label="Số đo Lỗ Ban (cm)"
                   className="w-20 sm:w-24 text-center font-black text-lg sm:text-xl text-amber-300 bg-[#2b0a07] border border-[#8f281e] rounded-lg py-1 px-1 focus:outline-none focus:border-amber-400"
                 />
@@ -156,7 +339,7 @@ export default function LoBanTool() {
 
               <button
                 type="button"
-                onClick={() => setDimension((d) => Math.min(300, Math.round((d + 1) * 2) / 2))}
+                onClick={() => setDimension((d) => Math.min(250, Math.round((d + 1) * 2) / 2))}
                 className="w-8 h-8 flex items-center justify-center bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-100 text-sm font-bold rounded-lg transition-all"
                 title="Tăng 1 cm"
               >
@@ -164,7 +347,7 @@ export default function LoBanTool() {
               </button>
               <button
                 type="button"
-                onClick={() => setDimension((d) => Math.min(300, Math.round((d + 10) * 2) / 2))}
+                onClick={() => setDimension((d) => Math.min(250, Math.round((d + 10) * 2) / 2))}
                 className="px-2 py-1.5 bg-[#54160e] hover:bg-[#6e1e14] active:scale-95 text-amber-200 text-[11px] font-bold rounded-lg transition-all"
                 title="Tăng 10 cm"
               >
@@ -173,102 +356,25 @@ export default function LoBanTool() {
             </div>
           </div>
 
-          {/* Measuring Tape & Interactive Track */}
+          {/* Continuous Interactive HTML5 Canvas Tape Measure */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-[11px] text-amber-100/90 font-mono">
-              <span className="flex items-center gap-1.5">
-                <span className="inline-block w-2 h-2 rounded-full bg-amber-300 animate-ping" />
-                <span>Kéo vạch hoặc chạm trực tiếp cung:</span>
-              </span>
-              <span>
-                Điểm rơi chu kỳ: <strong className="text-amber-300 font-bold">{cycleRemainder.toFixed(1)}</strong> / 38.8 cm
-              </span>
-            </div>
-
-            {/* The Interactive Ruler Tape Container */}
             <div
-              ref={trackRef}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              className="relative h-20 sm:h-22 bg-[#2f0c08] rounded-2xl p-1.5 border-2 border-[#8f281e] select-none cursor-pointer touch-none shadow-inner"
+              ref={containerRef}
+              className="relative rounded-2xl overflow-hidden border-2 border-[#8f281e] shadow-2xl bg-[#1c0504] cursor-grab active:cursor-grabbing select-none"
             >
-              {/* Millimeter / Centimeter Scale Bar at Top */}
-              <div className="absolute top-1.5 left-1.5 right-1.5 h-3 flex justify-between items-end px-1 pointer-events-none">
-                {[0, 5, 10, 15, 20, 25, 30, 35, 38.8].map((tick, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <span className="text-[8px] font-mono text-amber-300/60 leading-none">
-                      {tick === 38.8 ? '38.8' : tick}
-                    </span>
-                    <span className="w-px h-1.5 bg-[#7a2016] mt-0.5" />
-                  </div>
-                ))}
-              </div>
-
-              {/* 10 Major Cungs Grid */}
-              <div className="absolute top-6 bottom-1.5 left-1.5 right-1.5 grid grid-cols-10 gap-0.5 rounded-xl overflow-hidden">
-                {cungs.map((c, idx) => {
-                  const isCurrent = result?.cung?.name === c.name;
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCungClick(idx);
-                      }}
-                      className={`min-w-0 flex flex-col items-center justify-center rounded-lg transition-all relative overflow-hidden py-1 ${
-                        c.good
-                          ? 'bg-gradient-to-b from-red-600 to-red-800 text-white hover:from-red-500 hover:to-red-700'
-                          : 'bg-gradient-to-b from-[#4a1812] to-[#36100b] text-amber-200/80 hover:from-[#5e1e17] hover:to-[#4a1812]'
-                      } ${
-                        isCurrent
-                          ? 'ring-2 ring-amber-300 scale-[1.03] z-10 font-black shadow-lg shadow-black/40'
-                          : 'opacity-85 hover:opacity-100'
-                      }`}
-                    >
-                      {/* Desktop Full Name */}
-                      <span className="hidden sm:inline text-xs font-bold leading-tight truncate px-0.5">
-                        {c.name}
-                      </span>
-                      <span className="hidden sm:inline text-[9px] uppercase tracking-tighter opacity-90 mt-0.5">
-                        {c.good ? 'Cát' : 'Hung'}
-                      </span>
-                      {/* Mobile Letters */}
-                      <span className="sm:hidden text-[11px] font-black leading-none">
-                        {c.short}
-                      </span>
-                      <span
-                        className={`sm:hidden text-[8px] font-bold mt-0.5 ${
-                          c.good ? 'text-amber-300' : 'text-stone-300'
-                        }`}
-                      >
-                        {c.good ? '●' : '○'}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Sliding Precision Golden Needle */}
-              <div
-                className="absolute top-0 bottom-0 w-1 bg-amber-300 shadow-[0_0_12px_#FBBF24] z-20 pointer-events-none -translate-x-1/2 flex flex-col items-center justify-between"
-                style={{ left: `${cursorPercent}%` }}
-              >
-                {/* Top Marker */}
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-amber-300 -mt-1 shadow-xs" />
-                {/* Center Badge */}
-                <div className="px-1 py-0.5 bg-amber-300 text-stone-950 text-[9px] font-black rounded-xs shadow whitespace-nowrap -mt-0.5">
-                  {dimension}cm
-                </div>
-                {/* Bottom Marker */}
-                <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[7px] border-b-amber-300 -mb-1 shadow-xs" />
-              </div>
+              <canvas
+                ref={canvasRef}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                onWheel={handleWheel}
+                className="w-full h-[80px] block touch-none"
+              />
             </div>
           </div>
 
-          {/* Active Cung Indicator Ribbon below the tape */}
+          {/* Active Cung Indicator Ribbon */}
           {result && result.cung && (
             <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs pt-2 border-t border-[#8f281e] gap-2">
               <div className="flex items-center gap-2">
@@ -282,23 +388,18 @@ export default function LoBanTool() {
                     : 'bg-[#3d0f0a] text-amber-200 border border-[#7a2016]'
                 }`}
               >
-                {result.isGood ? <Award className="w-4 h-4 text-amber-300" /> : <AlertCircle className="w-4 h-4 text-amber-200" />}
+                {result.isGood ? (
+                  <Award className="w-4 h-4 text-amber-300" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-amber-200" />
+                )}
                 <span>
-                  Cung {result.cung.name} — {result.subCung?.name || ''} ({result.isGood ? 'Cung Đỏ Đại Cát' : 'Cung Đen Nên Tránh'})
+                  Cung {result.cung.name} — {result.subCung?.name || ''} (
+                  {result.isGood ? 'Cung Đỏ Đại Cát' : 'Cung Đen Nên Tránh'})
                 </span>
               </div>
             </div>
           )}
-
-          {/* Mobile Legend */}
-          <div className="sm:hidden flex items-center justify-center gap-4 text-[10px] text-amber-100/80 pt-1">
-            <span className="flex items-center gap-1">
-              <span className="text-amber-300 font-bold">●</span> Cung Đỏ (Đại Cát)
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="text-stone-300 font-bold">○</span> Cung Đen (Hung Hiểm)
-            </span>
-          </div>
         </div>
 
         {/* Real-time Result Card */}
@@ -335,7 +436,11 @@ export default function LoBanTool() {
                     {dimension} cm
                   </span>
                   <span className="text-base sm:text-xl font-bold text-stone-800">
-                    Cung <span className={result.isGood ? 'text-red-700' : 'text-[#6d1b13]'}>{result.cung.name}</span> — {result.subCung.name}
+                    Cung{' '}
+                    <span className={result.isGood ? 'text-red-700' : 'text-[#6d1b13]'}>
+                      {result.cung.name}
+                    </span>{' '}
+                    — {result.subCung.name}
                   </span>
                 </div>
               </div>
@@ -351,9 +456,7 @@ export default function LoBanTool() {
             </div>
 
             <div className="mt-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed space-y-1.5">
-              <p className="font-semibold text-stone-900">
-                {result.advice}
-              </p>
+              <p className="font-semibold text-stone-900">{result.advice}</p>
               <p className="text-[11px] sm:text-xs text-stone-600">
                 <strong>Ý nghĩa cung chính ({result.cung.name}):</strong> {result.cung.meaning}
               </p>

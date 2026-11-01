@@ -94,87 +94,166 @@ const navLinks = [
           id="mobile-menu-btn"
           type="button"
           aria-label="Mở menu điều hướng"
-          class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-stone-100 border border-stone-300 text-stone-800 flex items-center justify-center hover:bg-stone-200 transition-colors shrink-0"
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-stone-100 border border-stone-300 text-stone-800 flex items-center justify-center hover:bg-stone-200 active:scale-95 transition-all shrink-0 cursor-pointer"
         >
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-stone-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
     </div>
   </div>
+</header>
 
-  {/* Mobile Drawer Panel */}
-  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-[#2d1810]/60 backdrop-blur-sm hidden transition-opacity duration-300">
-    <div class="fixed top-0 right-0 w-72 max-w-[80vw] h-full bg-white border-l border-stone-200 p-5 flex flex-col justify-between shadow-2xl overflow-y-auto">
-      <div>
-        <div class="flex items-center justify-between pb-4 border-b border-stone-200">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700">
-              <svg class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
-              </svg>
-            </div>
-            <div>
-              <span class="block font-black text-stone-900 text-sm">AN GIA TỊNH</span>
-              <span class="block text-[8px] text-amber-800 uppercase font-semibold">Đồ Thờ Làng Nghề</span>
-            </div>
-          </div>
-          <button id="mobile-close-btn" class="p-1.5 text-stone-500 hover:text-stone-900" aria-label="Đóng menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+<!-- Mobile Drawer Panel: Placed outside <header> to avoid backdrop-filter stacking context trap on mobile Safari/Chrome -->
+<div
+  id="mobile-drawer"
+  class="fixed inset-0 z-[100] bg-[#2d1810]/70 backdrop-blur-xs hidden opacity-0 transition-opacity duration-300"
+  aria-label="Menu điều hướng di động"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    id="mobile-drawer-panel"
+    class="fixed top-0 right-0 w-72 max-w-[85vw] h-full h-dvh bg-white border-l border-stone-200 p-5 flex flex-col justify-between shadow-2xl overflow-y-auto transform translate-x-full transition-transform duration-300 ease-out"
+  >
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700">
+            <svg class="w-4 h-4 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C12 2 8 8 8 13C8 16.5 10.5 19 12 19C13.5 19 16 16.5 16 13C16 8 12 2 12 2ZM12 17C11.2 17 9.8 15.2 9.8 13C9.8 10.4 11.5 6.4 12 5.1C12.5 6.4 14.2 10.4 14.2 13C14.2 15.2 12.8 17 12 17Z"/>
             </svg>
-          </button>
+          </div>
+          <div>
+            <span class="block font-black text-stone-900 text-sm">AN GIA TỊNH</span>
+            <span class="block text-[8px] text-amber-800 uppercase font-semibold">Đồ Thờ Làng Nghề</span>
+          </div>
         </div>
+        <button
+          id="mobile-close-btn"
+          type="button"
+          class="p-2 -mr-2 text-stone-500 hover:text-stone-900 active:scale-95 transition-transform"
+          aria-label="Đóng menu"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
 
-        <nav class="py-4 space-y-1">
-          {navLinks.map((link) => (
+      <nav class="py-4 space-y-1">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href.replace(/\/$/, "");
+          return (
             <a
               href={link.href}
-              class="block px-3 py-2.5 rounded-xl text-sm font-semibold text-stone-800 hover:text-amber-800 hover:bg-stone-50 transition-colors"
+              class={`block px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                isActive
+                  ? "text-amber-900 bg-amber-50 border border-amber-200"
+                  : "text-stone-800 hover:text-amber-800 hover:bg-stone-50"
+              }`}
             >
               {link.label}
             </a>
-          ))}
-        </nav>
-      </div>
+          );
+        })}
+      </nav>
+    </div>
 
-      <div class="pt-4 border-t border-stone-200 space-y-3">
-        <a
-          href="tel:0339533380"
-          class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs"
-        >
-          <span>Hotline: 0339.533.380</span>
-        </a>
-        <a
-          href="https://zalo.me/0339533380"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full py-2.5 bg-[#0068FF] hover:bg-[#0052cc] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs"
-        >
-          <span>Nhắn Zalo Thợ Cả 24/7</span>
-        </a>
-      </div>
+    <div class="pt-4 border-t border-stone-200 space-y-2.5">
+      <a
+        href="/thuoc-lo-ban"
+        class="w-full py-2.5 bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-900 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-colors"
+      >
+        <span>Tra Thước Lỗ Ban 38.8cm</span>
+      </a>
+      <a
+        href="tel:0339533380"
+        class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+      >
+        <span>Hotline: 0339.533.380</span>
+      </a>
+      <a
+        href="https://zalo.me/0339533380"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full py-2.5 bg-[#0068FF] hover:bg-[#0052cc] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+      >
+        <span>Nhắn Zalo Thợ Cả 24/7</span>
+      </a>
     </div>
   </div>
-</header>
+</div>
 
 <script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const closeBtn = document.getElementById('mobile-close-btn');
-  const drawer = document.getElementById('mobile-drawer');
+  function initMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-close-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const panel = document.getElementById('mobile-drawer-panel');
 
-  if (menuBtn && closeBtn && drawer) {
-    menuBtn.addEventListener('click', () => {
+    if (!menuBtn || !closeBtn || !drawer || !panel) return;
+
+    function openDrawer() {
       drawer.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      // Trigger CSS transition
+      requestAnimationFrame(() => {
+        drawer.classList.remove('opacity-0');
+        drawer.classList.add('opacity-100');
+        panel.classList.remove('translate-x-full');
+        panel.classList.add('translate-x-0');
+      });
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('opacity-100');
+      drawer.classList.add('opacity-0');
+      panel.classList.remove('translate-x-0');
+      panel.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        drawer.classList.add('hidden');
+      }, 300);
+    }
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openDrawer();
     });
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.add('hidden');
+
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeDrawer();
     });
+
     drawer.addEventListener('click', (e) => {
       if (e.target === drawer) {
-        drawer.classList.add('hidden');
+        closeDrawer();
+      }
+    });
+
+    // Close when clicking any link inside drawer
+    drawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeDrawer();
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !drawer.classList.contains('hidden')) {
+        closeDrawer();
       }
     });
   }
+
+  // Support initial load and Astro client navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
